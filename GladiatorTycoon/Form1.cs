@@ -4,6 +4,7 @@ using GladiatorTycoon.Models;
 using System.Collections.Generic;
 using GladiatorTycoon.Repository;
 using GladiatorTycoon.Enums;
+using System.Linq;
 
 namespace GladiatorTycoon
 {
@@ -37,6 +38,14 @@ namespace GladiatorTycoon
             foreach (var race in races)
             {
                 listRaces.Items.Add(race.Name);
+            }
+            foreach (var habitat in (Habitat[])Enum.GetValues(typeof(Habitat)))
+            {
+                chkListPositiveHabitats.Items.Add(habitat);
+            }
+            foreach (var habitat in (Habitat[])Enum.GetValues(typeof(Habitat)))
+            {
+                chkListNegativeHabitats.Items.Add(habitat);
             }
         }
 
@@ -79,26 +88,26 @@ namespace GladiatorTycoon
 
         private void listPeople_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadPersonData();
+            ShowPersonData();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSavePeople_Click(object sender, EventArgs e)
         {
             SavePersonData();
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+        private void btnNewPerson_Click(object sender, EventArgs e)
         {
             persons.Add(new Person("New", "Person", SocialStatus.Lowborn, null, true));
             ReloadUiData();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCancelPerson_Click(object sender, EventArgs e)
         {
-            LoadPersonData();
+            ShowPersonData();
         }
 
-        private void LoadPersonData()
+        private void ShowPersonData()
         {
             if (listPeople.SelectedIndex == -1) { return; }
 
@@ -119,6 +128,30 @@ namespace GladiatorTycoon
             numCharisma.Value = person.Charisma;
         }
 
+        private void ShowRaceData()
+        {
+            if (listRaces.SelectedIndex == -1) { return; }
+
+            var race = races[listRaces.SelectedIndex];
+            var posHabitatList = race.PositiveHabitats.Split(',').ToList();
+            var negHabitatList = race.NegativeHabitats.Split(',').ToList();
+            textRaceName.Text = race.Name;
+
+            foreach (var habitat in posHabitatList)
+            {
+                var enumValue = Enum.Parse(typeof(Habitat), habitat, true);
+                var index = chkListPositiveHabitats.Items.IndexOf(enumValue);
+                chkListPositiveHabitats.SetItemChecked(index, true);
+            }
+
+            foreach (var habitat in negHabitatList)
+            {
+                var enumValue = Enum.Parse(typeof(Habitat), habitat, true);
+                var index = chkListNegativeHabitats.Items.IndexOf(enumValue);
+                chkListNegativeHabitats.SetItemChecked(index, true);
+            }
+        }
+
         private void SavePersonData()
         {
             var person = persons[listPeople.SelectedIndex];
@@ -126,14 +159,11 @@ namespace GladiatorTycoon
             person.FirstName = textFirstName.Text;
             person.LastName = textLastName.Text;
             person.Race = races[comboRace.SelectedIndex];
-
             person.IsMale = radioButtonMale.Checked;
-
             person.Strength = (int)numStrength.Value;
             person.Intelligence = (int)numIntelligence.Value;
             person.Agility = (int)numAgility.Value;
             person.Charisma = (int)numCharisma.Value;
-
             person.SocialStatus = (SocialStatus) comboStatus.SelectedIndex;
             person.HomeCity = cities[comboCities.SelectedIndex];
 
@@ -141,6 +171,45 @@ namespace GladiatorTycoon
 
             var personRepo = new PersonRepository();
             personRepo.SavePersons(persons);
+        }
+
+        private void chkListPositiveHabitats_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.NewValue == CheckState.Checked)
+            {
+                chkListNegativeHabitats.SetItemChecked(e.Index, false);
+            }
+            chkListPositiveHabitats.ClearSelected();
+        }
+
+        private void chkListNegativeHabitats_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.NewValue == CheckState.Checked)
+            {
+                chkListPositiveHabitats.SetItemChecked(e.Index, false);
+            }
+            chkListNegativeHabitats.ClearSelected();
+        }
+
+        private void btnNewRace_Click(object sender, EventArgs e)
+        {
+            races.Add(new Race(){ Name = "NewRace" });
+            ReloadUiData();
+        }
+
+        private void btnSaveRaces_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelRace_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listRaces_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowRaceData();
         }
     }
 }
