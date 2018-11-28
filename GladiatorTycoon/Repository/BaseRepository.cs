@@ -29,6 +29,24 @@ namespace GladiatorTycoon.Repository
             return GetDataTable(query, cmd);
         }
 
+        public void SaveData(string query)
+        {
+            var builder = new MySqlConnectionStringBuilder();
+            builder.Server = "localhost";
+            builder.UserID = "root";
+            builder.Password = "password";
+            builder.Database = "gladiator_tycoon";
+
+            var connectionString = builder.ToString();
+            builder = null;
+
+            dbConn = new MySqlConnection(connectionString);
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+            dbConn.Open();
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+
         private DataTable GetDataTable(string query, MySqlCommand cmd)
         {
             var dataTable = new DataTable();

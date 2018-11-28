@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using GladiatorTycoon.Models;
 using System.Collections.Generic;
 using GladiatorTycoon.Repository;
+using GladiatorTycoon.Enums;
 
 namespace GladiatorTycoon
 {
@@ -10,6 +11,7 @@ namespace GladiatorTycoon
     {
         private List<Person> persons;
         private List<Race> races;
+        private List<City> cities;
 
         public Form1()
         {
@@ -25,16 +27,40 @@ namespace GladiatorTycoon
 
         private void ReloadUiData()
         {
+            PeopleGroupBox();
+            RacesGroupBox();
+        }
+
+        private void RacesGroupBox()
+        {
+            listRaces.Items.Clear();
+            foreach (var race in races)
+            {
+                listRaces.Items.Add(race.Name);
+            }
+        }
+
+        private void PeopleGroupBox()
+        {
             comboRace.Items.Clear();
             listPeople.Items.Clear();
+            comboStatus.Items.Clear();
+            comboCities.Items.Clear();
             foreach (var race in races)
             {
                 comboRace.Items.Add(race.Name);
             }
-
+            foreach (var status in (SocialStatus[])Enum.GetValues(typeof(SocialStatus)))
+            {
+                comboStatus.Items.Add(status);
+            }
             foreach (var person in persons)
             {
                 listPeople.Items.Add(person.FullName());
+            }
+            foreach (var city in cities)
+            {
+                comboCities.Items.Add($"{city.Name} ({city.Habitat})");
             }
         }
 
@@ -42,10 +68,13 @@ namespace GladiatorTycoon
         {
             persons = new List<Person>();
             races = new List<Race>();
+            cities = new List<City>();
             var personRepo = new PersonRepository();
             var racesRepo = new RaceRepository();
+            var citiesRepo = new CityRepository();
             persons.AddRange(personRepo.GetAllPersons());
             races.AddRange(racesRepo.GetAllRaces());
+            cities.AddRange(citiesRepo.GetAllCities());
         }
 
         private void listPeople_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,7 +89,7 @@ namespace GladiatorTycoon
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            persons.Add(new Person("New", "Person", 0, null, true));
+            persons.Add(new Person("New", "Person", SocialStatus.Lowborn, null, true));
             ReloadUiData();
         }
 
@@ -71,18 +100,15 @@ namespace GladiatorTycoon
 
         private void LoadPersonData()
         {
+            if (listPeople.SelectedIndex == -1) { return; }
+
             var person = persons[listPeople.SelectedIndex];
 
             textFirstName.Text = person.FirstName;
             textLastName.Text = person.LastName;
-            if (person.Race != null)
-            {
-                comboRace.SelectedIndex = person.Race.Id - 1;
-            }
-            else
-            {
-                comboRace.SelectedIndex = 0;
-            }
+            comboRace.SelectedIndex = person.Race?.Id == null ? person.Race.Id - 1 : 0;
+            comboStatus.SelectedIndex = (int)person.SocialStatus;
+            comboCities.SelectedIndex = person.HomeCity?.Id != null ? person.HomeCity.Id - 1 : 0;
 
             if (person.IsMale) { radioButtonMale.Checked = true; }
             else { radioButtonFemale.Checked = true; }
@@ -108,7 +134,13 @@ namespace GladiatorTycoon
             person.Agility = (int)numAgility.Value;
             person.Charisma = (int)numCharisma.Value;
 
+            person.SocialStatus = (SocialStatus) comboStatus.SelectedIndex;
+            person.HomeCity = cities[comboCities.SelectedIndex];
+
             ReloadUiData();
+
+            var personRepo = new PersonRepository();
+            personRepo.SavePersons(persons);
         }
     }
 }
