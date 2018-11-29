@@ -35,6 +35,8 @@ namespace GladiatorTycoon
         private void RacesGroupBox()
         {
             listRaces.Items.Clear();
+            chkListPositiveHabitats.Items.Clear();
+            chkListNegativeHabitats.Items.Clear();
             foreach (var race in races)
             {
                 listRaces.Items.Add(race.Name);
@@ -55,6 +57,7 @@ namespace GladiatorTycoon
             listPeople.Items.Clear();
             comboStatus.Items.Clear();
             comboCities.Items.Clear();
+            listBoxOwners.Items.Clear();
             foreach (var race in races)
             {
                 comboRace.Items.Add(race.Name);
@@ -70,6 +73,10 @@ namespace GladiatorTycoon
             foreach (var city in cities)
             {
                 comboCities.Items.Add($"{city.Name} ({city.Habitat})");
+            }
+            foreach (var owner in persons.Where(p => p.SocialStatus != SocialStatus.Slave))
+            {
+                listBoxOwners.Items.Add(owner.FullName());
             }
         }
 
@@ -94,6 +101,7 @@ namespace GladiatorTycoon
         private void btnSavePeople_Click(object sender, EventArgs e)
         {
             SavePersonData();
+            LoadFromDatabase();
         }
 
         private void btnNewPerson_Click(object sender, EventArgs e)
@@ -115,7 +123,7 @@ namespace GladiatorTycoon
 
             textFirstName.Text = person.FirstName;
             textLastName.Text = person.LastName;
-            comboRace.SelectedIndex = person.Race?.Id == null ? person.Race.Id - 1 : 0;
+            comboRace.SelectedIndex = person.Race?.Id != null ? person.Race.Id - 1 : 0;
             comboStatus.SelectedIndex = (int)person.SocialStatus;
             comboCities.SelectedIndex = person.HomeCity?.Id != null ? person.HomeCity.Id - 1 : 0;
 
@@ -131,24 +139,30 @@ namespace GladiatorTycoon
         private void ShowRaceData()
         {
             if (listRaces.SelectedIndex == -1) { return; }
-
+            
             var race = races[listRaces.SelectedIndex];
-            var posHabitatList = race.PositiveHabitats.Split(',').ToList();
-            var negHabitatList = race.NegativeHabitats.Split(',').ToList();
+            var posHabitatList = race.PositiveHabitats?.Split(',').ToList();
+            var negHabitatList = race.NegativeHabitats?.Split(',').ToList();
             textRaceName.Text = race.Name;
 
-            foreach (var habitat in posHabitatList)
+            if (posHabitatList != null)
             {
-                var enumValue = Enum.Parse(typeof(Habitat), habitat, true);
-                var index = chkListPositiveHabitats.Items.IndexOf(enumValue);
-                chkListPositiveHabitats.SetItemChecked(index, true);
+                foreach (var habitat in posHabitatList)
+                {
+                    var enumValue = Enum.Parse(typeof(Habitat), habitat, true);
+                    var index = chkListPositiveHabitats.Items.IndexOf(enumValue);
+                    chkListPositiveHabitats.SetItemChecked(index, true);
+                }
             }
 
-            foreach (var habitat in negHabitatList)
+            if (negHabitatList != null)
             {
-                var enumValue = Enum.Parse(typeof(Habitat), habitat, true);
-                var index = chkListNegativeHabitats.Items.IndexOf(enumValue);
-                chkListNegativeHabitats.SetItemChecked(index, true);
+                foreach (var habitat in negHabitatList)
+                {
+                    var enumValue = Enum.Parse(typeof(Habitat), habitat, true);
+                    var index = chkListNegativeHabitats.Items.IndexOf(enumValue);
+                    chkListNegativeHabitats.SetItemChecked(index, true);
+                }
             }
         }
 
@@ -164,13 +178,30 @@ namespace GladiatorTycoon
             person.Intelligence = (int)numIntelligence.Value;
             person.Agility = (int)numAgility.Value;
             person.Charisma = (int)numCharisma.Value;
-            person.SocialStatus = (SocialStatus) comboStatus.SelectedIndex;
+            person.SocialStatus = (SocialStatus)comboStatus.SelectedIndex;
             person.HomeCity = cities[comboCities.SelectedIndex];
 
             ReloadUiData();
 
             var personRepo = new PersonRepository();
             personRepo.SavePersons(persons);
+        }
+
+        private void SaveRaceData()
+        {
+            var race = races[listRaces.SelectedIndex];
+
+            race.Name = textRaceName.Text;
+
+            var posHabitats = chkListPositiveHabitats.CheckedItems.Cast<Habitat>().ToList();
+            race.PositiveHabitats = race.ConvertEnumListToString(posHabitats);
+            var negHabitats = chkListNegativeHabitats.CheckedItems.Cast<Habitat>().ToList();
+            race.NegativeHabitats = race.ConvertEnumListToString(negHabitats);
+
+            ReloadUiData();
+
+            var raceRepo = new RaceRepository();
+            raceRepo.SaveRaces(races);
         }
 
         private void chkListPositiveHabitats_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -199,17 +230,35 @@ namespace GladiatorTycoon
 
         private void btnSaveRaces_Click(object sender, EventArgs e)
         {
-
+            SaveRaceData();
+            LoadFromDatabase();
         }
 
         private void btnCancelRace_Click(object sender, EventArgs e)
         {
-
+            ShowRaceData();
         }
 
         private void listRaces_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowRaceData();
+        }
+
+        private void comboStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboStatus.SelectedIndex == 0)
+            {
+                groupBoxSlaves.Enabled = true;
+            }
+            else
+            {
+                groupBoxSlaves.Enabled = false;
+            }
+        }
+
+        private void btnSlaveSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

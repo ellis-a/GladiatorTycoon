@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using GladiatorTycoon.Enums;
+using System.Text;
 
 namespace GladiatorTycoon.Models
 {
@@ -14,5 +15,15 @@ namespace GladiatorTycoon.Models
 
         public string PositiveHabitats { get; set; }
         public string NegativeHabitats { get; set; }
+
+        public string ConvertEnumListToString(List<Habitat> habitats)
+        {
+            var result = new StringBuilder();
+            foreach (var habitat in habitats)
+            {
+                result.Append($"{habitat.ToString()},");
+            }
+            return result.ToString().Trim(',');
+        }
     }
 }

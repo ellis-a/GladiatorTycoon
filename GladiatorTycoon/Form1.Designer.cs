@@ -30,6 +30,13 @@
         {
             this.listPeople = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxSlaves = new System.Windows.Forms.GroupBox();
+            this.btnSlaveSave = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.listBoxOwners = new System.Windows.Forms.ListBox();
+            this.chkBoxIsGladiator = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.comboCities = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -67,6 +74,8 @@
             this.textRaceName = new System.Windows.Forms.TextBox();
             this.listRaces = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
+            this.groupBoxSlaves.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCharisma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAgility)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numIntelligence)).BeginInit();
@@ -85,6 +94,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBoxSlaves);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.comboCities);
             this.groupBox1.Controls.Add(this.label10);
@@ -113,10 +123,84 @@
             this.groupBox1.Controls.Add(this.listPeople);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 318);
+            this.groupBox1.Size = new System.Drawing.Size(315, 542);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "People";
+            // 
+            // groupBoxSlaves
+            // 
+            this.groupBoxSlaves.Controls.Add(this.btnSlaveSave);
+            this.groupBoxSlaves.Controls.Add(this.label16);
+            this.groupBoxSlaves.Controls.Add(this.numericUpDown1);
+            this.groupBoxSlaves.Controls.Add(this.label15);
+            this.groupBoxSlaves.Controls.Add(this.listBoxOwners);
+            this.groupBoxSlaves.Controls.Add(this.chkBoxIsGladiator);
+            this.groupBoxSlaves.Enabled = false;
+            this.groupBoxSlaves.Location = new System.Drawing.Point(6, 315);
+            this.groupBoxSlaves.Name = "groupBoxSlaves";
+            this.groupBoxSlaves.Size = new System.Drawing.Size(303, 221);
+            this.groupBoxSlaves.TabIndex = 28;
+            this.groupBoxSlaves.TabStop = false;
+            this.groupBoxSlaves.Text = "Slave";
+            // 
+            // btnSlaveSave
+            // 
+            this.btnSlaveSave.Location = new System.Drawing.Point(222, 35);
+            this.btnSlaveSave.Name = "btnSlaveSave";
+            this.btnSlaveSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSlaveSave.TabIndex = 33;
+            this.btnSlaveSave.Text = "Save";
+            this.btnSlaveSave.UseVisualStyleBackColor = true;
+            this.btnSlaveSave.Click += new System.EventHandler(this.btnSlaveSave_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(225, 94);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(40, 13);
+            this.label16.TabIndex = 32;
+            this.label16.Text = "Loyalty";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(228, 110);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
+            this.numericUpDown1.TabIndex = 31;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 19);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(38, 13);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Owner";
+            // 
+            // listBoxOwners
+            // 
+            this.listBoxOwners.FormattingEnabled = true;
+            this.listBoxOwners.Location = new System.Drawing.Point(7, 35);
+            this.listBoxOwners.Name = "listBoxOwners";
+            this.listBoxOwners.Size = new System.Drawing.Size(209, 95);
+            this.listBoxOwners.TabIndex = 3;
+            // 
+            // chkBoxIsGladiator
+            // 
+            this.chkBoxIsGladiator.AutoSize = true;
+            this.chkBoxIsGladiator.Location = new System.Drawing.Point(7, 136);
+            this.chkBoxIsGladiator.Name = "chkBoxIsGladiator";
+            this.chkBoxIsGladiator.Size = new System.Drawing.Size(68, 17);
+            this.chkBoxIsGladiator.TabIndex = 0;
+            this.chkBoxIsGladiator.Text = "Gladiator";
+            this.chkBoxIsGladiator.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -151,6 +235,7 @@
             this.comboStatus.Name = "comboStatus";
             this.comboStatus.Size = new System.Drawing.Size(134, 21);
             this.comboStatus.TabIndex = 24;
+            this.comboStatus.SelectedIndexChanged += new System.EventHandler(this.comboStatus_SelectedIndexChanged);
             // 
             // btnNewPerson
             // 
@@ -369,7 +454,7 @@
             this.groupBox2.Controls.Add(this.listRaces);
             this.groupBox2.Location = new System.Drawing.Point(333, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(327, 318);
+            this.groupBox2.Size = new System.Drawing.Size(327, 346);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Races";
@@ -407,7 +492,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(162, 183);
+            this.label14.Location = new System.Drawing.Point(162, 181);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(92, 13);
             this.label14.TabIndex = 34;
@@ -417,16 +502,16 @@
             // 
             this.chkListNegativeHabitats.CheckOnClick = true;
             this.chkListNegativeHabitats.FormattingEnabled = true;
-            this.chkListNegativeHabitats.Location = new System.Drawing.Point(165, 200);
+            this.chkListNegativeHabitats.Location = new System.Drawing.Point(165, 198);
             this.chkListNegativeHabitats.Name = "chkListNegativeHabitats";
-            this.chkListNegativeHabitats.Size = new System.Drawing.Size(150, 109);
+            this.chkListNegativeHabitats.Size = new System.Drawing.Size(151, 139);
             this.chkListNegativeHabitats.TabIndex = 33;
             this.chkListNegativeHabitats.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chkListNegativeHabitats_ItemCheck);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 183);
+            this.label13.Location = new System.Drawing.Point(6, 181);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(86, 13);
             this.label13.TabIndex = 32;
@@ -436,16 +521,16 @@
             // 
             this.chkListPositiveHabitats.CheckOnClick = true;
             this.chkListPositiveHabitats.FormattingEnabled = true;
-            this.chkListPositiveHabitats.Location = new System.Drawing.Point(6, 200);
+            this.chkListPositiveHabitats.Location = new System.Drawing.Point(6, 198);
             this.chkListPositiveHabitats.Name = "chkListPositiveHabitats";
-            this.chkListPositiveHabitats.Size = new System.Drawing.Size(150, 109);
+            this.chkListPositiveHabitats.Size = new System.Drawing.Size(150, 139);
             this.chkListPositiveHabitats.TabIndex = 31;
             this.chkListPositiveHabitats.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.chkListPositiveHabitats_ItemCheck);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 138);
+            this.label12.Location = new System.Drawing.Point(6, 136);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(35, 13);
             this.label12.TabIndex = 30;
@@ -453,7 +538,7 @@
             // 
             // textRaceName
             // 
-            this.textRaceName.Location = new System.Drawing.Point(6, 154);
+            this.textRaceName.Location = new System.Drawing.Point(6, 152);
             this.textRaceName.Name = "textRaceName";
             this.textRaceName.Size = new System.Drawing.Size(134, 20);
             this.textRaceName.TabIndex = 29;
@@ -471,7 +556,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 342);
+            this.ClientSize = new System.Drawing.Size(676, 569);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -479,6 +564,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBoxSlaves.ResumeLayout(false);
+            this.groupBoxSlaves.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCharisma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAgility)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numIntelligence)).EndInit();
@@ -528,6 +616,13 @@
         private System.Windows.Forms.Button btnCancelRace;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckedListBox chkListNegativeHabitats;
+        private System.Windows.Forms.GroupBox groupBoxSlaves;
+        private System.Windows.Forms.ListBox listBoxOwners;
+        private System.Windows.Forms.CheckBox chkBoxIsGladiator;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnSlaveSave;
     }
 }
 
