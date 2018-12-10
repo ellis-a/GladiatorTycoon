@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace GladiatorTycoon.Repository
 {
-    public class CityRepository : BaseRepository<Race>
+    public class CityRepository : BaseRepository
     {
-        private List<City> ConvertToCityList(DataTable dataTable)
+        protected List<City> ConvertToCityList(DataTable dataTable)
         {
             var convertedList = (from row in dataTable.AsEnumerable()
                                  select new City()

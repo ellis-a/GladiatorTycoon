@@ -7,61 +7,62 @@ using System.Text;
 
 namespace GladiatorTycoon.Repository
 {
-    public class PersonRepository : BaseRepository
+    public class GladiatorRepository : SlaveRepository
     {
-        protected List<Person> ConvertToPersonList(DataTable dataTable)
+        protected List<Gladiator> ConvertToGladiatorList(DataTable dataTable)
         {
             var raceRepo = new RaceRepository();
             var cityRepo = new CityRepository();
             var races = raceRepo.GetAllRaces();
             var cities = cityRepo.GetAllCities();
 
-            return GetPersonObjects(dataTable, races, cities);
-        }
 
-        protected List<Person> GetPersonObjects(DataTable dataTable, List<Race> races, List<City> cities)
-        {
+
             var convertedList = (from row in dataTable.AsEnumerable()
-                                 select new Person()
+                                 select new Gladiator()
                                  {
-                                     Id = (int)row["Id"],
-                                     IsAlive = (bool)row["IsAlive"],
-                                     FirstName = (string)row["FirstName"],
-                                     LastName = (string)row["LastName"],
-                                     Gold = (int)row["Gold"],
-                                     SocialStatus = (SocialStatus)row["SocialStatus"],
-                                     IsMale = (bool)row["IsMale"],
-                                     Strength = (int)row["Strength"],
-                                     Intelligence = (int)row["Intelligence"],
-                                     Agility = (int)row["Agility"],
-                                     Charisma = (int)row["Charisma"],
-                                     Race = races?.FirstOrDefault(r => r.Id == (int)row["Race_Id"]),
-                                     HomeCity = cities?.FirstOrDefault(c => c.Id == (int)row["HomeCity_Id"]),
+                                     Id = (int) row["Id"],
+                                     IsAlive = (bool) row["IsAlive"],
+                                     FirstName = (string) row["FirstName"],
+                                     LastName = (string) row["LastName"],
+                                     Gold = (int) row["Gold"],
+                                     SocialStatus = (SocialStatus) row["SocialStatus"],
+                                     IsMale = (bool) row["IsMale"],
+                                     Strength = (int) row["Strength"],
+                                     Intelligence = (int) row["Intelligence"],
+                                     Agility = (int) row["Agility"],
+                                     Charisma = (int) row["Charisma"],
+                                     Race = races?.FirstOrDefault(r => r.Id == (int) row["Race_Id"]),
+                                     HomeCity = cities?.FirstOrDefault(c => c.Id == (int) row["HomeCity_Id"]),
+                                     CurrentHealth = (int)row["CurrentHealth"],
+                                     MaxHealth = (int)row["MaxHealth"],
+                                     //a = (int)row["Charisma"],
                                      //Likes = (int) row["Likes"],
                                      //Dislikes = (int) row["Gold"],
                                      //PlayerFacingAttitudes = (int) row["Gold"],
                                  }).ToList();
+
             return convertedList;
         }
 
-        public List<Person> GetPersonsByQuery(string query)
+        public List<Gladiator> GetGladiatorsByQuery(string query)
         {
             var dataTable = GetData(query);
-            var persons = ConvertToPersonList(dataTable);
+            var persons = ConvertToGladiatorList(dataTable);
             return persons;
         }
 
-        public List<Person> GetAllPersons()
+        public List<Gladiator> GetAllGladiators()
         {
             var query = "SELECT * FROM people";
-            var persons = GetPersonsByQuery(query);
-            return persons;
+            var gladiators = GetGladiatorsByQuery(query);
+            return gladiators;
         }
 
-        public void SavePersons(List<Person> persons)
+        public void SaveGladiators(List<Gladiator> gladiators)
         {
             StringBuilder query = new StringBuilder();
-            foreach (var person in persons)
+            foreach (var person in gladiators)
             {
                 if (person.Id > 0)
                 {

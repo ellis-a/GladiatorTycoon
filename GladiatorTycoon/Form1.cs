@@ -11,6 +11,7 @@ namespace GladiatorTycoon
     public partial class Form1 : Form
     {
         private List<Person> persons;
+        private List<Gladiator> gladiatorsAndSlaves;
         private List<Race> races;
         private List<City> cities;
 
@@ -21,6 +22,9 @@ namespace GladiatorTycoon
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            var repo = new SlaveRepository();
+            repo.GetAllSlaves();
+
             LoadFromDatabase();
 
             ReloadUiData();
@@ -85,12 +89,15 @@ namespace GladiatorTycoon
             persons = new List<Person>();
             races = new List<Race>();
             cities = new List<City>();
+            gladiatorsAndSlaves = new List<Gladiator>();
             var personRepo = new PersonRepository();
-            var racesRepo = new RaceRepository();
-            var citiesRepo = new CityRepository();
+            var raceRepo = new RaceRepository();
+            var cityRepo = new CityRepository();
+            var gladiatorRepo = new GladiatorRepository();
             persons.AddRange(personRepo.GetAllPersons());
-            races.AddRange(racesRepo.GetAllRaces());
-            cities.AddRange(citiesRepo.GetAllCities());
+            races.AddRange(raceRepo.GetAllRaces());
+            cities.AddRange(cityRepo.GetAllCities());
+            //gladiatorsAndSlaves.AddRange(gladiatorRepo.GetAllPersons);
         }
 
         private void listPeople_SelectedIndexChanged(object sender, EventArgs e)

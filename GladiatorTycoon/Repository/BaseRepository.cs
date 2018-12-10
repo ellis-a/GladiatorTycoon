@@ -3,7 +3,7 @@ using System.Data;
 
 namespace GladiatorTycoon.Repository
 {
-    public class BaseRepository<T>
+    public class BaseRepository
     {
         private static MySqlConnection dbConn;
 
