@@ -3,14 +3,14 @@
     public class Slave : Person
     {
         public int? Loyalty { get; set; }
-        public Dominus Owner { get; set; }
+        public Master Owner { get; set; }
 
         public Slave()
         {
 
         }
 
-        public Slave(Person person, int loyalty, Dominus dominus)
+        public Slave(Person person, int loyalty, Master dominus)
         {
             Speed = person.Speed;
             Charisma = person.Charisma;

@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\City.cs" />
-    <Compile Include="Models\Dominus.cs" />
+    <Compile Include="Models\Master.cs" />
     <Compile Include="Models\Gladiator.cs" />
     <Compile Include="Models\House.cs" />
     <Compile Include="Models\Instruction.cs" />
@@ -62,7 +62,9 @@
     <Compile Include="Services\CityService.cs" />
     <Compile Include="Services\RaceService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GladiatorTycoon.Entities\GladiatorTycoon.Entities.csproj">
       <Project>{1DAE9301-1FFD-4AA6-97E8-42CB86DF8125}</Project>

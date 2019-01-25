@@ -2,17 +2,17 @@
 
 namespace GladiatorTycoon.Services.Models
 {
-    public class Dominus : Person
+    public class Master : Person
     {
         public List<Item> Inventory { get; set; }
         public List<House> Homes { get; set; }
 
-        public Dominus()
+        public Master()
         {
 
         }
 
-        public Dominus(Person person)
+        public Master(Person person)
         {
             Speed = person.Speed;
             Charisma = person.Charisma;

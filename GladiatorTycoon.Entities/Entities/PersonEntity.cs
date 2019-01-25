@@ -1,9 +1,11 @@
 ﻿using GladiatorTycoon.Enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GladiatorTycoon.Entities
 {
+    [Table("Persons")]
     public class PersonEntity
     {
         public PersonEntity() { }

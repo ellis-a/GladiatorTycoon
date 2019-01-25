@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GladiatorTycoon.Entities
 {
+    [Table("Gladiators")]
     public class GladiatorEntity : SlaveEntity
     {
         public int MaxHealth { get; set; }
