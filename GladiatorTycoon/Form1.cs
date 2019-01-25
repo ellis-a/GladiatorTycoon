@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
-using GladiatorTycoon.Models;
 using System.Collections.Generic;
-using GladiatorTycoon.Repository;
 using GladiatorTycoon.Enums;
 using System.Linq;
+using GladiatorTycoon.Services.Models;
 
 namespace GladiatorTycoon
 {
     public partial class Form1 : Form
     {
         private List<Person> persons;
-        private List<Gladiator> gladiatorsAndSlaves;
+        //private List<Gladiator> gladiatorsAndSlaves;
         private List<Race> races;
         private List<City> cities;
 
@@ -22,8 +21,8 @@ namespace GladiatorTycoon
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var repo = new SlaveRepository();
-            repo.GetAllSlaves();
+            //var repo = new SlaveRepository();
+            //repo.GetAllSlaves();
 
             LoadFromDatabase();
 
@@ -86,17 +85,17 @@ namespace GladiatorTycoon
 
         private void LoadFromDatabase()
         {
-            persons = new List<Person>();
-            races = new List<Race>();
-            cities = new List<City>();
-            gladiatorsAndSlaves = new List<Gladiator>();
-            var personRepo = new PersonRepository();
-            var raceRepo = new RaceRepository();
-            var cityRepo = new CityRepository();
-            var gladiatorRepo = new GladiatorRepository();
-            persons.AddRange(personRepo.GetAllPersons());
-            races.AddRange(raceRepo.GetAllRaces());
-            cities.AddRange(cityRepo.GetAllCities());
+            //persons = new List<Person>();
+            //races = new List<Race>();
+            //cities = new List<City>();
+            //gladiatorsAndSlaves = new List<Gladiator>();
+            //var personRepo = new PersonRepository();
+            //var raceRepo = new RaceRepository();
+            //var cityRepo = new CityRepository();
+            //var gladiatorRepo = new GladiatorRepository();
+            //persons.AddRange(personRepo.GetAllPersons());
+            //races.AddRange(raceRepo.GetAllRaces());
+            //cities.AddRange(cityRepo.GetAllCities());
             //gladiatorsAndSlaves.AddRange(gladiatorRepo.GetAllPersons);
         }
 
@@ -137,9 +136,9 @@ namespace GladiatorTycoon
             if (person.IsMale) { radioButtonMale.Checked = true; }
             else { radioButtonFemale.Checked = true; }
 
-            numStrength.Value = person.Strength;
-            numIntelligence.Value = person.Intelligence;
-            numAgility.Value = person.Agility;
+            numPower.Value = person.Power;
+            numWits.Value = person.Wits;
+            numSpeed.Value = person.Speed;
             numCharisma.Value = person.Charisma;
         }
 
@@ -181,17 +180,17 @@ namespace GladiatorTycoon
             person.LastName = textLastName.Text;
             person.Race = races[comboRace.SelectedIndex];
             person.IsMale = radioButtonMale.Checked;
-            person.Strength = (int)numStrength.Value;
-            person.Intelligence = (int)numIntelligence.Value;
-            person.Agility = (int)numAgility.Value;
+            person.Power = (int)numPower.Value;
+            person.Wits = (int)numWits.Value;
+            person.Speed = (int)numSpeed.Value;
             person.Charisma = (int)numCharisma.Value;
             person.SocialStatus = (SocialStatus)comboStatus.SelectedIndex;
             person.HomeCity = cities[comboCities.SelectedIndex];
 
             ReloadUiData();
 
-            var personRepo = new PersonRepository();
-            personRepo.SavePersons(persons);
+            //var personRepo = new PersonRepository();
+            //personRepo.SavePersons(persons);
         }
 
         private void SaveRaceData()
@@ -207,8 +206,8 @@ namespace GladiatorTycoon
 
             ReloadUiData();
 
-            var raceRepo = new RaceRepository();
-            raceRepo.SaveRaces(races);
+            //var raceRepo = new RaceRepository();
+            //raceRepo.SaveRaces(races);
         }
 
         private void chkListPositiveHabitats_ItemCheck(object sender, ItemCheckEventArgs e)

@@ -48,12 +48,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.numCharisma = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
-            this.numAgility = new System.Windows.Forms.NumericUpDown();
+            this.numSpeed = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.numIntelligence = new System.Windows.Forms.NumericUpDown();
+            this.numWits = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.numStrength = new System.Windows.Forms.NumericUpDown();
+            this.numPower = new System.Windows.Forms.NumericUpDown();
             this.radioButtonFemale = new System.Windows.Forms.RadioButton();
             this.radioButtonMale = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -77,9 +77,9 @@
             this.groupBoxSlaves.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCharisma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAgility)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numIntelligence)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numStrength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWits)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPower)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,12 +106,12 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.numCharisma);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.numAgility);
+            this.groupBox1.Controls.Add(this.numSpeed);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.numIntelligence);
+            this.groupBox1.Controls.Add(this.numWits);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.numStrength);
+            this.groupBox1.Controls.Add(this.numPower);
             this.groupBox1.Controls.Add(this.radioButtonFemale);
             this.groupBox1.Controls.Add(this.radioButtonMale);
             this.groupBox1.Controls.Add(this.label3);
@@ -302,51 +302,51 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(135, 227);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.Size = new System.Drawing.Size(38, 13);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Agility";
+            this.label7.Text = "Speed";
             // 
-            // numAgility
+            // numSpeed
             // 
-            this.numAgility.Location = new System.Drawing.Point(139, 243);
-            this.numAgility.Maximum = new decimal(new int[] {
+            this.numSpeed.Location = new System.Drawing.Point(139, 243);
+            this.numSpeed.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numAgility.Name = "numAgility";
-            this.numAgility.Size = new System.Drawing.Size(48, 20);
-            this.numAgility.TabIndex = 16;
+            this.numSpeed.Name = "numSpeed";
+            this.numSpeed.Size = new System.Drawing.Size(48, 20);
+            this.numSpeed.TabIndex = 16;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(81, 227);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.Size = new System.Drawing.Size(28, 13);
             this.label6.TabIndex = 15;
-            this.label6.Text = "Intellect";
+            this.label6.Text = "Wits";
             // 
-            // numIntelligence
+            // numWits
             // 
-            this.numIntelligence.Location = new System.Drawing.Point(85, 243);
-            this.numIntelligence.Maximum = new decimal(new int[] {
+            this.numWits.Location = new System.Drawing.Point(85, 243);
+            this.numWits.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numIntelligence.Name = "numIntelligence";
-            this.numIntelligence.Size = new System.Drawing.Size(48, 20);
-            this.numIntelligence.TabIndex = 14;
+            this.numWits.Name = "numWits";
+            this.numWits.Size = new System.Drawing.Size(48, 20);
+            this.numWits.TabIndex = 14;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(27, 227);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 13);
+            this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Strength";
+            this.label5.Text = "Power";
             // 
             // label4
             // 
@@ -357,17 +357,17 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Sex";
             // 
-            // numStrength
+            // numPower
             // 
-            this.numStrength.Location = new System.Drawing.Point(31, 243);
-            this.numStrength.Maximum = new decimal(new int[] {
+            this.numPower.Location = new System.Drawing.Point(31, 243);
+            this.numPower.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numStrength.Name = "numStrength";
-            this.numStrength.Size = new System.Drawing.Size(48, 20);
-            this.numStrength.TabIndex = 11;
+            this.numPower.Name = "numPower";
+            this.numPower.Size = new System.Drawing.Size(48, 20);
+            this.numPower.TabIndex = 11;
             // 
             // radioButtonFemale
             // 
@@ -568,9 +568,9 @@
             this.groupBoxSlaves.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCharisma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numAgility)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numIntelligence)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numStrength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWits)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numPower)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -591,12 +591,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numCharisma;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numAgility;
+        private System.Windows.Forms.NumericUpDown numSpeed;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numIntelligence;
+        private System.Windows.Forms.NumericUpDown numWits;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numStrength;
+        private System.Windows.Forms.NumericUpDown numPower;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnSavePeople;
         private System.Windows.Forms.Button btnCancelPerson;
