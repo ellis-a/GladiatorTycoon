@@ -72,7 +72,7 @@
     <Compile Include="Entities\ArenaEntity.cs" />
     <Compile Include="Entities\ArmourEntity.cs" />
     <Compile Include="Entities\CityEntity.cs" />
-    <Compile Include="Entities\ClassEntity.cs" />
+    <Compile Include="Entities\CombatClassEntity.cs" />
     <Compile Include="Entities\DeityEntity.cs" />
     <Compile Include="Entities\MasterEntity.cs" />
     <Compile Include="Entities\GladiatorEntity.cs" />

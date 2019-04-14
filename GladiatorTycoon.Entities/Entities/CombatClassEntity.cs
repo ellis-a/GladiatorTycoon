@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GladiatorTycoon.Entities
 {
-    [Table("Classes")]
-    public class ClassEntity
+    [Table("CombatClasses")]
+    public class CombatClassEntity
     {
         [Key]
         public int Id { get; set; }

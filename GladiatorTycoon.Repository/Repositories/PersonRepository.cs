@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace GladiatorTycoon.Repositories.Repositories
 {
-    class PersonRepository : IPersonRepository
+    public class PersonRepository : IPersonRepository
     {
         private GladiatorTycoonDataContext _context;
 

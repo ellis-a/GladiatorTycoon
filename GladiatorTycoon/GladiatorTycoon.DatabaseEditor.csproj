@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.2\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -41,12 +45,8 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -70,17 +70,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="PersonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="PersonForm.Designer.cs">
+      <DependentUpon>PersonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DataChecking.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="RaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RaceForm.Designer.cs">
+      <DependentUpon>RaceForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="PersonForm.resx">
+      <DependentUpon>PersonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,6 +97,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RaceForm.resx">
+      <DependentUpon>RaceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -109,9 +118,25 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\GladiatorTycoon.Abilities\GladiatorTycoon.Abilities.csproj">
+      <Project>{4b1854cd-308b-4be0-9536-d3e76929746e}</Project>
+      <Name>GladiatorTycoon.Abilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.BattleSystem\GladiatorTycoon.BattleSystem.csproj">
+      <Project>{d148ade9-a664-465b-9617-92f1bfeb5c36}</Project>
+      <Name>GladiatorTycoon.BattleSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.ConsoleApp\GladiatorTycoon.ConsoleApp.csproj">
+      <Project>{3f66d97f-033a-4679-a2db-8170f01c82be}</Project>
+      <Name>GladiatorTycoon.ConsoleApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GladiatorTycoon.DataContext\GladiatorTycoon.DataContext.csproj">
       <Project>{9E97B2D8-0B4D-4207-AA9F-B085B5BDBF4A}</Project>
       <Name>GladiatorTycoon.DataContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.Entities\GladiatorTycoon.Entities.csproj">
+      <Project>{1dae9301-1ffd-4aa6-97e8-42cb86df8125}</Project>
+      <Name>GladiatorTycoon.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\GladiatorTycoon.Enums\GladiatorTycoon.Enums.csproj">
       <Project>{192766CC-96C6-4C65-BEBE-BC04304D612D}</Project>

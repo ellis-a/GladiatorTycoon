@@ -41,7 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Battle.cs" />
+    <Compile Include="CombatAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GladiatorTycoon.Enums\GladiatorTycoon.Enums.csproj">
+      <Project>{192766CC-96C6-4C65-BEBE-BC04304D612D}</Project>
+      <Name>GladiatorTycoon.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.Services\GladiatorTycoon.Services.csproj">
+      <Project>{F1F7E8EE-A9AD-4FB0-AE5C-415B67B3B9F9}</Project>
+      <Name>GladiatorTycoon.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

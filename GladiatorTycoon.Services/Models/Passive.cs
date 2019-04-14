@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GladiatorTycoon.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,7 @@ namespace GladiatorTycoon.Services.Models
     public class Passive
     {
         public int Id { get; set; }
+        public CombatFlags CombatFlags { get; set; }
+
     }
 }

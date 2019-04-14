@@ -9,6 +9,8 @@
         LowestHealthEnemy,
         HighestHealthAlly,
         HighestHealthEnemy,
+        RandomAlly,
+        RandomEnemy,
 
         AnyAlly,
         AnyEnemy,
