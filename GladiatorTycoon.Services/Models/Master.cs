@@ -14,7 +14,7 @@ namespace GladiatorTycoon.Services.Models
 
         public Master(Person person)
         {
-            Speed = person.Speed;
+            Skill = person.Skill;
             Charisma = person.Charisma;
             FirstName = person.FirstName;
             Gold = person.Gold;

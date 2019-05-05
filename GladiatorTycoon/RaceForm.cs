@@ -1,5 +1,7 @@
 ﻿using GladiatorTycoon.Enums;
+using GladiatorTycoon.Repositories.Interfaces;
 using GladiatorTycoon.Services.Models;
+using GladiatorTycoon.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,23 +11,51 @@ namespace GladiatorTycoon
 {
     public partial class RaceForm : Form
     {
-        private List<Race> races;
+        private RaceService _raceService;
+        private List<Race> _races;
 
-        public RaceForm()
+        public RaceForm(IRaceRepository raceRepo)
         {
             InitializeComponent();
+            _raceService = new RaceService(raceRepo);
         }
 
         private void RaceForm_Load(object sender, EventArgs e)
         {
-            RacesGroupBox();
+            ReloadUiData();
+        }
+
+        private void ReloadUiData()
+        {
+            _races = _raceService.GetAll();
+
+            chkListPositiveHabitats.Items.Clear();
+            chkListNegativeHabitats.Items.Clear();
+            ResetRaces();
+            foreach (var habitat in (Habitat[])Enum.GetValues(typeof(Habitat)))
+            {
+                chkListPositiveHabitats.Items.Add(habitat);
+            }
+            foreach (var habitat in (Habitat[])Enum.GetValues(typeof(Habitat)))
+            {
+                chkListNegativeHabitats.Items.Add(habitat);
+            }
+        }
+
+        private void ResetRaces()
+        {
+            listRaces.Items.Clear();
+            foreach (var race in _races)
+            {
+                listRaces.Items.Add(race.Name);
+            }
         }
 
         private void ShowRaceData()
         {
             if (listRaces.SelectedIndex == -1) { return; }
 
-            var race = races[listRaces.SelectedIndex];
+            var race = _races[listRaces.SelectedIndex];
             var posHabitatList = race.PositiveHabitats?.Split(',').ToList();
             var negHabitatList = race.NegativeHabitats?.Split(',').ToList();
             textRaceName.Text = race.Name;
@@ -54,12 +84,17 @@ namespace GladiatorTycoon
         private void btnSaveRaces_Click(object sender, EventArgs e)
         {
             SaveRaceData();
-            //LoadFromDatabase();
+            LoadFromDatabase();
         }
 
-        private void btnCancelRace_Click(object sender, EventArgs e)
+        private void LoadFromDatabase()
         {
-            ShowRaceData();
+            _races = _raceService.GetAll();
+        }
+
+        private void btnCloseRace_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void listRaces_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,7 +104,7 @@ namespace GladiatorTycoon
 
         private void SaveRaceData()
         {
-            var race = races[listRaces.SelectedIndex];
+            var race = _races[listRaces.SelectedIndex];
 
             race.Name = textRaceName.Text;
 
@@ -78,10 +113,8 @@ namespace GladiatorTycoon
             var negHabitats = chkListNegativeHabitats.CheckedItems.Cast<Habitat>().ToList();
             race.NegativeHabitats = race.ConvertEnumListToString(negHabitats);
 
-            //ReloadUiData();
-
-            //var raceRepo = new RaceRepository();
-            //raceRepo.SaveRaces(races);
+            ResetRaces();
+            _raceService.Update(race);
         }
 
         private void chkListPositiveHabitats_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -102,23 +135,11 @@ namespace GladiatorTycoon
             chkListNegativeHabitats.ClearSelected();
         }
 
-        private void RacesGroupBox()
+        private void btnNewRace_Click(object sender, EventArgs e)
         {
-            listRaces.Items.Clear();
-            chkListPositiveHabitats.Items.Clear();
-            chkListNegativeHabitats.Items.Clear();
-            foreach (var race in races)
-            {
-                listRaces.Items.Add(race.Name);
-            }
-            foreach (var habitat in (Habitat[])Enum.GetValues(typeof(Habitat)))
-            {
-                chkListPositiveHabitats.Items.Add(habitat);
-            }
-            foreach (var habitat in (Habitat[])Enum.GetValues(typeof(Habitat)))
-            {
-                chkListNegativeHabitats.Items.Add(habitat);
-            }
+            var newRace = new Race() { Name = Guid.NewGuid().ToString() };
+            _raceService.Create(newRace);
+            ReloadUiData();
         }
     }
 }

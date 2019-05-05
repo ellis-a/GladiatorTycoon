@@ -19,7 +19,7 @@ namespace GladiatorTycoon.BattleSystem
             gladiators.AddRange(RedTeam);
             gladiators.AddRange(BlueTeam);
 
-            gladiators = gladiators.OrderByDescending(g => g.Speed).ToList();
+            gladiators = gladiators.OrderByDescending(g => g.Skill).ToList();
 
             foreach (var gladiator in gladiators)
             {

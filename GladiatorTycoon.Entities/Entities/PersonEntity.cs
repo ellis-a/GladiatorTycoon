@@ -24,7 +24,7 @@ namespace GladiatorTycoon.Entities
 
         public int Power { get; set; }
         public int Wits { get; set; }
-        public int Speed { get; set; }
+        public int Skill { get; set; }
         public int Charisma { get; set; }
     }
 }

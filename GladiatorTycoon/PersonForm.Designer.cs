@@ -28,27 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBoxSlaves = new System.Windows.Forms.GroupBox();
-            this.btnSlaveSave = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
-            this.listBoxOwners = new System.Windows.Forms.ListBox();
-            this.chkBoxIsGladiator = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.comboCities = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.comboStatus = new System.Windows.Forms.ComboBox();
             this.btnNewPerson = new System.Windows.Forms.Button();
             this.btnSavePeople = new System.Windows.Forms.Button();
-            this.btnCancelPerson = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.numCharisma = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
-            this.numSpeed = new System.Windows.Forms.NumericUpDown();
+            this.numSkill = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
-            this.numWits = new System.Windows.Forms.NumericUpDown();
+            this.numWit = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.numPower = new System.Windows.Forms.NumericUpDown();
@@ -61,86 +53,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textFirstName = new System.Windows.Forms.TextBox();
             this.listPeople = new System.Windows.Forms.ListBox();
-            this.groupBoxSlaves.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.btnEditRaces = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numCharisma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numWits)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSkill)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPower)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBoxSlaves
-            // 
-            this.groupBoxSlaves.Controls.Add(this.btnSlaveSave);
-            this.groupBoxSlaves.Controls.Add(this.label16);
-            this.groupBoxSlaves.Controls.Add(this.numericUpDown1);
-            this.groupBoxSlaves.Controls.Add(this.label15);
-            this.groupBoxSlaves.Controls.Add(this.listBoxOwners);
-            this.groupBoxSlaves.Controls.Add(this.chkBoxIsGladiator);
-            this.groupBoxSlaves.Enabled = false;
-            this.groupBoxSlaves.Location = new System.Drawing.Point(321, 12);
-            this.groupBoxSlaves.Name = "groupBoxSlaves";
-            this.groupBoxSlaves.Size = new System.Drawing.Size(303, 221);
-            this.groupBoxSlaves.TabIndex = 55;
-            this.groupBoxSlaves.TabStop = false;
-            this.groupBoxSlaves.Text = "Slave";
-            // 
-            // btnSlaveSave
-            // 
-            this.btnSlaveSave.Location = new System.Drawing.Point(222, 35);
-            this.btnSlaveSave.Name = "btnSlaveSave";
-            this.btnSlaveSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSlaveSave.TabIndex = 33;
-            this.btnSlaveSave.Text = "Save";
-            this.btnSlaveSave.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(225, 94);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(40, 13);
-            this.label16.TabIndex = 32;
-            this.label16.Text = "Loyalty";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(228, 110);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(48, 20);
-            this.numericUpDown1.TabIndex = 31;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 19);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 13);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Owner";
-            // 
-            // listBoxOwners
-            // 
-            this.listBoxOwners.FormattingEnabled = true;
-            this.listBoxOwners.Location = new System.Drawing.Point(7, 35);
-            this.listBoxOwners.Name = "listBoxOwners";
-            this.listBoxOwners.Size = new System.Drawing.Size(209, 95);
-            this.listBoxOwners.TabIndex = 3;
-            // 
-            // chkBoxIsGladiator
-            // 
-            this.chkBoxIsGladiator.AutoSize = true;
-            this.chkBoxIsGladiator.Location = new System.Drawing.Point(7, 136);
-            this.chkBoxIsGladiator.Name = "chkBoxIsGladiator";
-            this.chkBoxIsGladiator.Size = new System.Drawing.Size(68, 17);
-            this.chkBoxIsGladiator.TabIndex = 0;
-            this.chkBoxIsGladiator.Text = "Gladiator";
-            this.chkBoxIsGladiator.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -184,6 +102,7 @@
             this.btnNewPerson.TabIndex = 50;
             this.btnNewPerson.Text = "New";
             this.btnNewPerson.UseVisualStyleBackColor = true;
+            this.btnNewPerson.Click += new System.EventHandler(this.btnNewPerson_Click);
             // 
             // btnSavePeople
             // 
@@ -193,15 +112,7 @@
             this.btnSavePeople.TabIndex = 49;
             this.btnSavePeople.Text = "Save";
             this.btnSavePeople.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelPerson
-            // 
-            this.btnCancelPerson.Location = new System.Drawing.Point(240, 70);
-            this.btnCancelPerson.Name = "btnCancelPerson";
-            this.btnCancelPerson.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelPerson.TabIndex = 48;
-            this.btnCancelPerson.Text = "Cancel";
-            this.btnCancelPerson.UseVisualStyleBackColor = true;
+            this.btnSavePeople.Click += new System.EventHandler(this.btnSavePeople_Click);
             // 
             // label9
             // 
@@ -238,21 +149,21 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(141, 220);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.Size = new System.Drawing.Size(26, 13);
             this.label7.TabIndex = 44;
-            this.label7.Text = "Speed";
+            this.label7.Text = "Skill";
             // 
-            // numSpeed
+            // numSkill
             // 
-            this.numSpeed.Location = new System.Drawing.Point(145, 236);
-            this.numSpeed.Maximum = new decimal(new int[] {
+            this.numSkill.Location = new System.Drawing.Point(145, 236);
+            this.numSkill.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numSpeed.Name = "numSpeed";
-            this.numSpeed.Size = new System.Drawing.Size(48, 20);
-            this.numSpeed.TabIndex = 43;
+            this.numSkill.Name = "numSkill";
+            this.numSkill.Size = new System.Drawing.Size(48, 20);
+            this.numSkill.TabIndex = 43;
             // 
             // label6
             // 
@@ -263,17 +174,17 @@
             this.label6.TabIndex = 42;
             this.label6.Text = "Wits";
             // 
-            // numWits
+            // numWit
             // 
-            this.numWits.Location = new System.Drawing.Point(91, 236);
-            this.numWits.Maximum = new decimal(new int[] {
+            this.numWit.Location = new System.Drawing.Point(91, 236);
+            this.numWit.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numWits.Name = "numWits";
-            this.numWits.Size = new System.Drawing.Size(48, 20);
-            this.numWits.TabIndex = 41;
+            this.numWit.Name = "numWit";
+            this.numWit.Size = new System.Drawing.Size(48, 20);
+            this.numWit.TabIndex = 41;
             // 
             // label5
             // 
@@ -287,7 +198,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(181, 157);
+            this.label4.Location = new System.Drawing.Point(342, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 13);
             this.label4.TabIndex = 39;
@@ -308,7 +219,7 @@
             // radioButtonFemale
             // 
             this.radioButtonFemale.AutoSize = true;
-            this.radioButtonFemale.Location = new System.Drawing.Point(235, 174);
+            this.radioButtonFemale.Location = new System.Drawing.Point(396, 131);
             this.radioButtonFemale.Name = "radioButtonFemale";
             this.radioButtonFemale.Size = new System.Drawing.Size(59, 17);
             this.radioButtonFemale.TabIndex = 37;
@@ -319,7 +230,7 @@
             // radioButtonMale
             // 
             this.radioButtonMale.AutoSize = true;
-            this.radioButtonMale.Location = new System.Drawing.Point(181, 174);
+            this.radioButtonMale.Location = new System.Drawing.Point(342, 131);
             this.radioButtonMale.Name = "radioButtonMale";
             this.radioButtonMale.Size = new System.Drawing.Size(48, 17);
             this.radioButtonMale.TabIndex = 36;
@@ -341,7 +252,7 @@
             this.comboRace.FormattingEnabled = true;
             this.comboRace.Location = new System.Drawing.Point(12, 173);
             this.comboRace.Name = "comboRace";
-            this.comboRace.Size = new System.Drawing.Size(134, 21);
+            this.comboRace.Size = new System.Drawing.Size(222, 21);
             this.comboRace.TabIndex = 34;
             // 
             // label2
@@ -384,26 +295,35 @@
             this.listPeople.Size = new System.Drawing.Size(222, 95);
             this.listPeople.TabIndex = 29;
             // 
+            // btnEditRaces
+            // 
+            this.btnEditRaces.Location = new System.Drawing.Point(240, 173);
+            this.btnEditRaces.Name = "btnEditRaces";
+            this.btnEditRaces.Size = new System.Drawing.Size(75, 23);
+            this.btnEditRaces.TabIndex = 55;
+            this.btnEditRaces.Text = "Edit Races";
+            this.btnEditRaces.UseVisualStyleBackColor = true;
+            this.btnEditRaces.Click += new System.EventHandler(this.btnEditRaces_Click);
+            // 
             // PersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 333);
-            this.Controls.Add(this.groupBoxSlaves);
+            this.ClientSize = new System.Drawing.Size(651, 485);
+            this.Controls.Add(this.btnEditRaces);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.comboCities);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.comboStatus);
             this.Controls.Add(this.btnNewPerson);
             this.Controls.Add(this.btnSavePeople);
-            this.Controls.Add(this.btnCancelPerson);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.numCharisma);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.numSpeed);
+            this.Controls.Add(this.numSkill);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.numWits);
+            this.Controls.Add(this.numWit);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.numPower);
@@ -418,13 +338,10 @@
             this.Controls.Add(this.listPeople);
             this.Name = "PersonForm";
             this.Text = "Database Interface";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBoxSlaves.ResumeLayout(false);
-            this.groupBoxSlaves.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.Load += new System.EventHandler(this.PersonForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numCharisma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numWits)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSkill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numWit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPower)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -432,28 +349,19 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBoxSlaves;
-        private System.Windows.Forms.Button btnSlaveSave;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ListBox listBoxOwners;
-        private System.Windows.Forms.CheckBox chkBoxIsGladiator;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboCities;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboStatus;
         private System.Windows.Forms.Button btnNewPerson;
         private System.Windows.Forms.Button btnSavePeople;
-        private System.Windows.Forms.Button btnCancelPerson;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown numCharisma;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numSpeed;
+        private System.Windows.Forms.NumericUpDown numSkill;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numWits;
+        private System.Windows.Forms.NumericUpDown numWit;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numPower;
@@ -466,6 +374,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textFirstName;
         private System.Windows.Forms.ListBox listPeople;
+        private System.Windows.Forms.Button btnEditRaces;
     }
 }
 

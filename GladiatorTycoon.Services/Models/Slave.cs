@@ -12,7 +12,7 @@
 
         public Slave(Person person, int loyalty, Master dominus)
         {
-            Speed = person.Speed;
+            Skill = person.Skill;
             Charisma = person.Charisma;
             FirstName = person.FirstName;
             Gold = person.Gold;

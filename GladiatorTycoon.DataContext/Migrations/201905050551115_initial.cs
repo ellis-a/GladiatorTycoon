@@ -1,9 +1,9 @@
-namespace GladiatorTycoon.Migrations
+namespace GladiatorTycoon.DataContext.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -30,13 +30,16 @@ namespace GladiatorTycoon.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         AfflictionEntity_Id = c.Int(),
-                        ClassEntity_Id = c.Int(),
+                        CombatClassEntity_Id = c.Int(),
                         RaceEntity_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Afflictions", t => t.AfflictionEntity_Id)
-                .ForeignKey("dbo.Classes", t => t.ClassEntity_Id)
-                .ForeignKey("dbo.Races", t => t.RaceEntity_Id);
+                .ForeignKey("dbo.CombatClasses", t => t.CombatClassEntity_Id)
+                .ForeignKey("dbo.Races", t => t.RaceEntity_Id)
+                .Index(t => t.AfflictionEntity_Id)
+                .Index(t => t.CombatClassEntity_Id)
+                .Index(t => t.RaceEntity_Id);
             
             CreateTable(
                 "dbo.Arenas",
@@ -47,7 +50,8 @@ namespace GladiatorTycoon.Migrations
                         City_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Cities", t => t.City_Id);
+                .ForeignKey("dbo.Cities", t => t.City_Id)
+                .Index(t => t.City_Id);
             
             CreateTable(
                 "dbo.Cities",
@@ -74,10 +78,13 @@ namespace GladiatorTycoon.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Masters", t => t.MasterEntity_Id)
                 .ForeignKey("dbo.Gladiators", t => t.GladiatorEntity_Id1)
-                .ForeignKey("dbo.Merchants", t => t.MerchantEntity_Id);
+                .ForeignKey("dbo.Merchants", t => t.MerchantEntity_Id)
+                .Index(t => t.MasterEntity_Id)
+                .Index(t => t.GladiatorEntity_Id1)
+                .Index(t => t.MerchantEntity_Id);
             
             CreateTable(
-                "dbo.Classes",
+                "dbo.CombatClasses",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -116,7 +123,10 @@ namespace GladiatorTycoon.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cities", t => t.HomeCity_Id)
                 .ForeignKey("dbo.Races", t => t.Race_Id)
-                .ForeignKey("dbo.Parties", t => t.PartyEntity_Id);
+                .ForeignKey("dbo.Parties", t => t.PartyEntity_Id)
+                .Index(t => t.HomeCity_Id)
+                .Index(t => t.Race_Id)
+                .Index(t => t.PartyEntity_Id);
             
             CreateTable(
                 "dbo.Houses",
@@ -130,7 +140,9 @@ namespace GladiatorTycoon.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Cities", t => t.Location_Id)
-                .ForeignKey("dbo.Masters", t => t.MasterEntity_Id);
+                .ForeignKey("dbo.Masters", t => t.MasterEntity_Id)
+                .Index(t => t.Location_Id)
+                .Index(t => t.MasterEntity_Id);
             
             CreateTable(
                 "dbo.Races",
@@ -163,7 +175,9 @@ namespace GladiatorTycoon.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Items", t => t.Id)
-                .ForeignKey("dbo.Gladiators", t => t.GladiatorEntity_Id);
+                .ForeignKey("dbo.Gladiators", t => t.GladiatorEntity_Id)
+                .Index(t => t.Id)
+                .Index(t => t.GladiatorEntity_Id);
             
             CreateTable(
                 "dbo.Masters",
@@ -172,7 +186,8 @@ namespace GladiatorTycoon.Migrations
                         Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Persons", t => t.Id);
+                .ForeignKey("dbo.Persons", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Slaves",
@@ -184,7 +199,9 @@ namespace GladiatorTycoon.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Persons", t => t.Id)
-                .ForeignKey("dbo.Masters", t => t.Owner_Id);
+                .ForeignKey("dbo.Masters", t => t.Owner_Id)
+                .Index(t => t.Id)
+                .Index(t => t.Owner_Id);
             
             CreateTable(
                 "dbo.Gladiators",
@@ -197,7 +214,8 @@ namespace GladiatorTycoon.Migrations
                         Defense = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Slaves", t => t.Id);
+                .ForeignKey("dbo.Slaves", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Merchants",
@@ -206,7 +224,8 @@ namespace GladiatorTycoon.Migrations
                         Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Persons", t => t.Id);
+                .ForeignKey("dbo.Persons", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Weapons",
@@ -220,7 +239,9 @@ namespace GladiatorTycoon.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Items", t => t.Id)
-                .ForeignKey("dbo.Gladiators", t => t.GladiatorEntity_Id);
+                .ForeignKey("dbo.Gladiators", t => t.GladiatorEntity_Id)
+                .Index(t => t.Id)
+                .Index(t => t.GladiatorEntity_Id);
             
         }
         
@@ -244,9 +265,30 @@ namespace GladiatorTycoon.Migrations
             DropForeignKey("dbo.Items", "MasterEntity_Id", "dbo.Masters");
             DropForeignKey("dbo.Houses", "MasterEntity_Id", "dbo.Masters");
             DropForeignKey("dbo.Houses", "Location_Id", "dbo.Cities");
-            DropForeignKey("dbo.Passives", "ClassEntity_Id", "dbo.Classes");
+            DropForeignKey("dbo.Passives", "CombatClassEntity_Id", "dbo.CombatClasses");
             DropForeignKey("dbo.Arenas", "City_Id", "dbo.Cities");
             DropForeignKey("dbo.Passives", "AfflictionEntity_Id", "dbo.Afflictions");
+            DropIndex("dbo.Weapons", new[] { "GladiatorEntity_Id" });
+            DropIndex("dbo.Weapons", new[] { "Id" });
+            DropIndex("dbo.Merchants", new[] { "Id" });
+            DropIndex("dbo.Gladiators", new[] { "Id" });
+            DropIndex("dbo.Slaves", new[] { "Owner_Id" });
+            DropIndex("dbo.Slaves", new[] { "Id" });
+            DropIndex("dbo.Masters", new[] { "Id" });
+            DropIndex("dbo.Armours", new[] { "GladiatorEntity_Id" });
+            DropIndex("dbo.Armours", new[] { "Id" });
+            DropIndex("dbo.Houses", new[] { "MasterEntity_Id" });
+            DropIndex("dbo.Houses", new[] { "Location_Id" });
+            DropIndex("dbo.Persons", new[] { "PartyEntity_Id" });
+            DropIndex("dbo.Persons", new[] { "Race_Id" });
+            DropIndex("dbo.Persons", new[] { "HomeCity_Id" });
+            DropIndex("dbo.Items", new[] { "MerchantEntity_Id" });
+            DropIndex("dbo.Items", new[] { "GladiatorEntity_Id1" });
+            DropIndex("dbo.Items", new[] { "MasterEntity_Id" });
+            DropIndex("dbo.Arenas", new[] { "City_Id" });
+            DropIndex("dbo.Passives", new[] { "RaceEntity_Id" });
+            DropIndex("dbo.Passives", new[] { "CombatClassEntity_Id" });
+            DropIndex("dbo.Passives", new[] { "AfflictionEntity_Id" });
             DropTable("dbo.Weapons");
             DropTable("dbo.Merchants");
             DropTable("dbo.Gladiators");
@@ -258,7 +300,7 @@ namespace GladiatorTycoon.Migrations
             DropTable("dbo.Houses");
             DropTable("dbo.Persons");
             DropTable("dbo.Deities");
-            DropTable("dbo.Classes");
+            DropTable("dbo.CombatClasses");
             DropTable("dbo.Items");
             DropTable("dbo.Cities");
             DropTable("dbo.Arenas");

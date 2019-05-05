@@ -1,7 +1,9 @@
-namespace GladiatorTycoon.Migrations
+namespace GladiatorTycoon.DataContext.Migrations
 {
-    using DataContext;
+    using System;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<GladiatorTycoonDataContext>
     {
@@ -9,8 +11,7 @@ namespace GladiatorTycoon.Migrations
         {
             AutomaticMigrationsEnabled = false;
 
-            // register mysql code generator
-            SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.EntityFramework.MySqlMigrationSqlGenerator());
         }
 
         protected override void Seed(GladiatorTycoonDataContext context)

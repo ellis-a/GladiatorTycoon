@@ -1,12 +1,8 @@
-﻿using GladiatorTycoon.DataContext;
-using GladiatorTycoon.Repositories.Repositories;
+﻿using Autofac;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GladiatorTycoon
+namespace GladiatorTycoon.DatabaseEditor
 {
     static class Program
     {
@@ -16,15 +12,13 @@ namespace GladiatorTycoon
         [STAThread]
         static void Main()
         {
+            var container = ContainerConfig.Configure();
 
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            var context = new GladiatorTycoonDataContext();
-            var personRepo = new PersonRepository(context);
-            var raceRepo = new RaceRepository(context);
-            var cityRepo = new CityRepository(context);
-            Application.Run(new PersonForm(personRepo, raceRepo, cityRepo));
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var app = scope.Resolve<IApp>();
+                app.Run();
+            }
         }
     }
 }

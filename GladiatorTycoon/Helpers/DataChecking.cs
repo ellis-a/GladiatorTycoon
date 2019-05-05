@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GladiatorTycoon.Helpers
+namespace GladiatorTycoon.DatabaseEditor.Helpers
 {
     public static class DataChecking
     {

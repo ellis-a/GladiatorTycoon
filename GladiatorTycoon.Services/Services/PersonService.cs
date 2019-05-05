@@ -24,7 +24,7 @@ namespace GladiatorTycoon.Services.Services
             return new Person()
             {
                 Id = personEntity.Id,
-                Speed = personEntity.Speed,
+                Skill = personEntity.Skill,
                 Charisma = personEntity.Charisma,
                 FirstName = personEntity.FirstName,
                 Gold = personEntity.Gold,
@@ -44,7 +44,7 @@ namespace GladiatorTycoon.Services.Services
             return new PersonEntity()
             {
                 Id = person.Id,
-                Speed = person.Speed,
+                Skill = person.Skill,
                 Charisma = person.Charisma,
                 FirstName = person.FirstName,
                 Gold = person.Gold,
@@ -83,7 +83,7 @@ namespace GladiatorTycoon.Services.Services
             var personEntity = _personRepository.GetById(person.Id);
 
             personEntity.Id = person.Id;
-            personEntity.Speed = person.Speed;
+            personEntity.Skill = person.Skill;
             personEntity.Charisma = person.Charisma;
             personEntity.FirstName = person.FirstName;
             personEntity.Gold = person.Gold;

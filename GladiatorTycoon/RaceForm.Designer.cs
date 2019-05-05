@@ -30,7 +30,7 @@
         {
             this.btnNewRace = new System.Windows.Forms.Button();
             this.btnSaveRaces = new System.Windows.Forms.Button();
-            this.btnCancelRace = new System.Windows.Forms.Button();
+            this.btnCloseRace = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.chkListNegativeHabitats = new System.Windows.Forms.CheckedListBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -48,6 +48,7 @@
             this.btnNewRace.TabIndex = 47;
             this.btnNewRace.Text = "New";
             this.btnNewRace.UseVisualStyleBackColor = true;
+            this.btnNewRace.Click += new System.EventHandler(this.btnNewRace_Click);
             // 
             // btnSaveRaces
             // 
@@ -57,15 +58,17 @@
             this.btnSaveRaces.TabIndex = 46;
             this.btnSaveRaces.Text = "Save";
             this.btnSaveRaces.UseVisualStyleBackColor = true;
+            this.btnSaveRaces.Click += new System.EventHandler(this.btnSaveRaces_Click);
             // 
-            // btnCancelRace
+            // btnCloseRace
             // 
-            this.btnCancelRace.Location = new System.Drawing.Point(247, 70);
-            this.btnCancelRace.Name = "btnCancelRace";
-            this.btnCancelRace.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelRace.TabIndex = 45;
-            this.btnCancelRace.Text = "Cancel";
-            this.btnCancelRace.UseVisualStyleBackColor = true;
+            this.btnCloseRace.Location = new System.Drawing.Point(247, 70);
+            this.btnCloseRace.Name = "btnCloseRace";
+            this.btnCloseRace.Size = new System.Drawing.Size(75, 23);
+            this.btnCloseRace.TabIndex = 45;
+            this.btnCloseRace.Text = "Close";
+            this.btnCloseRace.UseVisualStyleBackColor = true;
+            this.btnCloseRace.Click += new System.EventHandler(this.btnCloseRace_Click);
             // 
             // label14
             // 
@@ -134,7 +137,7 @@
             this.ClientSize = new System.Drawing.Size(336, 343);
             this.Controls.Add(this.btnNewRace);
             this.Controls.Add(this.btnSaveRaces);
-            this.Controls.Add(this.btnCancelRace);
+            this.Controls.Add(this.btnCloseRace);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.chkListNegativeHabitats);
             this.Controls.Add(this.label13);
@@ -154,7 +157,7 @@
 
         private System.Windows.Forms.Button btnNewRace;
         private System.Windows.Forms.Button btnSaveRaces;
-        private System.Windows.Forms.Button btnCancelRace;
+        private System.Windows.Forms.Button btnCloseRace;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckedListBox chkListNegativeHabitats;
         private System.Windows.Forms.Label label13;

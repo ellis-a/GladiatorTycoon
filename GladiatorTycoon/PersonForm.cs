@@ -13,6 +13,7 @@ namespace GladiatorTycoon
 {
     public partial class PersonForm : Form
     {
+        GladiatorTycoonDataContext _context;
         private PersonService _personService;
         private RaceService _raceService;
         private CityService _cityService;
@@ -20,15 +21,16 @@ namespace GladiatorTycoon
         private List<Race> _races;
         private List<City> _cities;
 
-        public PersonForm(IPersonRepository personRepo, IRaceRepository raceRepo, ICityRepository cityRepo)
+        public PersonForm(GladiatorTycoonDataContext context, IPersonRepository personRepo, IRaceRepository raceRepo, ICityRepository cityRepo)
         {
+            _context = context;
             _personService = new PersonService(personRepo);
             _raceService = new RaceService(raceRepo);
             _cityService = new CityService(cityRepo);
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void PersonForm_Load(object sender, EventArgs e)
         {
             LoadFromDatabase();
 
@@ -37,35 +39,50 @@ namespace GladiatorTycoon
 
         private void ReloadUiData()
         {
-            PeopleGroupBox();
+            ResetRaces();
+            ResetStatus();
+            ResetPeople();
+            ResetCities();
+            //listBoxOwners.Items.Clear();
+            //foreach (var owner in _persons.Where(p => p.SocialStatus != SocialStatus.Slave))
+            //{
+            //    listBoxOwners.Items.Add(owner.FullName());
+            //}
         }
 
-        private void PeopleGroupBox()
+        private void ResetStatus()
         {
-            comboRace.Items.Clear();
-            listPeople.Items.Clear();
             comboStatus.Items.Clear();
-            comboCities.Items.Clear();
-            listBoxOwners.Items.Clear();
-            foreach (var race in _races)
-            {
-                comboRace.Items.Add(race.Name);
-            }
             foreach (var status in (SocialStatus[])Enum.GetValues(typeof(SocialStatus)))
             {
                 comboStatus.Items.Add(status);
             }
-            foreach (var person in _persons)
-            {
-                listPeople.Items.Add(person.FullName());
-            }
+        }
+
+        private void ResetCities()
+        {
+            comboCities.Items.Clear();
             foreach (var city in _cities)
             {
                 comboCities.Items.Add($"{city.Name} ({city.Habitat})");
             }
-            foreach (var owner in _persons.Where(p => p.SocialStatus != SocialStatus.Slave))
+        }
+
+        private void ResetPeople()
+        {
+            listPeople.Items.Clear();
+            foreach (var person in _persons)
             {
-                listBoxOwners.Items.Add(owner.FullName());
+                listPeople.Items.Add(person.FullName());
+            }
+        }
+
+        private void ResetRaces()
+        {
+            comboRace.Items.Clear();
+            foreach (var race in _races)
+            {
+                comboRace.Items.Add(race.Name);
             }
         }
 
@@ -93,11 +110,6 @@ namespace GladiatorTycoon
             ReloadUiData();
         }
 
-        private void btnCancelPerson_Click(object sender, EventArgs e)
-        {
-            ShowPersonData();
-        }
-
         private void ShowPersonData()
         {
             if (listPeople.SelectedIndex == -1) { return; }
@@ -114,12 +126,10 @@ namespace GladiatorTycoon
             else { radioButtonFemale.Checked = true; }
 
             numPower.Value = person.Power;
-            numWits.Value = person.Wits;
-            numSpeed.Value = person.Speed;
+            numWit.Value = person.Wits;
+            numSkill.Value = person.Skill;
             numCharisma.Value = person.Charisma;
         }
-
-
 
         private void SavePersonData()
         {
@@ -130,38 +140,34 @@ namespace GladiatorTycoon
             person.Race = _races[comboRace.SelectedIndex];
             person.IsMale = radioButtonMale.Checked;
             person.Power = (int)numPower.Value;
-            person.Wits = (int)numWits.Value;
-            person.Speed = (int)numSpeed.Value;
+            person.Wits = (int)numWit.Value;
+            person.Skill = (int)numSkill.Value;
             person.Charisma = (int)numCharisma.Value;
             person.SocialStatus = (SocialStatus)comboStatus.SelectedIndex;
             person.HomeCity = _cities[comboCities.SelectedIndex];
 
             ReloadUiData();
 
-            //TODO: save here
-        }
-
-        private void btnNewRace_Click(object sender, EventArgs e)
-        {
-            _races.Add(new Race(){ Name = "NewRace" });
-            ReloadUiData();
+            _personService.Update(person);
         }
 
         private void comboStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboStatus.SelectedIndex == 0)
-            {
-                groupBoxSlaves.Enabled = true;
-            }
-            else
-            {
-                groupBoxSlaves.Enabled = false;
-            }
+            //if (comboStatus.SelectedIndex == 0)
+            //{
+            //    groupBoxSlaves.Enabled = true;
+            //}
+            //else
+            //{
+            //    groupBoxSlaves.Enabled = false;
+            //}
         }
 
-        private void btnSlaveSave_Click(object sender, EventArgs e)
+        private void btnEditRaces_Click(object sender, EventArgs e)
         {
-
+            var raceForm = new RaceForm(new RaceRepository(_context));
+            raceForm.Show();
+            ResetRaces();
         }
     }
 }

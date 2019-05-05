@@ -29,7 +29,7 @@ namespace GladiatorTycoon.Services.Services
                 Name = raceEntity.Name,
                 NegativeHabitats = raceEntity.NegativeHabitats,
                 PositiveHabitats = raceEntity.PositiveHabitats,
-                Racials = raceEntity.Racials.Select(r => _passiveService.EntityToPassive(r)).ToList()
+                Racials = raceEntity.Racials?.Select(r => _passiveService.EntityToPassive(r)).ToList()
             };
         }
 
@@ -41,7 +41,7 @@ namespace GladiatorTycoon.Services.Services
                 Name = race.Name,
                 NegativeHabitats = race.NegativeHabitats,
                 PositiveHabitats = race.PositiveHabitats,
-                Racials = race.Racials.Select(r => _passiveService.PassiveToEntity(r)).ToList()
+                Racials = race.Racials?.Select(r => _passiveService.PassiveToEntity(r)).ToList()
             };
         }
 
