@@ -9,6 +9,7 @@ namespace GladiatorTycoon.DataContext
         public DbSet<AfflictionEntity> Affliction { get; set; }
         public DbSet<ArenaEntity> Arena { get; set; }
         public DbSet<ArmourEntity> Armour { get; set; }
+        public DbSet<BodyPartEntity> BodyPart { get; set; }
         public DbSet<CityEntity> City { get; set; }
         public DbSet<CombatClassEntity> Class { get; set; }
         public DbSet<DeityEntity> Deity { get; set; }

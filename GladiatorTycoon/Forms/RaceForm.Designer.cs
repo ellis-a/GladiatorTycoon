@@ -1,4 +1,4 @@
-﻿namespace GladiatorTycoon
+﻿namespace GladiatorTycoon.Forms
 {
     partial class RaceForm
     {

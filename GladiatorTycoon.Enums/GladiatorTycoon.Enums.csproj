@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\EquipmentSlot.cs" />
+    <Compile Include="Enums\ActionType.cs" />
     <Compile Include="Enums\CombatFlags.cs" />
     <Compile Include="Enums\TacticConditionType.cs" />
     <Compile Include="Enums\CombatTarget.cs" />

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace GladiatorTycoon
+namespace GladiatorTycoon.Forms
 {
     public partial class RaceForm : Form
     {

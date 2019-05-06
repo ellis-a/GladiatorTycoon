@@ -1,9 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace GladiatorTycoon.DatabaseEditor.Helpers
+namespace GladiatorTycoon
 {
-    public static class DataChecking
+    public static class Helper
     {
+        public static T ParseObjectToEnum<T>(object o)
+        {
+            return (T)Enum.Parse(typeof(T), o.ToString());
+        }
+
         public static bool IsNumber(this object obj)
         {
             if (Equals(obj, null))

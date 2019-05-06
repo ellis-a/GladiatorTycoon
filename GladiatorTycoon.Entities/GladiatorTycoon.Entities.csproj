@@ -82,6 +82,7 @@
     <Compile Include="Entities\PartyEntity.cs" />
     <Compile Include="Entities\PassiveEntity.cs" />
     <Compile Include="Entities\PersonEntity.cs" />
+    <Compile Include="Entities\BodyPartEntity.cs" />
     <Compile Include="Entities\RaceEntity.cs" />
     <Compile Include="Entities\SlaveEntity.cs" />
     <Compile Include="Entities\WeaponEntity.cs" />

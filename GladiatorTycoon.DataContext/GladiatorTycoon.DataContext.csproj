@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201905050600151_renamed_speed_to_skill.Designer.cs">
       <DependentUpon>201905050600151_renamed_speed_to_skill.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905060429158_added_bodyparts_to_race.cs" />
+    <Compile Include="Migrations\201905060429158_added_bodyparts_to_race.Designer.cs">
+      <DependentUpon>201905060429158_added_bodyparts_to_race.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -121,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905050600151_renamed_speed_to_skill.resx">
       <DependentUpon>201905050600151_renamed_speed_to_skill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905060429158_added_bodyparts_to_race.resx">
+      <DependentUpon>201905060429158_added_bodyparts_to_race.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

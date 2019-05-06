@@ -9,7 +9,7 @@ using GladiatorTycoon.DataContext;
 using GladiatorTycoon.Services.Services;
 using GladiatorTycoon.Repositories.Interfaces;
 
-namespace GladiatorTycoon
+namespace GladiatorTycoon.Forms
 {
     public partial class PersonForm : Form
     {
@@ -106,7 +106,8 @@ namespace GladiatorTycoon
 
         private void btnNewPerson_Click(object sender, EventArgs e)
         {
-            _persons.Add(new Person("New", "Person", SocialStatus.Lowborn, null, true));
+            var newPerson = new Person("New", "Person", SocialStatus.Lowborn, null, true);
+            _personService.Create(newPerson);
             ReloadUiData();
         }
 
@@ -168,6 +169,13 @@ namespace GladiatorTycoon
             var raceForm = new RaceForm(new RaceRepository(_context));
             raceForm.Show();
             ResetRaces();
+        }
+
+        private void btnEditCities_Click(object sender, EventArgs e)
+        {
+            var cityForm = new CityForm(new CityRepository(_context));
+            cityForm.Show();
+            ResetCities();
         }
     }
 }

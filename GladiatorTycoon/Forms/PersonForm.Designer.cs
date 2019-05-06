@@ -1,4 +1,4 @@
-﻿namespace GladiatorTycoon
+﻿namespace GladiatorTycoon.Forms
 {
     partial class PersonForm
     {
@@ -54,6 +54,7 @@
             this.textFirstName = new System.Windows.Forms.TextBox();
             this.listPeople = new System.Windows.Forms.ListBox();
             this.btnEditRaces = new System.Windows.Forms.Button();
+            this.btnEditCities = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numCharisma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSkill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWit)).BeginInit();
@@ -63,7 +64,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(152, 265);
+            this.label11.Location = new System.Drawing.Point(12, 305);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(55, 13);
             this.label11.TabIndex = 54;
@@ -72,9 +73,9 @@
             // comboCities
             // 
             this.comboCities.FormattingEnabled = true;
-            this.comboCities.Location = new System.Drawing.Point(152, 281);
+            this.comboCities.Location = new System.Drawing.Point(12, 321);
             this.comboCities.Name = "comboCities";
-            this.comboCities.Size = new System.Drawing.Size(163, 21);
+            this.comboCities.Size = new System.Drawing.Size(222, 21);
             this.comboCities.TabIndex = 53;
             // 
             // label10
@@ -91,12 +92,12 @@
             this.comboStatus.FormattingEnabled = true;
             this.comboStatus.Location = new System.Drawing.Point(12, 281);
             this.comboStatus.Name = "comboStatus";
-            this.comboStatus.Size = new System.Drawing.Size(134, 21);
+            this.comboStatus.Size = new System.Drawing.Size(163, 21);
             this.comboStatus.TabIndex = 51;
             // 
             // btnNewPerson
             // 
-            this.btnNewPerson.Location = new System.Drawing.Point(240, 41);
+            this.btnNewPerson.Location = new System.Drawing.Point(321, 41);
             this.btnNewPerson.Name = "btnNewPerson";
             this.btnNewPerson.Size = new System.Drawing.Size(75, 23);
             this.btnNewPerson.TabIndex = 50;
@@ -106,7 +107,7 @@
             // 
             // btnSavePeople
             // 
-            this.btnSavePeople.Location = new System.Drawing.Point(240, 12);
+            this.btnSavePeople.Location = new System.Drawing.Point(321, 12);
             this.btnSavePeople.Name = "btnSavePeople";
             this.btnSavePeople.Size = new System.Drawing.Size(75, 23);
             this.btnSavePeople.TabIndex = 49;
@@ -198,7 +199,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(342, 114);
+            this.label4.Location = new System.Drawing.Point(321, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 13);
             this.label4.TabIndex = 39;
@@ -219,7 +220,7 @@
             // radioButtonFemale
             // 
             this.radioButtonFemale.AutoSize = true;
-            this.radioButtonFemale.Location = new System.Drawing.Point(396, 131);
+            this.radioButtonFemale.Location = new System.Drawing.Point(375, 131);
             this.radioButtonFemale.Name = "radioButtonFemale";
             this.radioButtonFemale.Size = new System.Drawing.Size(59, 17);
             this.radioButtonFemale.TabIndex = 37;
@@ -230,7 +231,7 @@
             // radioButtonMale
             // 
             this.radioButtonMale.AutoSize = true;
-            this.radioButtonMale.Location = new System.Drawing.Point(342, 131);
+            this.radioButtonMale.Location = new System.Drawing.Point(321, 131);
             this.radioButtonMale.Name = "radioButtonMale";
             this.radioButtonMale.Size = new System.Drawing.Size(48, 17);
             this.radioButtonMale.TabIndex = 36;
@@ -292,12 +293,12 @@
             this.listPeople.FormattingEnabled = true;
             this.listPeople.Location = new System.Drawing.Point(12, 12);
             this.listPeople.Name = "listPeople";
-            this.listPeople.Size = new System.Drawing.Size(222, 95);
+            this.listPeople.Size = new System.Drawing.Size(303, 95);
             this.listPeople.TabIndex = 29;
             // 
             // btnEditRaces
             // 
-            this.btnEditRaces.Location = new System.Drawing.Point(240, 173);
+            this.btnEditRaces.Location = new System.Drawing.Point(240, 171);
             this.btnEditRaces.Name = "btnEditRaces";
             this.btnEditRaces.Size = new System.Drawing.Size(75, 23);
             this.btnEditRaces.TabIndex = 55;
@@ -305,11 +306,22 @@
             this.btnEditRaces.UseVisualStyleBackColor = true;
             this.btnEditRaces.Click += new System.EventHandler(this.btnEditRaces_Click);
             // 
+            // btnEditCities
+            // 
+            this.btnEditCities.Location = new System.Drawing.Point(240, 319);
+            this.btnEditCities.Name = "btnEditCities";
+            this.btnEditCities.Size = new System.Drawing.Size(75, 23);
+            this.btnEditCities.TabIndex = 56;
+            this.btnEditCities.Text = "Edit Cities";
+            this.btnEditCities.UseVisualStyleBackColor = true;
+            this.btnEditCities.Click += new System.EventHandler(this.btnEditCities_Click);
+            // 
             // PersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 485);
+            this.Controls.Add(this.btnEditCities);
             this.Controls.Add(this.btnEditRaces);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.comboCities);
@@ -375,6 +387,7 @@
         private System.Windows.Forms.TextBox textFirstName;
         private System.Windows.Forms.ListBox listPeople;
         private System.Windows.Forms.Button btnEditRaces;
+        private System.Windows.Forms.Button btnEditCities;
     }
 }
 
