@@ -11,10 +11,12 @@ namespace GladiatorTycoon.Entities
         public int Id { get; set; }
 
         public string Name { get; set; }
-        public List<PassiveEntity> Racials { get; set; }
-        public List<BodyPartEntity> BodyParts { get; set; }
+        public List<PassiveEntity> Passives { get; set; }
+        public List<RaceBodyPartEntity> BodyParts { get; set; }
 
         public string PositiveHabitats { get; set; }
         public string NegativeHabitats { get; set; }
+
+        public List<AbilityEntity> Abilities { get; set; }
     }
 }

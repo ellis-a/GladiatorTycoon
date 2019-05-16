@@ -13,6 +13,7 @@ namespace GladiatorTycoon.Services.Models
 
         public CombatClass CombatClass { get; set; }
         public List<Tactic> Tactics { get; set; }
+        public List<Ability> Abilities { get; set; }
 
         public CombatFlags GetCombatFlags()
         {

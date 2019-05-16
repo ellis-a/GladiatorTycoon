@@ -15,5 +15,6 @@ namespace GladiatorTycoon.Entities
         public List<ItemEntity> Equipment { get; set; }
         public List<WeaponEntity> Weapons { get; set; }
         public List<ArmourEntity> Armour { get; set; }
+        public List<AbilityEntity> Abilities { get; set; }
     }
 }

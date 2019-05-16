@@ -1,9 +1,13 @@
 ﻿using GladiatorTycoon.Enums;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GladiatorTycoon.Services.Models
+namespace GladiatorTycoon.Entities
 {
-    public class BodyPart
+    [Table("RaceBodyParts")]
+    public class RaceBodyPartEntity
     {
+        [Key]
         public int Id { get; set; }
 
         public string Name { get; set; }

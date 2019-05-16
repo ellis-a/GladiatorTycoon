@@ -81,17 +81,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GladiatorTycoonDataContext.cs" />
-    <Compile Include="Migrations\201905050551115_initial.cs" />
-    <Compile Include="Migrations\201905050551115_initial.Designer.cs">
-      <DependentUpon>201905050551115_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905050600151_renamed_speed_to_skill.cs" />
-    <Compile Include="Migrations\201905050600151_renamed_speed_to_skill.Designer.cs">
-      <DependentUpon>201905050600151_renamed_speed_to_skill.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905060429158_added_bodyparts_to_race.cs" />
-    <Compile Include="Migrations\201905060429158_added_bodyparts_to_race.Designer.cs">
-      <DependentUpon>201905060429158_added_bodyparts_to_race.cs</DependentUpon>
+    <Compile Include="Migrations\201905061233117_initial.cs" />
+    <Compile Include="Migrations\201905061233117_initial.Designer.cs">
+      <DependentUpon>201905061233117_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,14 +112,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905050551115_initial.resx">
-      <DependentUpon>201905050551115_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905050600151_renamed_speed_to_skill.resx">
-      <DependentUpon>201905050600151_renamed_speed_to_skill.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905060429158_added_bodyparts_to_race.resx">
-      <DependentUpon>201905060429158_added_bodyparts_to_race.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905061233117_initial.resx">
+      <DependentUpon>201905061233117_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -16,7 +16,5 @@ namespace GladiatorTycoon.Services.Models
         public int HealValue { get; set; }
         public bool IsDamage { get; set; }
         public int DamageValue { get; set; }
-
-        //public Ability Bounce { get; set; }
     }
 }

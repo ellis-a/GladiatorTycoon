@@ -5,10 +5,10 @@ namespace GladiatorTycoon.Repositories.Interfaces
 {
     public interface IBodyPartRepository
     {
-        BodyPartEntity Create(BodyPartEntity bodyPartEntity);
-        BodyPartEntity Update(BodyPartEntity bodyPartEntity);
+        RaceBodyPartEntity Create(RaceBodyPartEntity bodyPartEntity);
+        RaceBodyPartEntity Update(RaceBodyPartEntity bodyPartEntity);
         bool DeleteById(int id);
-        BodyPartEntity GetById(int id);
-        List<BodyPartEntity> GetAll();
+        RaceBodyPartEntity GetById(int id);
+        List<RaceBodyPartEntity> GetAll();
     }
 }

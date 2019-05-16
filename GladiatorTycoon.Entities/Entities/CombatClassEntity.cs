@@ -12,5 +12,6 @@ namespace GladiatorTycoon.Entities
 
         public string Name { get; set; }
         public List<PassiveEntity> Passives { get; set; }
+        public List<AbilityEntity> Abilities { get; set; }
     }
 }

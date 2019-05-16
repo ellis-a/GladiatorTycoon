@@ -8,5 +8,6 @@ namespace GladiatorTycoon.Services.Models
 
         public string Name { get; set; }
         public List<Passive> Passives { get; set; }
+        public List<Ability> Abilities { get; set; }
     }
 }

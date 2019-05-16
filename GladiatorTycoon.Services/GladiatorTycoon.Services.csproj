@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Ability.cs" />
-    <Compile Include="Models\BodyPart.cs" />
+    <Compile Include="Models\RaceBodyPart.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\CombatClass.cs" />
     <Compile Include="Models\Master.cs" />
@@ -61,10 +61,11 @@
     <Compile Include="Models\Slave.cs" />
     <Compile Include="Models\Tactic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\BodyPartService.cs" />
+    <Compile Include="Services\RaceBodyPartService.cs" />
     <Compile Include="Services\PassiveService.cs" />
     <Compile Include="Services\PersonService.cs" />
     <Compile Include="Services\CityService.cs" />
+    <Compile Include="Services\AbilityService.cs" />
     <Compile Include="Services\RaceService.cs" />
   </ItemGroup>
   <ItemGroup>

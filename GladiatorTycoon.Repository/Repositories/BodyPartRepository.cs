@@ -16,14 +16,14 @@ namespace GladiatorTycoon.Repositories.Repositories
             _context = context;
         }
 
-        private IQueryable<BodyPartEntity> BaseQuery()
+        private IQueryable<RaceBodyPartEntity> BaseQuery()
         {
-            return _context.BodyPart;
+            return _context.RaceBodyPart;
         }
 
-        public BodyPartEntity Create(BodyPartEntity bodyPartEntity)
+        public RaceBodyPartEntity Create(RaceBodyPartEntity bodyPartEntity)
         {
-            _context.BodyPart.Add(bodyPartEntity);
+            _context.RaceBodyPart.Add(bodyPartEntity);
             _context.SaveChanges();
             return bodyPartEntity;
         }
@@ -33,18 +33,18 @@ namespace GladiatorTycoon.Repositories.Repositories
             var bodyPart = GetById(id);
             if (bodyPart == null) { return false; }
 
-            _context.BodyPart.Remove(bodyPart);
+            _context.RaceBodyPart.Remove(bodyPart);
             _context.SaveChanges();
 
             return true;
         }
 
-        public List<BodyPartEntity> GetAll()
+        public List<RaceBodyPartEntity> GetAll()
         {
             return BaseQuery().ToList();
         }
 
-        public BodyPartEntity GetById(int id)
+        public RaceBodyPartEntity GetById(int id)
         {
             var bodyPart = BaseQuery()
                 .FirstOrDefault(u => u.Id == id);
@@ -52,9 +52,9 @@ namespace GladiatorTycoon.Repositories.Repositories
             return bodyPart;
         }
 
-        public BodyPartEntity Update(BodyPartEntity bodyPartEntity)
+        public RaceBodyPartEntity Update(RaceBodyPartEntity bodyPartEntity)
         {
-            _context.BodyPart.Attach(bodyPartEntity);
+            _context.RaceBodyPart.Attach(bodyPartEntity);
             _context.Entry(bodyPartEntity).State = EntityState.Modified;
             _context.SaveChanges();
 

@@ -6,22 +6,22 @@ using System.Linq;
 
 namespace GladiatorTycoon.Services.Services
 {
-    public class BodyPartService
+    public class RaceBodyPartService
     {
         private IBodyPartRepository _bodyPartRepository;
 
-        public BodyPartService(IBodyPartRepository bodyPartRepository)
+        public RaceBodyPartService(IBodyPartRepository bodyPartRepository)
         {
             _bodyPartRepository = bodyPartRepository;
         }
 
-        public BodyPartService()
+        public RaceBodyPartService()
         {
         }
 
-        public BodyPart EntityToBodyPart(BodyPartEntity bodyPartEntity)
+        public RaceBodyPart EntityToBodyPart(RaceBodyPartEntity bodyPartEntity)
         {
-            return new BodyPart()
+            return new RaceBodyPart()
             {
                 Id = bodyPartEntity.Id,
                 Name = bodyPartEntity.Name,
@@ -32,9 +32,9 @@ namespace GladiatorTycoon.Services.Services
             };
         }
 
-        public BodyPartEntity BodyPartToEntity(BodyPart bodyPart)
+        public RaceBodyPartEntity BodyPartToEntity(RaceBodyPart bodyPart)
         {
-            return new BodyPartEntity()
+            return new RaceBodyPartEntity()
             {
                 Id = bodyPart.Id,
                 Name = bodyPart.Name,
@@ -45,26 +45,26 @@ namespace GladiatorTycoon.Services.Services
             };
         }
 
-        public BodyPart GetById(int id)
+        public RaceBodyPart GetById(int id)
         {
             var bodyPart = _bodyPartRepository.GetById(id);
             return EntityToBodyPart(bodyPart);
         }
 
-        public List<BodyPart> GetAll()
+        public List<RaceBodyPart> GetAll()
         {
             var bodyPartEntities = _bodyPartRepository.GetAll();
             var bodyParts = bodyPartEntities.Select(r => EntityToBodyPart(r)).ToList();
             return bodyParts;
         }
 
-        public BodyPart Create(BodyPart bodyPart)
+        public RaceBodyPart Create(RaceBodyPart bodyPart)
         {
             var bodyPartEntity = _bodyPartRepository.Create(BodyPartToEntity(bodyPart));
             return EntityToBodyPart(bodyPartEntity);
         }
 
-        public BodyPart Update(BodyPart bodyPart)
+        public RaceBodyPart Update(RaceBodyPart bodyPart)
         {
             var bodyPartEntity = _bodyPartRepository.GetById(bodyPart.Id);
 
@@ -80,7 +80,7 @@ namespace GladiatorTycoon.Services.Services
             return EntityToBodyPart(bodyPartEntity);
         }
 
-        public bool Delete(BodyPart bodyPart)
+        public bool Delete(RaceBodyPart bodyPart)
         {
             return _bodyPartRepository.DeleteById(bodyPart.Id);
         }

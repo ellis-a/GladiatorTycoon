@@ -84,6 +84,12 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="ContainerConfig.cs" />
+    <Compile Include="Forms\BodyPartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BodyPartForm.Designer.cs">
+      <DependentUpon>BodyPartForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="IApp.cs" />
     <Compile Include="Forms\PersonForm.cs">
@@ -108,6 +114,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\PersonForm.resx">
       <DependentUpon>PersonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BodyPartForm.resx">
+      <DependentUpon>BodyPartForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

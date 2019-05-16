@@ -9,13 +9,13 @@ using System.Windows.Forms;
 
 namespace GladiatorTycoon.Forms
 {
-    public partial class RaceForm : Form
+    public partial class BodyPartForm : Form
     {
         private RaceService _raceService;
         private List<Race> _races;
         private List<RaceBodyPart> _currentRaceParts;
 
-        public RaceForm(IRaceRepository raceRepo)
+        public BodyPartForm(IRaceRepository raceRepo)
         {
             InitializeComponent();
             _raceService = new RaceService(raceRepo);
@@ -66,18 +66,18 @@ namespace GladiatorTycoon.Forms
 
         private void ResetRaces()
         {
-            listRaces.Items.Clear();
+            listParts.Items.Clear();
             foreach (var race in _races)
             {
-                listRaces.Items.Add(race.Name);
+                listParts.Items.Add(race.Name);
             }
         }
 
         private void ShowRaceData()
         {
-            if (listRaces.SelectedIndex == -1) { return; }
+            if (listParts.SelectedIndex == -1) { return; }
 
-            var race = _races[listRaces.SelectedIndex];
+            var race = _races[listParts.SelectedIndex];
             var posHabitatList = race.PositiveHabitats?.Split(',').ToList();
             var negHabitatList = race.NegativeHabitats?.Split(',').ToList();
             textRaceName.Text = race.Name;
@@ -132,7 +132,7 @@ namespace GladiatorTycoon.Forms
 
         private void SaveRaceData()
         {
-            var race = _races[listRaces.SelectedIndex];
+            var race = _races[listParts.SelectedIndex];
 
             race.Name = textRaceName.Text;
 
@@ -172,7 +172,12 @@ namespace GladiatorTycoon.Forms
 
         private void btnAddPart_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,6 +10,7 @@ namespace GladiatorTycoon.Services.Services
     {
         private IRaceRepository _raceRepository;
         private PassiveService _passiveService;
+        private RaceBodyPartService _raceBodyPartService;
 
         public RaceService(IRaceRepository raceRepository)
         {
@@ -29,7 +30,9 @@ namespace GladiatorTycoon.Services.Services
                 Name = raceEntity.Name,
                 NegativeHabitats = raceEntity.NegativeHabitats,
                 PositiveHabitats = raceEntity.PositiveHabitats,
-                Racials = raceEntity.Racials?.Select(r => _passiveService.EntityToPassive(r)).ToList()
+                Passives = raceEntity.Passives?.Select(p => _passiveService.EntityToPassive(p)).ToList(),
+                Abilities = raceEntity.Abilities?.Select(a => _abilityService.EntityToAbility(a)).ToList(),
+                BodyParts = raceEntity.BodyParts?.Select(b => _raceBodyPartService.EntityToBodyPart(b)).ToList()
             };
         }
 
@@ -41,7 +44,9 @@ namespace GladiatorTycoon.Services.Services
                 Name = race.Name,
                 NegativeHabitats = race.NegativeHabitats,
                 PositiveHabitats = race.PositiveHabitats,
-                Racials = race.Racials?.Select(r => _passiveService.PassiveToEntity(r)).ToList()
+                Passives = race.Passives?.Select(p => _passiveService.PassiveToEntity(p)).ToList(),
+                Abilities = race.Abilities?.Select(a => _abilityService.PassiveToEntity(a)).ToList(),
+                BodyParts = race.BodyParts?.Select(b => _raceBodyPartService.BodyPartToEntity(b)).ToList()
             };
         }
 
@@ -72,7 +77,9 @@ namespace GladiatorTycoon.Services.Services
             raceEntity.Name = race.Name;
             raceEntity.NegativeHabitats = race.NegativeHabitats;
             raceEntity.PositiveHabitats = race.PositiveHabitats;
-            raceEntity.Racials = race.Racials.Select(r => _passiveService.PassiveToEntity(r)).ToList();
+            raceEntity.Passives = race.Passives.Select(p => _passiveService.PassiveToEntity(p)).ToList();
+            raceEntity.Abilities = race.Abilities.Select(a => _abilityService.AbilityToEntity(a)).ToList();
+            raceEntity.BodyParts = race.BodyParts.Select(b => _raceBodyPartService.BodyPartToEntity(b)).ToList();
 
             _raceRepository.Update(raceEntity);
 
