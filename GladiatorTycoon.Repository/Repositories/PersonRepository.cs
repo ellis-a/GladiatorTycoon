@@ -18,11 +18,17 @@ namespace GladiatorTycoon.Repositories.Repositories
 
         private IQueryable<PersonEntity> BaseQuery()
         {
-            return _context.Person;
+            return _context.Person
+                .Include(p => p.HomeCity)
+                .Include(p => p.Race);
         }
 
         public PersonEntity Create(PersonEntity personEntity)
         {
+            var cityId = personEntity.HomeCity.Id;
+            personEntity.HomeCity = _context.City.FirstOrDefault(c => c.Id == cityId);
+            var raceId = personEntity.Race.Id;
+            personEntity.Race = _context.Race.FirstOrDefault(r => r.Id == raceId);
             _context.Person.Add(personEntity);
             _context.SaveChanges();
             return personEntity;

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GladiatorTycoon
+namespace GladiatorTycoon.Helpers
 {
-    public static class Helper
+    public static class GeneralHelper
     {
         public static T ParseObjectToEnum<T>(object o)
         {

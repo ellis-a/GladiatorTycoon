@@ -81,9 +81,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GladiatorTycoonDataContext.cs" />
-    <Compile Include="Migrations\201905061233117_initial.cs" />
-    <Compile Include="Migrations\201905061233117_initial.Designer.cs">
-      <DependentUpon>201905061233117_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201906131331232_initial.cs" />
+    <Compile Include="Migrations\201906131331232_initial.Designer.cs">
+      <DependentUpon>201906131331232_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906131332381_add_testing_data.cs" />
+    <Compile Include="Migrations\201906131332381_add_testing_data.Designer.cs">
+      <DependentUpon>201906131332381_add_testing_data.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,8 +116,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905061233117_initial.resx">
-      <DependentUpon>201905061233117_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906131331232_initial.resx">
+      <DependentUpon>201906131331232_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906131332381_add_testing_data.resx">
+      <DependentUpon>201906131332381_add_testing_data.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -12,8 +12,42 @@ namespace GladiatorTycoon.DataContext.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(unicode: false),
+                        Description = c.String(unicode: false),
+                        ActionType = c.Int(nullable: false),
+                        ReactionTrigger = c.Int(nullable: false),
+                        MagicTypes = c.Int(nullable: false),
+                        Duration = c.Int(nullable: false),
+                        PowerMod = c.Int(nullable: false),
+                        SkillMod = c.Int(nullable: false),
+                        CombatClassEntity_Id = c.Int(),
+                        RaceEntity_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.CombatClasses", t => t.CombatClassEntity_Id)
+                .ForeignKey("dbo.Races", t => t.RaceEntity_Id)
+                .Index(t => t.CombatClassEntity_Id)
+                .Index(t => t.RaceEntity_Id);
+            
+            CreateTable(
+                "dbo.Passives",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        AbilityEntity_Id = c.Int(),
+                        AfflictionEntity_Id = c.Int(),
+                        CombatClassEntity_Id = c.Int(),
+                        RaceEntity_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Abilities", t => t.AbilityEntity_Id)
+                .ForeignKey("dbo.Afflictions", t => t.AfflictionEntity_Id)
+                .ForeignKey("dbo.CombatClasses", t => t.CombatClassEntity_Id)
+                .ForeignKey("dbo.Races", t => t.RaceEntity_Id)
+                .Index(t => t.AbilityEntity_Id)
+                .Index(t => t.AfflictionEntity_Id)
+                .Index(t => t.CombatClassEntity_Id)
+                .Index(t => t.RaceEntity_Id);
             
             CreateTable(
                 "dbo.Afflictions",
@@ -23,23 +57,6 @@ namespace GladiatorTycoon.DataContext.Migrations
                         Cure = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Passives",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        AfflictionEntity_Id = c.Int(),
-                        CombatClassEntity_Id = c.Int(),
-                        RaceEntity_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Afflictions", t => t.AfflictionEntity_Id)
-                .ForeignKey("dbo.CombatClasses", t => t.CombatClassEntity_Id)
-                .ForeignKey("dbo.Races", t => t.RaceEntity_Id)
-                .Index(t => t.AfflictionEntity_Id)
-                .Index(t => t.CombatClassEntity_Id)
-                .Index(t => t.RaceEntity_Id);
             
             CreateTable(
                 "dbo.Arenas",
@@ -72,16 +89,16 @@ namespace GladiatorTycoon.DataContext.Migrations
                         MaxDurability = c.Int(nullable: false),
                         CurrentDurability = c.Int(nullable: false),
                         MasterEntity_Id = c.Int(),
-                        GladiatorEntity_Id1 = c.Int(),
                         MerchantEntity_Id = c.Int(),
+                        PersonEntity_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Masters", t => t.MasterEntity_Id)
-                .ForeignKey("dbo.Gladiators", t => t.GladiatorEntity_Id1)
                 .ForeignKey("dbo.Merchants", t => t.MerchantEntity_Id)
+                .ForeignKey("dbo.Persons", t => t.PersonEntity_Id)
                 .Index(t => t.MasterEntity_Id)
-                .Index(t => t.GladiatorEntity_Id1)
-                .Index(t => t.MerchantEntity_Id);
+                .Index(t => t.MerchantEntity_Id)
+                .Index(t => t.PersonEntity_Id);
             
             CreateTable(
                 "dbo.CombatClasses",
@@ -89,8 +106,11 @@ namespace GladiatorTycoon.DataContext.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(unicode: false),
+                        RaceEntity_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Races", t => t.RaceEntity_Id)
+                .Index(t => t.RaceEntity_Id);
             
             CreateTable(
                 "dbo.Deities",
@@ -111,11 +131,13 @@ namespace GladiatorTycoon.DataContext.Migrations
                         LastName = c.String(unicode: false),
                         Gold = c.Int(nullable: false),
                         SocialStatus = c.Int(nullable: false),
-                        IsMale = c.Boolean(nullable: false),
+                        Gender = c.Int(nullable: false),
                         Power = c.Int(nullable: false),
                         Wits = c.Int(nullable: false),
                         Skill = c.Int(nullable: false),
                         Charisma = c.Int(nullable: false),
+                        Offense = c.Int(nullable: false),
+                        Defense = c.Int(nullable: false),
                         HomeCity_Id = c.Int(),
                         Race_Id = c.Int(),
                         PartyEntity_Id = c.Int(),
@@ -150,10 +172,25 @@ namespace GladiatorTycoon.DataContext.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(unicode: false),
+                        AvailableGenders = c.Int(nullable: false),
                         PositiveHabitats = c.String(unicode: false),
                         NegativeHabitats = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.PersonNames",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Text = c.String(unicode: false),
+                        IsFirstName = c.Boolean(nullable: false),
+                        Gender = c.Int(nullable: false),
+                        RaceEntity_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Races", t => t.RaceEntity_Id)
+                .Index(t => t.RaceEntity_Id);
             
             CreateTable(
                 "dbo.RaceBodyParts",
@@ -164,7 +201,7 @@ namespace GladiatorTycoon.DataContext.Migrations
                         DevName = c.String(unicode: false),
                         BodyPartType = c.Int(nullable: false),
                         AvailableActions = c.Int(nullable: false),
-                        RequiredForLiving = c.Boolean(nullable: false),
+                        IsVital = c.Boolean(nullable: false),
                         RaceEntity_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -213,18 +250,25 @@ namespace GladiatorTycoon.DataContext.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        GladiatorEntity_Id = c.Int(),
                         Defense = c.Int(nullable: false),
                         ArmourSlot = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Items", t => t.Id)
-                .ForeignKey("dbo.Gladiators", t => t.GladiatorEntity_Id)
-                .Index(t => t.Id)
-                .Index(t => t.GladiatorEntity_Id);
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Masters",
+                c => new
+                    {
+                        Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Persons", t => t.Id)
+                .Index(t => t.Id);
+            
+            CreateTable(
+                "dbo.Merchants",
                 c => new
                     {
                         Id = c.Int(nullable: false),
@@ -248,57 +292,27 @@ namespace GladiatorTycoon.DataContext.Migrations
                 .Index(t => t.Owner_Id);
             
             CreateTable(
-                "dbo.Gladiators",
-                c => new
-                    {
-                        Id = c.Int(nullable: false),
-                        MaxHealth = c.Int(nullable: false),
-                        CurrentHealth = c.Int(nullable: false),
-                        Offense = c.Int(nullable: false),
-                        Defense = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Slaves", t => t.Id)
-                .Index(t => t.Id);
-            
-            CreateTable(
-                "dbo.Merchants",
-                c => new
-                    {
-                        Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Persons", t => t.Id)
-                .Index(t => t.Id);
-            
-            CreateTable(
                 "dbo.Weapons",
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        GladiatorEntity_Id = c.Int(),
                         Offense = c.Int(nullable: false),
                         WeaponType = c.Int(nullable: false),
                         IsTwoHander = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Items", t => t.Id)
-                .ForeignKey("dbo.Gladiators", t => t.GladiatorEntity_Id)
-                .Index(t => t.Id)
-                .Index(t => t.GladiatorEntity_Id);
+                .Index(t => t.Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Weapons", "GladiatorEntity_Id", "dbo.Gladiators");
             DropForeignKey("dbo.Weapons", "Id", "dbo.Items");
-            DropForeignKey("dbo.Merchants", "Id", "dbo.Persons");
-            DropForeignKey("dbo.Gladiators", "Id", "dbo.Slaves");
             DropForeignKey("dbo.Slaves", "Owner_Id", "dbo.Masters");
             DropForeignKey("dbo.Slaves", "Id", "dbo.Persons");
+            DropForeignKey("dbo.Merchants", "Id", "dbo.Persons");
             DropForeignKey("dbo.Masters", "Id", "dbo.Persons");
-            DropForeignKey("dbo.Armours", "GladiatorEntity_Id", "dbo.Gladiators");
             DropForeignKey("dbo.Armours", "Id", "dbo.Items");
             DropForeignKey("dbo.PersonBodyParts", "RaceBodyPart_Id", "dbo.RaceBodyParts");
             DropForeignKey("dbo.Injuries", "PersonBodyPartEntity_Id", "dbo.PersonBodyParts");
@@ -307,52 +321,59 @@ namespace GladiatorTycoon.DataContext.Migrations
             DropForeignKey("dbo.Persons", "PartyEntity_Id", "dbo.Parties");
             DropForeignKey("dbo.Persons", "Race_Id", "dbo.Races");
             DropForeignKey("dbo.Persons", "HomeCity_Id", "dbo.Cities");
+            DropForeignKey("dbo.Items", "PersonEntity_Id", "dbo.Persons");
             DropForeignKey("dbo.Items", "MerchantEntity_Id", "dbo.Merchants");
-            DropForeignKey("dbo.Items", "GladiatorEntity_Id1", "dbo.Gladiators");
             DropForeignKey("dbo.Passives", "RaceEntity_Id", "dbo.Races");
             DropForeignKey("dbo.RaceBodyParts", "RaceEntity_Id", "dbo.Races");
+            DropForeignKey("dbo.CombatClasses", "RaceEntity_Id", "dbo.Races");
+            DropForeignKey("dbo.PersonNames", "RaceEntity_Id", "dbo.Races");
+            DropForeignKey("dbo.Abilities", "RaceEntity_Id", "dbo.Races");
             DropForeignKey("dbo.Items", "MasterEntity_Id", "dbo.Masters");
             DropForeignKey("dbo.Houses", "MasterEntity_Id", "dbo.Masters");
             DropForeignKey("dbo.Houses", "Location_Id", "dbo.Cities");
             DropForeignKey("dbo.Passives", "CombatClassEntity_Id", "dbo.CombatClasses");
+            DropForeignKey("dbo.Abilities", "CombatClassEntity_Id", "dbo.CombatClasses");
             DropForeignKey("dbo.Arenas", "City_Id", "dbo.Cities");
             DropForeignKey("dbo.Passives", "AfflictionEntity_Id", "dbo.Afflictions");
-            DropIndex("dbo.Weapons", new[] { "GladiatorEntity_Id" });
+            DropForeignKey("dbo.Passives", "AbilityEntity_Id", "dbo.Abilities");
             DropIndex("dbo.Weapons", new[] { "Id" });
-            DropIndex("dbo.Merchants", new[] { "Id" });
-            DropIndex("dbo.Gladiators", new[] { "Id" });
             DropIndex("dbo.Slaves", new[] { "Owner_Id" });
             DropIndex("dbo.Slaves", new[] { "Id" });
+            DropIndex("dbo.Merchants", new[] { "Id" });
             DropIndex("dbo.Masters", new[] { "Id" });
-            DropIndex("dbo.Armours", new[] { "GladiatorEntity_Id" });
             DropIndex("dbo.Armours", new[] { "Id" });
             DropIndex("dbo.PersonBodyParts", new[] { "RaceBodyPart_Id" });
             DropIndex("dbo.PersonBodyParts", new[] { "EquippedWeapon_Id" });
             DropIndex("dbo.PersonBodyParts", new[] { "EquippedArmour_Id" });
             DropIndex("dbo.Injuries", new[] { "PersonBodyPartEntity_Id" });
             DropIndex("dbo.RaceBodyParts", new[] { "RaceEntity_Id" });
+            DropIndex("dbo.PersonNames", new[] { "RaceEntity_Id" });
             DropIndex("dbo.Houses", new[] { "MasterEntity_Id" });
             DropIndex("dbo.Houses", new[] { "Location_Id" });
             DropIndex("dbo.Persons", new[] { "PartyEntity_Id" });
             DropIndex("dbo.Persons", new[] { "Race_Id" });
             DropIndex("dbo.Persons", new[] { "HomeCity_Id" });
+            DropIndex("dbo.CombatClasses", new[] { "RaceEntity_Id" });
+            DropIndex("dbo.Items", new[] { "PersonEntity_Id" });
             DropIndex("dbo.Items", new[] { "MerchantEntity_Id" });
-            DropIndex("dbo.Items", new[] { "GladiatorEntity_Id1" });
             DropIndex("dbo.Items", new[] { "MasterEntity_Id" });
             DropIndex("dbo.Arenas", new[] { "City_Id" });
             DropIndex("dbo.Passives", new[] { "RaceEntity_Id" });
             DropIndex("dbo.Passives", new[] { "CombatClassEntity_Id" });
             DropIndex("dbo.Passives", new[] { "AfflictionEntity_Id" });
+            DropIndex("dbo.Passives", new[] { "AbilityEntity_Id" });
+            DropIndex("dbo.Abilities", new[] { "RaceEntity_Id" });
+            DropIndex("dbo.Abilities", new[] { "CombatClassEntity_Id" });
             DropTable("dbo.Weapons");
-            DropTable("dbo.Merchants");
-            DropTable("dbo.Gladiators");
             DropTable("dbo.Slaves");
+            DropTable("dbo.Merchants");
             DropTable("dbo.Masters");
             DropTable("dbo.Armours");
             DropTable("dbo.PersonBodyParts");
             DropTable("dbo.Parties");
             DropTable("dbo.Injuries");
             DropTable("dbo.RaceBodyParts");
+            DropTable("dbo.PersonNames");
             DropTable("dbo.Races");
             DropTable("dbo.Houses");
             DropTable("dbo.Persons");
@@ -361,8 +382,8 @@ namespace GladiatorTycoon.DataContext.Migrations
             DropTable("dbo.Items");
             DropTable("dbo.Cities");
             DropTable("dbo.Arenas");
-            DropTable("dbo.Passives");
             DropTable("dbo.Afflictions");
+            DropTable("dbo.Passives");
             DropTable("dbo.Abilities");
         }
     }

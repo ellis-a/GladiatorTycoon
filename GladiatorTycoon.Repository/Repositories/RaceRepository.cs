@@ -18,7 +18,8 @@ namespace GladiatorTycoon.Repositories.Repositories
 
         private IQueryable<RaceEntity> BaseQuery()
         {
-            return _context.Race;
+            return _context.Race
+                .Include(r => r.AvailablePersonNames);
         }
 
         public RaceEntity Create(RaceEntity raceEntity)

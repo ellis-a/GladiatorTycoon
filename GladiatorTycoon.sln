@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.Abilities",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.ConsoleApp", "GladiatorTycoon.ConsoleApp\GladiatorTycoon.ConsoleApp.csproj", "{3F66D97F-033A-4679-A2DB-8170F01C82BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.Helper", "GladiatorTycoon.Helper\GladiatorTycoon.Helper.csproj", "{D94B3015-E444-42AA-97BB-01D7FF0DF672}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{3F66D97F-033A-4679-A2DB-8170F01C82BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F66D97F-033A-4679-A2DB-8170F01C82BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F66D97F-033A-4679-A2DB-8170F01C82BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94B3015-E444-42AA-97BB-01D7FF0DF672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94B3015-E444-42AA-97BB-01D7FF0DF672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94B3015-E444-42AA-97BB-01D7FF0DF672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94B3015-E444-42AA-97BB-01D7FF0DF672}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -55,6 +55,7 @@
             this.listPeople = new System.Windows.Forms.ListBox();
             this.btnEditRaces = new System.Windows.Forms.Button();
             this.btnEditCities = new System.Windows.Forms.Button();
+            this.GenerateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numCharisma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSkill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWit)).BeginInit();
@@ -89,6 +90,7 @@
             // 
             // comboStatus
             // 
+            this.comboStatus.Enabled = false;
             this.comboStatus.FormattingEnabled = true;
             this.comboStatus.Location = new System.Drawing.Point(12, 281);
             this.comboStatus.Name = "comboStatus";
@@ -316,11 +318,22 @@
             this.btnEditCities.UseVisualStyleBackColor = true;
             this.btnEditCities.Click += new System.EventHandler(this.btnEditCities_Click);
             // 
+            // GenerateButton
+            // 
+            this.GenerateButton.Location = new System.Drawing.Point(321, 70);
+            this.GenerateButton.Name = "GenerateButton";
+            this.GenerateButton.Size = new System.Drawing.Size(75, 23);
+            this.GenerateButton.TabIndex = 57;
+            this.GenerateButton.Text = "Generate";
+            this.GenerateButton.UseVisualStyleBackColor = true;
+            this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
+            // 
             // PersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 485);
+            this.Controls.Add(this.GenerateButton);
             this.Controls.Add(this.btnEditCities);
             this.Controls.Add(this.btnEditRaces);
             this.Controls.Add(this.label11);
@@ -388,6 +401,7 @@
         private System.Windows.Forms.ListBox listPeople;
         private System.Windows.Forms.Button btnEditRaces;
         private System.Windows.Forms.Button btnEditCities;
+        private System.Windows.Forms.Button GenerateButton;
     }
 }
 

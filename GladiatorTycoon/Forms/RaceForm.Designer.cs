@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnNewRace = new System.Windows.Forms.Button();
-            this.btnSaveRaces = new System.Windows.Forms.Button();
-            this.btnCloseRace = new System.Windows.Forms.Button();
+            this.NewRaceButton = new System.Windows.Forms.Button();
+            this.SaveRacesButton = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.chkListNegativeHabitats = new System.Windows.Forms.CheckedListBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -40,38 +40,39 @@
             this.listRaces = new System.Windows.Forms.ListBox();
             this.listParts = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAddPart = new System.Windows.Forms.Button();
+            this.AddPartButton = new System.Windows.Forms.Button();
+            this.RemovePartButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnNewRace
+            // NewRaceButton
             // 
-            this.btnNewRace.Location = new System.Drawing.Point(247, 41);
-            this.btnNewRace.Name = "btnNewRace";
-            this.btnNewRace.Size = new System.Drawing.Size(75, 23);
-            this.btnNewRace.TabIndex = 47;
-            this.btnNewRace.Text = "New";
-            this.btnNewRace.UseVisualStyleBackColor = true;
-            this.btnNewRace.Click += new System.EventHandler(this.btnNewRace_Click);
+            this.NewRaceButton.Location = new System.Drawing.Point(247, 41);
+            this.NewRaceButton.Name = "NewRaceButton";
+            this.NewRaceButton.Size = new System.Drawing.Size(75, 23);
+            this.NewRaceButton.TabIndex = 47;
+            this.NewRaceButton.Text = "New";
+            this.NewRaceButton.UseVisualStyleBackColor = true;
+            this.NewRaceButton.Click += new System.EventHandler(this.NewRaceButton_Click);
             // 
-            // btnSaveRaces
+            // SaveRacesButton
             // 
-            this.btnSaveRaces.Location = new System.Drawing.Point(247, 12);
-            this.btnSaveRaces.Name = "btnSaveRaces";
-            this.btnSaveRaces.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveRaces.TabIndex = 46;
-            this.btnSaveRaces.Text = "Save";
-            this.btnSaveRaces.UseVisualStyleBackColor = true;
-            this.btnSaveRaces.Click += new System.EventHandler(this.btnSaveRaces_Click);
+            this.SaveRacesButton.Location = new System.Drawing.Point(247, 12);
+            this.SaveRacesButton.Name = "SaveRacesButton";
+            this.SaveRacesButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveRacesButton.TabIndex = 46;
+            this.SaveRacesButton.Text = "Save";
+            this.SaveRacesButton.UseVisualStyleBackColor = true;
+            this.SaveRacesButton.Click += new System.EventHandler(this.SaveRacesButton_Click);
             // 
-            // btnCloseRace
+            // CloseButton
             // 
-            this.btnCloseRace.Location = new System.Drawing.Point(247, 70);
-            this.btnCloseRace.Name = "btnCloseRace";
-            this.btnCloseRace.Size = new System.Drawing.Size(75, 23);
-            this.btnCloseRace.TabIndex = 45;
-            this.btnCloseRace.Text = "Close";
-            this.btnCloseRace.UseVisualStyleBackColor = true;
-            this.btnCloseRace.Click += new System.EventHandler(this.btnCloseRace_Click);
+            this.CloseButton.Location = new System.Drawing.Point(247, 70);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(75, 23);
+            this.CloseButton.TabIndex = 45;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // label14
             // 
@@ -151,27 +152,37 @@
             this.label1.TabIndex = 49;
             this.label1.Text = "Body Parts";
             // 
-            // btnAddPart
+            // AddPartButton
             // 
-            this.btnAddPart.Location = new System.Drawing.Point(460, 184);
-            this.btnAddPart.Name = "btnAddPart";
-            this.btnAddPart.Size = new System.Drawing.Size(75, 23);
-            this.btnAddPart.TabIndex = 50;
-            this.btnAddPart.Text = "Add Part";
-            this.btnAddPart.UseVisualStyleBackColor = true;
-            this.btnAddPart.Click += new System.EventHandler(this.btnAddPart_Click);
+            this.AddPartButton.Location = new System.Drawing.Point(460, 184);
+            this.AddPartButton.Name = "AddPartButton";
+            this.AddPartButton.Size = new System.Drawing.Size(75, 23);
+            this.AddPartButton.TabIndex = 50;
+            this.AddPartButton.Text = "Add Part";
+            this.AddPartButton.UseVisualStyleBackColor = true;
+            this.AddPartButton.Click += new System.EventHandler(this.AddPartButton_Click);
+            // 
+            // RemovePartButton
+            // 
+            this.RemovePartButton.Location = new System.Drawing.Point(460, 213);
+            this.RemovePartButton.Name = "RemovePartButton";
+            this.RemovePartButton.Size = new System.Drawing.Size(75, 23);
+            this.RemovePartButton.TabIndex = 51;
+            this.RemovePartButton.Text = "Remove Part";
+            this.RemovePartButton.UseVisualStyleBackColor = true;
             // 
             // RaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 343);
-            this.Controls.Add(this.btnAddPart);
+            this.Controls.Add(this.RemovePartButton);
+            this.Controls.Add(this.AddPartButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listParts);
-            this.Controls.Add(this.btnNewRace);
-            this.Controls.Add(this.btnSaveRaces);
-            this.Controls.Add(this.btnCloseRace);
+            this.Controls.Add(this.NewRaceButton);
+            this.Controls.Add(this.SaveRacesButton);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.chkListNegativeHabitats);
             this.Controls.Add(this.label13);
@@ -189,9 +200,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnNewRace;
-        private System.Windows.Forms.Button btnSaveRaces;
-        private System.Windows.Forms.Button btnCloseRace;
+        private System.Windows.Forms.Button NewRaceButton;
+        private System.Windows.Forms.Button SaveRacesButton;
+        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckedListBox chkListNegativeHabitats;
         private System.Windows.Forms.Label label13;
@@ -201,6 +212,7 @@
         private System.Windows.Forms.ListBox listRaces;
         private System.Windows.Forms.ListBox listParts;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAddPart;
+        private System.Windows.Forms.Button AddPartButton;
+        private System.Windows.Forms.Button RemovePartButton;
     }
 }

@@ -13,7 +13,6 @@ namespace GladiatorTycoon.DataContext
         public DbSet<CombatClassEntity> Class { get; set; }
         public DbSet<DeityEntity> Deity { get; set; }
         public DbSet<MasterEntity> Dominus { get; set; }
-        public DbSet<GladiatorEntity> Gladiator { get; set; }
         public DbSet<HouseEntity> House { get; set; }
         public DbSet<InjuryEntity> Injury { get; set; }
         public DbSet<ItemEntity> Item { get; set; }
@@ -21,6 +20,7 @@ namespace GladiatorTycoon.DataContext
         public DbSet<PartyEntity> Party { get; set; }
         public DbSet<PassiveEntity> Passive { get; set; }
         public DbSet<PersonBodyPartEntity> PersonBodyPart { get; set; }
+        public DbSet<PersonNameEntity> PersonName { get; set; }
         public DbSet<PersonEntity> Person { get; set; }
         public DbSet<RaceBodyPartEntity> RaceBodyPart { get; set; }
         public DbSet<RaceEntity> Race { get; set; }

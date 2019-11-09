@@ -9,74 +9,70 @@ namespace GladiatorTycoon.Services.Services
     public class AbilityService
     {
         private IAbilityRepository _abilityRepository;
+        private PassiveService _passiveService;
 
-        public AbilityService(IAbilityRepository abilityRepository)
+        public AbilityService(IAbilityRepository abilityRepository, IPassiveRepository passiveRepository)
         {
             _abilityRepository = abilityRepository;
+            _passiveService = new PassiveService(passiveRepository);
         }
 
-        public Ability EntityToRace(AbilityEntity abilityEntity)
+        public Ability EntityToAbility(AbilityEntity abilityEntity)
         {
             return new Ability()
             {
                 Id = abilityEntity.Id,
                 Name = abilityEntity.Name,
-                DamageValue = abilityEntity.DamageValue,
                 Description = abilityEntity.Description,
-                DoesTargetAllies = abilityEntity.DoesTargetAllies,
-                DoesTargetEnemies = abilityEntity.DoesTargetEnemies,
-                Effects = abilityEntity.Effects?.Select(e => ),
-                HealValue = abilityEntity.HealValue,
-                IsDamage = abilityEntity.IsDamage,
-                IsHeal = abilityEntity.IsHeal
+                Effects = abilityEntity.Effects?.Select(e => _passiveService.EntityToPassive(e)).ToList(),
+                //TODO
             };
         }
 
-        public AbilityEntity RaceToEntity(Ability ability)
+        public AbilityEntity AbilityToEntity(Ability ability)
         {
             return new AbilityEntity()
             {
                 Id = ability.Id,
                 Name = ability.Name,
-                DamageValue = ability.DamageValue,
                 Description = ability.Description,
-                DoesTargetAllies = ability.DoesTargetAllies,
-                DoesTargetEnemies = ability.DoesTargetEnemies,
-                Effects = ability.Effects?.Select(e => ),
-                HealValue = ability.HealValue,
-                IsDamage = ability.IsDamage,
-                IsHeal = ability.IsHeal
+                Effects = ability.Effects?.Select(e => _passiveService.PassiveToEntity(e)).ToList(),
+                //TODO
             };
         }
 
         public Ability GetById(int id)
         {
             var race = _abilityRepository.GetById(id);
-            return EntityToRace(race);
+            return EntityToAbility(race);
         }
 
         public List<Ability> GetAll()
         {
             var abilityEntities = _abilityRepository.GetAll();
-            var abilites = abilityEntities.Select(r => EntityToRace(r)).ToList();
+            var abilites = abilityEntities.Select(r => EntityToAbility(r)).ToList();
             return abilites;
         }
 
         public Ability Create(Ability ability)
         {
-            var abilityEntity = _abilityRepository.Create(RaceToEntity(ability));
-            return EntityToRace(abilityEntity);
+            var abilityEntity = _abilityRepository.Create(AbilityToEntity(ability));
+            return EntityToAbility(abilityEntity);
         }
 
         public Ability Update(Ability ability)
         {
             var abilityEntity = _abilityRepository.GetById(ability.Id);
 
+            abilityEntity.Description = ability.Description;
+            abilityEntity.Effects = ability.Effects.Select(e => _passiveService.PassiveToEntity(e)).ToList();
+            abilityEntity.Id = ability.Id;
+            abilityEntity.Name = ability.Name;
             //TODO
 
             _abilityRepository.Update(abilityEntity);
 
-            return EntityToRace(abilityEntity);
+            return EntityToAbility(abilityEntity);
         }
 
         public bool Delete(Ability ability)

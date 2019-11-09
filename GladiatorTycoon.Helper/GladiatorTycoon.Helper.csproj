@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{192766CC-96C6-4C65-BEBE-BC04304D612D}</ProjectGuid>
+    <ProjectGuid>{D94B3015-E444-42AA-97BB-01D7FF0DF672}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GladiatorTycoon.Enums</RootNamespace>
-    <AssemblyName>GladiatorTycoon.Enums</AssemblyName>
+    <RootNamespace>GladiatorTycoon.Helper</RootNamespace>
+    <AssemblyName>GladiatorTycoon.Helper</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,22 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BodyPartType.cs" />
-    <Compile Include="ActionType.cs" />
-    <Compile Include="CombatFlags.cs" />
-    <Compile Include="Gender.cs" />
-    <Compile Include="MagicType.cs" />
-    <Compile Include="ReactionTrigger.cs" />
-    <Compile Include="CombatTarget.cs" />
-    <Compile Include="ArmourSlot.cs" />
-    <Compile Include="Cure.cs" />
-    <Compile Include="Habitat.cs" />
-    <Compile Include="SocialStatus.cs" />
-    <Compile Include="WeaponType.cs" />
+    <Compile Include="DiceHelper.cs" />
+    <Compile Include="GeneralHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

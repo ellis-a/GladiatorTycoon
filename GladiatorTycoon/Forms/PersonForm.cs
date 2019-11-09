@@ -15,17 +15,21 @@ namespace GladiatorTycoon.Forms
     {
         GladiatorTycoonDataContext _context;
         private PersonService _personService;
+        private PersonNameService _personNameService;
         private RaceService _raceService;
         private CityService _cityService;
         private List<Person> _persons;
         private List<Race> _races;
         private List<City> _cities;
+        IPersonNameRepository _personNameRepo;
 
-        public PersonForm(GladiatorTycoonDataContext context, IPersonRepository personRepo, IRaceRepository raceRepo, ICityRepository cityRepo)
+        public PersonForm(GladiatorTycoonDataContext context, IPersonRepository personRepo, IRaceRepository raceRepo, ICityRepository cityRepo, IPersonNameRepository personNameRepo)
         {
+            _personNameRepo = personNameRepo;
             _context = context;
-            _personService = new PersonService(personRepo);
-            _raceService = new RaceService(raceRepo);
+            _personNameService = new PersonNameService(personNameRepo);
+            _personService = new PersonService(personRepo, raceRepo, cityRepo, personNameRepo);
+            _raceService = new RaceService(raceRepo, personNameRepo);
             _cityService = new CityService(cityRepo);
             InitializeComponent();
         }
@@ -106,7 +110,7 @@ namespace GladiatorTycoon.Forms
 
         private void btnNewPerson_Click(object sender, EventArgs e)
         {
-            var newPerson = new Person("New", "Person", SocialStatus.Lowborn, null, true);
+            var newPerson = new Person("New", "Person", SocialStatus.Lowborn, null, Gender.Male);
             _personService.Create(newPerson);
             ReloadUiData();
         }
@@ -123,7 +127,7 @@ namespace GladiatorTycoon.Forms
             comboStatus.SelectedIndex = (int)person.SocialStatus;
             comboCities.SelectedIndex = person.HomeCity?.Id != null ? person.HomeCity.Id - 1 : 0;
 
-            if (person.IsMale) { radioButtonMale.Checked = true; }
+            if (person.Gender == Gender.Male) { radioButtonMale.Checked = true; }
             else { radioButtonFemale.Checked = true; }
 
             numPower.Value = person.Power;
@@ -139,7 +143,7 @@ namespace GladiatorTycoon.Forms
             person.FirstName = textFirstName.Text;
             person.LastName = textLastName.Text;
             person.Race = _races[comboRace.SelectedIndex];
-            person.IsMale = radioButtonMale.Checked;
+            person.Gender = radioButtonMale.Checked ? Gender.Male : Gender.Female;
             person.Power = (int)numPower.Value;
             person.Wits = (int)numWit.Value;
             person.Skill = (int)numSkill.Value;
@@ -166,7 +170,7 @@ namespace GladiatorTycoon.Forms
 
         private void btnEditRaces_Click(object sender, EventArgs e)
         {
-            var raceForm = new RaceForm(new RaceRepository(_context));
+            var raceForm = new RaceForm(new RaceRepository(_context), _personNameRepo);
             raceForm.Show();
             ResetRaces();
         }
@@ -176,6 +180,13 @@ namespace GladiatorTycoon.Forms
             var cityForm = new CityForm(new CityRepository(_context));
             cityForm.Show();
             ResetCities();
+        }
+
+        private void GenerateButton_Click(object sender, EventArgs e)
+        {
+            var newPerson = _personService.GenerateRandomGladiator();
+            _personService.Create(newPerson);
+            ReloadUiData();
         }
     }
 }

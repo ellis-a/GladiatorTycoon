@@ -90,7 +90,6 @@
     <Compile Include="Forms\BodyPartForm.Designer.cs">
       <DependentUpon>BodyPartForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="IApp.cs" />
     <Compile Include="Forms\PersonForm.cs">
       <SubType>Form</SubType>
@@ -149,7 +148,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GladiatorTycoon.Abilities\GladiatorTycoon.Abilities.csproj">
       <Project>{4b1854cd-308b-4be0-9536-d3e76929746e}</Project>
@@ -174,6 +175,10 @@
     <ProjectReference Include="..\GladiatorTycoon.Enums\GladiatorTycoon.Enums.csproj">
       <Project>{192766CC-96C6-4C65-BEBE-BC04304D612D}</Project>
       <Name>GladiatorTycoon.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.Helper\GladiatorTycoon.Helper.csproj">
+      <Project>{D94B3015-E444-42AA-97BB-01D7FF0DF672}</Project>
+      <Name>GladiatorTycoon.Helper</Name>
     </ProjectReference>
     <ProjectReference Include="..\GladiatorTycoon.Repository\GladiatorTycoon.Repositories.csproj">
       <Project>{922E6873-1221-426D-AE82-85462948DFF1}</Project>

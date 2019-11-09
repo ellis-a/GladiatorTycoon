@@ -1,4 +1,5 @@
 ﻿using GladiatorTycoon.Enums;
+using GladiatorTycoon.Helpers;
 using GladiatorTycoon.Repositories.Interfaces;
 using GladiatorTycoon.Services.Models;
 using GladiatorTycoon.Services.Services;
@@ -80,7 +81,7 @@ namespace GladiatorTycoon.Forms
             var city = _cities[listCities.SelectedIndex];
 
             city.Name = textCityName.Text;
-            city.Habitat = Helper.ParseObjectToEnum<Habitat>(comboHabitats.SelectedItem);
+            city.Habitat = GeneralHelper.ParseObjectToEnum<Habitat>(comboHabitats.SelectedItem);
 
             ResetRaces();
             _cityService.Update(city);

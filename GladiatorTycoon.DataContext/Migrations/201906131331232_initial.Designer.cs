@@ -13,7 +13,7 @@ namespace GladiatorTycoon.DataContext.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201905061233117_initial"; }
+            get { return "201906131331232_initial"; }
         }
         
         string IMigrationMetadata.Source

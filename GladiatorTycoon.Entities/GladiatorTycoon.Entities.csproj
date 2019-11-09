@@ -75,7 +75,6 @@
     <Compile Include="Entities\CombatClassEntity.cs" />
     <Compile Include="Entities\DeityEntity.cs" />
     <Compile Include="Entities\MasterEntity.cs" />
-    <Compile Include="Entities\GladiatorEntity.cs" />
     <Compile Include="Entities\HouseEntity.cs" />
     <Compile Include="Entities\ItemEntity.cs" />
     <Compile Include="Entities\MerchantEntity.cs" />
@@ -85,6 +84,7 @@
     <Compile Include="Entities\PersonEntity.cs" />
     <Compile Include="Entities\PersonBodyPartEntity.cs" />
     <Compile Include="Entities\RaceBodyPartEntity.cs" />
+    <Compile Include="Entities\PersonNameEntity.cs" />
     <Compile Include="Entities\RaceEntity.cs" />
     <Compile Include="Entities\SlaveEntity.cs" />
     <Compile Include="Entities\WeaponEntity.cs" />

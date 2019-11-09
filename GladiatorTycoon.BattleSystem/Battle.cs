@@ -29,51 +29,48 @@ namespace GladiatorTycoon.BattleSystem
 
         public void GladiatorTurn(Gladiator gladiator)
         {
-            foreach (var tactic in gladiator.Tactics)
+            foreach (var ability in gladiator.Abilities)
             {
-                if (CheckCondition(gladiator, tactic))
-                {
-                    CombatAction.TakeAction(gladiator, tactic);
-                    break;
-                }
+                //if (CheckCondition(gladiator, ability))
+                //{
+                //    CombatAction.TakeAction(gladiator, ability);
+                //    break;
+                //}
             }
         }
 
-        public bool CheckCondition(Gladiator self, Tactic tactic)
+        public bool CheckCondition(Gladiator self)
         {
             var result = false;
             Gladiator target = null;
             List<Gladiator> targets = null;
             bool multiTargets = false;
-            var conditionTarget = tactic.ConditionTarget;
-            var conditionType = tactic.ConditionType;
-            var conditionValue = tactic.ConditionValue;
 
-            if (conditionTarget == CombatTarget.AllAllies || conditionTarget == CombatTarget.AllEnemies ||
-                conditionTarget == CombatTarget.AnyAlly || conditionTarget == CombatTarget.AnyEnemy)
-            {
-                multiTargets = true;
-                targets = GetMultiTargets(self, conditionTarget);
-            }
-            else
-            {
-                target = GetTarget(self, conditionTarget);
-            }
+            //if (conditionTarget == CombatTarget.AllAllies || conditionTarget == CombatTarget.AllEnemies ||
+            //    conditionTarget == CombatTarget.AnyAlly || conditionTarget == CombatTarget.AnyEnemy)
+            //{
+            //    multiTargets = true;
+            //    targets = GetMultiTargets(self, conditionTarget);
+            //}
+            //else
+            //{
+            //    target = GetTarget(self, conditionTarget);
+            //}
 
-            if (!multiTargets)
-            {
-                result = CheckConditionOnTarget(target, conditionType, conditionValue);
-            }
-            else
-            {
-                var isAll = conditionTarget == CombatTarget.AllAllies || conditionTarget == CombatTarget.AllEnemies;
-                result = CheckConditionOnTargets(targets, conditionType, conditionValue, isAll);
-            }
+            //if (!multiTargets)
+            //{
+            //    result = CheckConditionOnTarget(target, conditionType, conditionValue);
+            //}
+            //else
+            //{
+            //    var isAll = conditionTarget == CombatTarget.AllAllies || conditionTarget == CombatTarget.AllEnemies;
+            //    result = CheckConditionOnTargets(targets, conditionType, conditionValue, isAll);
+            //}
 
             return result;
         }
 
-        private static bool CheckConditionOnTarget(Gladiator target, TacticConditionType conditionType, int conditionValue)
+        private static bool CheckConditionOnTarget(Gladiator target, int conditionValue)
         {
             var result = false;
 
@@ -82,52 +79,52 @@ namespace GladiatorTycoon.BattleSystem
                 return true;
             }
 
-            switch (conditionType)
-            {
-                case TacticConditionType.HealthBelowPercent:
-                    if (GetHealthPercentage(target) < conditionValue)
-                    {
-                        result = true;
-                    }
-                    break;
-                case TacticConditionType.HealthEqualOrAbovePercent:
-                    if (GetHealthPercentage(target) >= conditionValue)
-                    {
-                        result = true;
-                    }
-                    break;
-                case TacticConditionType.AlwaysTrue:
-                    result = true;
-                    break;
-            }
+            //switch (conditionType)
+            //{
+            //    //case TacticConditionType.HealthBelowPercent:
+            //    //    if (GetHealthPercentage(target) < conditionValue)
+            //    //    {
+            //    //        result = true;
+            //    //    }
+            //    //    break;
+            //    //case TacticConditionType.HealthEqualOrAbovePercent:
+            //    //    if (GetHealthPercentage(target) >= conditionValue)
+            //    //    {
+            //    //        result = true;
+            //    //    }
+            //    //    break;
+            //    //case TacticConditionType.AlwaysTrue:
+            //    //    result = true;
+            //    //    break;
+            //}
 
             return result;
         }
 
-        private static bool CheckConditionOnTargets(List<Gladiator> targets, TacticConditionType conditionType, int conditionValue, bool isAll)
+        private static bool CheckConditionOnTargets(List<Gladiator> targets, int conditionValue, bool isAll)
         {
             var result = false;
 
-            switch (conditionType)
-            {
-                case TacticConditionType.HealthBelowPercent:
-                    if ((isAll && targets.All(t => GetHealthPercentage(t) < conditionValue)) ||
-                        (!isAll && targets.Any(t => GetHealthPercentage(t) < conditionValue)))
-                    {
-                        result = true;
-                    }
-                    break;
-                case TacticConditionType.HealthEqualOrAbovePercent:
-                    if ((isAll && targets.All(t => GetHealthPercentage(t) >= conditionValue)) ||
-                        (!isAll && targets.Any(t => GetHealthPercentage(t) >= conditionValue)))
-                    {
-                        result = true;
-                    }
-                    break;
-                case TacticConditionType.AlwaysTrue:
-                    result = true;
-                    break;
-            }
+            //switch (conditionType)
+            //{
+            //    case TacticConditionType.HealthBelowPercent:
+            //        if ((isAll && targets.All(t => GetHealthPercentage(t) < conditionValue)) ||
+            //            (!isAll && targets.Any(t => GetHealthPercentage(t) < conditionValue)))
+            //        {
+            //            result = true;
+            //        }
+            //        break;
+            //    case TacticConditionType.HealthEqualOrAbovePercent:
+            //        if ((isAll && targets.All(t => GetHealthPercentage(t) >= conditionValue)) ||
+            //            (!isAll && targets.Any(t => GetHealthPercentage(t) >= conditionValue)))
+            //        {
+            //            result = true;
+            //        }
+            //        break;
+            //    case TacticConditionType.AlwaysTrue:
+            //        result = true;
+            //        break;
+            //}
 
             return result;
         }

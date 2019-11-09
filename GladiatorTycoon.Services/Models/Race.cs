@@ -11,6 +11,9 @@ namespace GladiatorTycoon.Services.Models
         public string Name { get; set; }
         public List<Passive> Passives { get; set; }
         public List<Ability> Abilities { get; set; }
+        public List<CombatClass> AvalableClasses { get; set; }
+        public Gender AvailableSexes { get; set; }
+        public List<PersonName> AvailablePersonNames { get; set; }
 
         public string PositiveHabitats { get; set; }
         public string NegativeHabitats { get; set; }

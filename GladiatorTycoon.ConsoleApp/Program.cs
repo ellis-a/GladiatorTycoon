@@ -8,10 +8,14 @@ namespace GladiatorTycoon.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var blueteam = new List<Gladiator>();
+            var blueTeam = new List<Gladiator>();
+            var redTeam = new List<Gladiator>();
 
             var battle = new Battle();
-            battle.BlueTeam = blueteam;
+            battle.BlueTeam = blueTeam;
+            battle.RedTeam = redTeam;
+
+            battle.ExecuteBattle();
         }
     }
 }

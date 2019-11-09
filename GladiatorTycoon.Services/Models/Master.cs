@@ -22,7 +22,7 @@ namespace GladiatorTycoon.Services.Models
             Id = person.Id;
             Wits = person.Wits;
             IsAlive = person.IsAlive;
-            IsMale = person.IsMale;
+            Gender = person.Gender;
             LastName = person.LastName;
             Race = person.Race;
             SocialStatus = person.SocialStatus;

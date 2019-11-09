@@ -9,12 +9,10 @@ namespace GladiatorTycoon.Services.Services
     public class CityService
     {
         private ICityRepository _cityRepository;
-        private PassiveService _passiveService;
 
         public CityService(ICityRepository cityRepository)
         {
             _cityRepository = cityRepository;
-            _passiveService = new PassiveService();
         }
 
         public CityService()

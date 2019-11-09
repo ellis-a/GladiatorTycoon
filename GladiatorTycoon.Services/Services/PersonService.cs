@@ -1,6 +1,9 @@
 ﻿using GladiatorTycoon.Entities;
+using GladiatorTycoon.Enums;
+using GladiatorTycoon.Helper;
 using GladiatorTycoon.Repositories.Interfaces;
 using GladiatorTycoon.Services.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,11 +15,11 @@ namespace GladiatorTycoon.Services.Services
         private RaceService _raceService;
         private CityService _cityService;
 
-        public PersonService(IPersonRepository personRepository)
+        public PersonService(IPersonRepository personRepo, IRaceRepository raceRepo, ICityRepository cityRepo, IPersonNameRepository personNameRepo)
         {
-            _personRepository = personRepository;
-            _raceService = new RaceService();
-            _cityService = new CityService();
+            _personRepository = personRepo;
+            _raceService = new RaceService(raceRepo, personNameRepo);
+            _cityService = new CityService(cityRepo);
         }
 
         public Person EntityToPerson(PersonEntity personEntity)
@@ -31,7 +34,7 @@ namespace GladiatorTycoon.Services.Services
                 HomeCity = _cityService.EntityToCity(personEntity.HomeCity),
                 Wits = personEntity.Wits,
                 IsAlive = personEntity.IsAlive,
-                IsMale = personEntity.IsMale,
+                Gender = personEntity.Gender,
                 LastName = personEntity.LastName,
                 Race = _raceService.EntityToRace(personEntity.Race),
                 SocialStatus = personEntity.SocialStatus,
@@ -51,7 +54,7 @@ namespace GladiatorTycoon.Services.Services
                 HomeCity = _cityService.CityToEntity(person.HomeCity),
                 Wits = person.Wits,
                 IsAlive = person.IsAlive,
-                IsMale = person.IsMale,
+                Gender = person.Gender,
                 LastName = person.LastName,
                 Race = _raceService.RaceToEntity(person.Race),
                 SocialStatus = person.SocialStatus,
@@ -90,7 +93,7 @@ namespace GladiatorTycoon.Services.Services
             personEntity.HomeCity = _cityService.CityToEntity(person.HomeCity);
             personEntity.Wits = person.Wits;
             personEntity.IsAlive = person.IsAlive;
-            personEntity.IsMale = person.IsMale;
+            personEntity.Gender = person.Gender;
             personEntity.LastName = person.LastName;
             personEntity.Race = _raceService.RaceToEntity(person.Race);
             personEntity.SocialStatus = person.SocialStatus;
@@ -106,5 +109,48 @@ namespace GladiatorTycoon.Services.Services
             return _personRepository.DeleteById(person.Id);
         }
 
+        public Person GenerateRandomGladiator()
+        {
+            var result = new Person();
+            var rnd = new Random();
+
+            result.Skill = DiceHelper.RollStat();
+            result.Power = DiceHelper.RollStat();
+            result.Wits = DiceHelper.RollStat();
+            result.Charisma = DiceHelper.RollStat();
+
+            var allRaces = _raceService.GetAll();
+            result.Race = allRaces[rnd.Next(allRaces.Count)];
+
+            if (result.Race.AvailableSexes == Gender.Both)
+            {
+                result.Gender = rnd.Next(2) == 0 ? Gender.Male : Gender.Female;
+            }
+            else
+            {
+                result.Gender = result.Race.AvailableSexes;
+            }
+
+            var firstNames = result.Race.AvailablePersonNames
+                .Where(n => n.IsFirstName == true && n.Gender == result.Gender)
+                .Select(n => n.Text)
+                .ToList();
+            result.FirstName = firstNames[rnd.Next(firstNames.Count)];
+
+            var lastNames = result.Race.AvailablePersonNames
+                .Where(n => n.IsFirstName == false)
+                .Select(n => n.Text)
+                .ToList();
+            result.LastName = lastNames[rnd.Next(lastNames.Count)];
+
+            var cities = _cityService.GetAll(); //.Where(c => result.Race.PositiveHabitats. c.Habitat;
+            result.HomeCity = cities[rnd.Next(cities.Count)];
+
+            result.IsAlive = true;
+            result.Gold = 0;
+            result.SocialStatus = SocialStatus.Slave;
+
+            return result;
+        }
     }
 }

@@ -12,7 +12,6 @@ namespace GladiatorTycoon.Services.Models
         public int Defense { get; set; }
 
         public CombatClass CombatClass { get; set; }
-        public List<Tactic> Tactics { get; set; }
         public List<Ability> Abilities { get; set; }
 
         public CombatFlags GetCombatFlags()
@@ -22,7 +21,7 @@ namespace GladiatorTycoon.Services.Models
             {
                 result |= passive.CombatFlags;
             }
-            foreach (var passive in Race.Racials)
+            foreach (var passive in Race.Passives)
             {
                 result |= passive.CombatFlags;
             }

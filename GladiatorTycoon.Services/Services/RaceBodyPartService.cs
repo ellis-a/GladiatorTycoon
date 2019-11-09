@@ -28,7 +28,7 @@ namespace GladiatorTycoon.Services.Services
                 DevName = bodyPartEntity.DevName,
                 AvailableActions = bodyPartEntity.AvailableActions,
                 BodyPartType = bodyPartEntity.BodyPartType,
-                RequiredForLiving = bodyPartEntity.RequiredForLiving
+                IsVital = bodyPartEntity.IsVital
             };
         }
 
@@ -41,7 +41,7 @@ namespace GladiatorTycoon.Services.Services
                 DevName = bodyPart.DevName,
                 AvailableActions = bodyPart.AvailableActions,
                 BodyPartType = bodyPart.BodyPartType,
-                RequiredForLiving = bodyPart.RequiredForLiving
+                IsVital = bodyPart.IsVital
             };
         }
 
@@ -73,7 +73,7 @@ namespace GladiatorTycoon.Services.Services
             bodyPartEntity.DevName = bodyPart.DevName;
             bodyPartEntity.BodyPartType = bodyPart.BodyPartType;
             bodyPartEntity.AvailableActions = bodyPart.AvailableActions;
-            bodyPartEntity.RequiredForLiving = bodyPart.RequiredForLiving;
+            bodyPartEntity.IsVital = bodyPart.IsVital;
 
             _bodyPartRepository.Update(bodyPartEntity);
 

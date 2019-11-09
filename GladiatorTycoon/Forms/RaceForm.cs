@@ -12,13 +12,14 @@ namespace GladiatorTycoon.Forms
     public partial class RaceForm : Form
     {
         private RaceService _raceService;
+        private PersonNameService _personNameService;
         private List<Race> _races;
         private List<RaceBodyPart> _currentRaceParts;
 
-        public RaceForm(IRaceRepository raceRepo)
+        public RaceForm(IRaceRepository raceRepo, IPersonNameRepository personNameRepo)
         {
             InitializeComponent();
-            _raceService = new RaceService(raceRepo);
+            _raceService = new RaceService(raceRepo, personNameRepo);
         }
 
         private void RaceForm_Load(object sender, EventArgs e)
@@ -109,7 +110,7 @@ namespace GladiatorTycoon.Forms
             }
         }
 
-        private void btnSaveRaces_Click(object sender, EventArgs e)
+        private void SaveRacesButton_Click(object sender, EventArgs e)
         {
             SaveRaceData();
             LoadFromDatabase();
@@ -120,7 +121,7 @@ namespace GladiatorTycoon.Forms
             _races = _raceService.GetAll();
         }
 
-        private void btnCloseRace_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -163,14 +164,14 @@ namespace GladiatorTycoon.Forms
             chkListNegativeHabitats.ClearSelected();
         }
 
-        private void btnNewRace_Click(object sender, EventArgs e)
+        private void NewRaceButton_Click(object sender, EventArgs e)
         {
             var newRace = new Race() { Name = Guid.NewGuid().ToString() };
             _raceService.Create(newRace);
             LoadUiData();
         }
 
-        private void btnAddPart_Click(object sender, EventArgs e)
+        private void AddPartButton_Click(object sender, EventArgs e)
         {
             
         }

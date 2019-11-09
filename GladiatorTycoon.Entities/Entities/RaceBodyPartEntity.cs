@@ -14,6 +14,6 @@ namespace GladiatorTycoon.Entities
         public string DevName { get; set; }
         public BodyPartType BodyPartType { get; set; }
         public ActionType AvailableActions { get; set; }
-        public bool RequiredForLiving { get; set; }
+        public bool IsVital { get; set; }
     }
 }

@@ -19,12 +19,19 @@ namespace GladiatorTycoon.Entities
         public int Gold { get; set; }
         public SocialStatus SocialStatus { get; set; }
         public RaceEntity Race { get; set; }
-        public bool IsMale { get; set; }
+        public Gender Gender { get; set; }
         public CityEntity HomeCity { get; set; }
 
         public int Power { get; set; }
         public int Wits { get; set; }
         public int Skill { get; set; }
         public int Charisma { get; set; }
+        
+        List<PersonBodyPartEntity> BodyParts { get; set; }
+
+        public int Offense { get; set; }
+        public int Defense { get; set; }
+
+        public List<ItemEntity> Equipment { get; set; }
     }
 }
