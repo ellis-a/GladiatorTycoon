@@ -1,7 +1,7 @@
-﻿using GladiatorTycoon.Enums;
+﻿using Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GladiatorTycoon.Entities
+namespace Entities
 {
     [Table("Armours")]
     public class ArmourEntity : ItemEntity

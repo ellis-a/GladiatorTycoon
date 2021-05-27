@@ -1,4 +1,4 @@
-﻿namespace GladiatorTycoon.Forms
+﻿namespace Forms
 {
     partial class RaceForm
     {
@@ -38,10 +38,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.textRaceName = new System.Windows.Forms.TextBox();
             this.listRaces = new System.Windows.Forms.ListBox();
-            this.listParts = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.AddPartButton = new System.Windows.Forms.Button();
-            this.RemovePartButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NewRaceButton
@@ -135,51 +131,11 @@
             this.listRaces.TabIndex = 38;
             this.listRaces.SelectedIndexChanged += new System.EventHandler(this.listRaces_SelectedIndexChanged);
             // 
-            // listParts
-            // 
-            this.listParts.FormattingEnabled = true;
-            this.listParts.Location = new System.Drawing.Point(328, 184);
-            this.listParts.Name = "listParts";
-            this.listParts.Size = new System.Drawing.Size(126, 147);
-            this.listParts.TabIndex = 48;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(325, 168);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 49;
-            this.label1.Text = "Body Parts";
-            // 
-            // AddPartButton
-            // 
-            this.AddPartButton.Location = new System.Drawing.Point(460, 184);
-            this.AddPartButton.Name = "AddPartButton";
-            this.AddPartButton.Size = new System.Drawing.Size(75, 23);
-            this.AddPartButton.TabIndex = 50;
-            this.AddPartButton.Text = "Add Part";
-            this.AddPartButton.UseVisualStyleBackColor = true;
-            this.AddPartButton.Click += new System.EventHandler(this.AddPartButton_Click);
-            // 
-            // RemovePartButton
-            // 
-            this.RemovePartButton.Location = new System.Drawing.Point(460, 213);
-            this.RemovePartButton.Name = "RemovePartButton";
-            this.RemovePartButton.Size = new System.Drawing.Size(75, 23);
-            this.RemovePartButton.TabIndex = 51;
-            this.RemovePartButton.Text = "Remove Part";
-            this.RemovePartButton.UseVisualStyleBackColor = true;
-            // 
             // RaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 343);
-            this.Controls.Add(this.RemovePartButton);
-            this.Controls.Add(this.AddPartButton);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.listParts);
+            this.ClientSize = new System.Drawing.Size(338, 343);
             this.Controls.Add(this.NewRaceButton);
             this.Controls.Add(this.SaveRacesButton);
             this.Controls.Add(this.CloseButton);
@@ -210,9 +166,5 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textRaceName;
         private System.Windows.Forms.ListBox listRaces;
-        private System.Windows.Forms.ListBox listParts;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button AddPartButton;
-        private System.Windows.Forms.Button RemovePartButton;
     }
 }

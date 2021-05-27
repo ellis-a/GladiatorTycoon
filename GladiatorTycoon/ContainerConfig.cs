@@ -1,11 +1,9 @@
 ﻿using Autofac;
-using GladiatorTycoon.DataContext;
-using GladiatorTycoon.Repositories.Interfaces;
-using GladiatorTycoon.Repositories.Repositories;
+using DataContext;
 using System.Linq;
 using System.Reflection;
 
-namespace GladiatorTycoon
+namespace DatabaseEditor
 {
     public static class ContainerConfig
     {
@@ -16,7 +14,7 @@ namespace GladiatorTycoon
             builder.RegisterType<App>().As<IApp>();
             builder.RegisterType<GladiatorTycoonDataContext>().AsSelf();
 
-            builder.RegisterAssemblyTypes(Assembly.Load("GladiatorTycoon.Repositories"))
+            builder.RegisterAssemblyTypes(Assembly.Load("Repositories"))
                 .Where(t => t.Namespace.Contains("Repositories"))
                 .As(t => t.GetInterfaces().FirstOrDefault(i => i.Name == $"I{t.Name}"));
 

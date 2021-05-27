@@ -1,10 +1,10 @@
-﻿using GladiatorTycoon.DataContext;
-using GladiatorTycoon.Forms;
-using GladiatorTycoon.Repositories.Interfaces;
-using GladiatorTycoon.Repositories.Repositories;
+﻿using DataContext;
+using Forms;
+using Repositories.Interfaces;
+using Repositories.Repositories;
 using System.Windows.Forms;
 
-namespace GladiatorTycoon
+namespace DatabaseEditor
 {
     public class App : IApp
     {

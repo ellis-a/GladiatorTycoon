@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GladiatorTycoon.Helpers
+namespace Helpers
 {
     public static class GeneralHelper
     {

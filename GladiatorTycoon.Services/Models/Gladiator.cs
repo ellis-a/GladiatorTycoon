@@ -1,13 +1,10 @@
-﻿using GladiatorTycoon.Enums;
+﻿using Enums;
 using System.Collections.Generic;
 
-namespace GladiatorTycoon.Services.Models
+namespace Services.Models
 {
     public class Gladiator : Slave
     {
-        public int MaxHealth { get; set; }
-        public int CurrentHealth { get; set; }
-
         public int Offense { get; set; }
         public int Defense { get; set; }
 

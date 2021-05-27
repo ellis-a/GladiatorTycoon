@@ -1,14 +1,14 @@
-﻿using GladiatorTycoon.Enums;
-using GladiatorTycoon.Helpers;
-using GladiatorTycoon.Repositories.Interfaces;
-using GladiatorTycoon.Services.Models;
-using GladiatorTycoon.Services.Services;
+﻿using Enums;
+using Helpers;
+using Repositories.Interfaces;
+using Services.Models;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace GladiatorTycoon.Forms
+namespace Forms
 {
     public partial class CityForm : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace GladiatorTycoon.Enums
+﻿namespace Enums
 {
     public enum CombatTarget
     {

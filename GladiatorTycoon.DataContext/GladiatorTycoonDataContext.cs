@@ -1,7 +1,7 @@
-﻿using GladiatorTycoon.Entities;
+﻿using Entities;
 using System.Data.Entity;
 
-namespace GladiatorTycoon.DataContext
+namespace DataContext
 {
     public class GladiatorTycoonDataContext : DbContext
     {
@@ -14,15 +14,12 @@ namespace GladiatorTycoon.DataContext
         public DbSet<DeityEntity> Deity { get; set; }
         public DbSet<MasterEntity> Dominus { get; set; }
         public DbSet<HouseEntity> House { get; set; }
-        public DbSet<InjuryEntity> Injury { get; set; }
         public DbSet<ItemEntity> Item { get; set; }
         public DbSet<MerchantEntity> Merchant { get; set; }
         public DbSet<PartyEntity> Party { get; set; }
         public DbSet<PassiveEntity> Passive { get; set; }
-        public DbSet<PersonBodyPartEntity> PersonBodyPart { get; set; }
         public DbSet<PersonNameEntity> PersonName { get; set; }
         public DbSet<PersonEntity> Person { get; set; }
-        public DbSet<RaceBodyPartEntity> RaceBodyPart { get; set; }
         public DbSet<RaceEntity> Race { get; set; }
         public DbSet<SlaveEntity> Slave { get; set; }
         public DbSet<WeaponEntity> Weapon { get; set; }

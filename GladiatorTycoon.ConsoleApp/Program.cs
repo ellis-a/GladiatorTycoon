@@ -1,20 +1,29 @@
-﻿using GladiatorTycoon.BattleSystem;
-using GladiatorTycoon.Services.Models;
+﻿using BattleSystem;
+using DataContext;
+using Repositories.Repositories;
+using Services.Models;
+using Services.Services;
 using System.Collections.Generic;
 
-namespace GladiatorTycoon.ConsoleApp
+namespace ConsoleApp
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            var blueTeam = new List<Gladiator>();
-            var redTeam = new List<Gladiator>();
+            //var context = new GladiatorTycoonDataContext();
 
-            var battle = new Battle();
-            battle.BlueTeam = blueTeam;
-            battle.RedTeam = redTeam;
+            var context = new GladiatorTycoonDataContext();
+            var personRepo = new PersonRepository(context);
+            var raceRepo = new RaceRepository(context);
+            var cityRepo = new CityRepository(context);
+            var personNameRepo = new PersonNameRepository(context);
 
+            var personService = new PersonService(personRepo, raceRepo, cityRepo, personNameRepo);
+
+            var gladiators = personService.GetAll();
+
+            var battle = new Battle(gladiators[0] as Gladiator, gladiators[1] as Gladiator);
             battle.ExecuteBattle();
         }
     }

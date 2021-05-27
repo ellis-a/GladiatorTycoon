@@ -1,4 +1,4 @@
-﻿namespace GladiatorTycoon.Forms
+﻿namespace Forms
 {
     partial class CityForm
     {

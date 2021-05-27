@@ -1,13 +1,13 @@
-﻿using GladiatorTycoon.Entities;
-using GladiatorTycoon.Enums;
-using GladiatorTycoon.Helper;
-using GladiatorTycoon.Repositories.Interfaces;
-using GladiatorTycoon.Services.Models;
+﻿using Entities;
+using Enums;
+using Helper;
+using Repositories.Interfaces;
+using Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GladiatorTycoon.Services.Services
+namespace Services.Services
 {
     public class PersonService
     {
@@ -27,18 +27,23 @@ namespace GladiatorTycoon.Services.Services
             return new Person()
             {
                 Id = personEntity.Id,
-                Skill = personEntity.Skill,
-                Charisma = personEntity.Charisma,
+                BaseSkill = personEntity.BaseSkill,
+                BaseCharisma = personEntity.BaseCharisma,
                 FirstName = personEntity.FirstName,
                 Gold = personEntity.Gold,
                 HomeCity = _cityService.EntityToCity(personEntity.HomeCity),
-                Wits = personEntity.Wits,
+                BaseWits = personEntity.BaseWits,
                 IsAlive = personEntity.IsAlive,
                 Gender = personEntity.Gender,
                 LastName = personEntity.LastName,
                 Race = _raceService.EntityToRace(personEntity.Race),
                 SocialStatus = personEntity.SocialStatus,
-                Power = personEntity.Power
+                BasePower = personEntity.BasePower,
+                BaseBravery = personEntity.BaseBravery,
+                Speed = personEntity.Speed,
+                CurrentHealth = personEntity.CurrentHealth,
+                MaxHealth = personEntity.MaxHealth,
+                Popularity = personEntity.Popularity
             };
         }
 
@@ -47,18 +52,23 @@ namespace GladiatorTycoon.Services.Services
             return new PersonEntity()
             {
                 Id = person.Id,
-                Skill = person.Skill,
-                Charisma = person.Charisma,
+                BaseSkill = person.BaseSkill,
+                BaseCharisma = person.BaseCharisma,
                 FirstName = person.FirstName,
                 Gold = person.Gold,
                 HomeCity = _cityService.CityToEntity(person.HomeCity),
-                Wits = person.Wits,
+                BaseWits = person.BaseWits,
                 IsAlive = person.IsAlive,
                 Gender = person.Gender,
                 LastName = person.LastName,
                 Race = _raceService.RaceToEntity(person.Race),
                 SocialStatus = person.SocialStatus,
-                Power = person.Power
+                BasePower = person.BasePower,
+                BaseBravery = person.BaseBravery,
+                Speed = person.Speed,
+                CurrentHealth = person.CurrentHealth,
+                MaxHealth = person.MaxHealth,
+                Popularity = person.Popularity
             };
         }
 
@@ -86,18 +96,23 @@ namespace GladiatorTycoon.Services.Services
             var personEntity = _personRepository.GetById(person.Id);
 
             personEntity.Id = person.Id;
-            personEntity.Skill = person.Skill;
-            personEntity.Charisma = person.Charisma;
+            personEntity.BaseSkill = person.BaseSkill;
+            personEntity.BaseCharisma = person.BaseCharisma;
             personEntity.FirstName = person.FirstName;
             personEntity.Gold = person.Gold;
             personEntity.HomeCity = _cityService.CityToEntity(person.HomeCity);
-            personEntity.Wits = person.Wits;
+            personEntity.BaseWits = person.BaseWits;
             personEntity.IsAlive = person.IsAlive;
             personEntity.Gender = person.Gender;
             personEntity.LastName = person.LastName;
             personEntity.Race = _raceService.RaceToEntity(person.Race);
             personEntity.SocialStatus = person.SocialStatus;
-            personEntity.Power = person.Power;
+            personEntity.BasePower = person.BasePower;
+            personEntity.BaseBravery = person.BaseBravery;
+            personEntity.Speed = person.Speed;
+            personEntity.CurrentHealth = person.CurrentHealth;
+            personEntity.MaxHealth = person.MaxHealth;
+            personEntity.Popularity = person.Popularity;
 
             _personRepository.Update(personEntity);
 
@@ -114,10 +129,13 @@ namespace GladiatorTycoon.Services.Services
             var result = new Person();
             var rnd = new Random();
 
-            result.Skill = DiceHelper.RollStat();
-            result.Power = DiceHelper.RollStat();
-            result.Wits = DiceHelper.RollStat();
-            result.Charisma = DiceHelper.RollStat();
+            result.BaseSkill = DiceHelper.RollStat();
+            result.BasePower = DiceHelper.RollStat();
+            result.BaseWits = DiceHelper.RollStat();
+            result.BaseCharisma = DiceHelper.RollStat();
+            result.BaseBravery = DiceHelper.RollStat(); 
+            result.Speed = DiceHelper.RollSpeed();
+            result.MaxHealth = DiceHelper.RollHealth();
 
             var allRaces = _raceService.GetAll();
             result.Race = allRaces[rnd.Next(allRaces.Count)];

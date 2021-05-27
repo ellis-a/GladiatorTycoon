@@ -1,9 +1,9 @@
-﻿using GladiatorTycoon.Enums;
+﻿using Enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GladiatorTycoon.Entities
+namespace Entities
 {
     [Table("Persons")]
     public class PersonEntity
@@ -22,15 +22,16 @@ namespace GladiatorTycoon.Entities
         public Gender Gender { get; set; }
         public CityEntity HomeCity { get; set; }
 
-        public int Power { get; set; }
-        public int Wits { get; set; }
-        public int Skill { get; set; }
-        public int Charisma { get; set; }
-        
-        List<PersonBodyPartEntity> BodyParts { get; set; }
+        public int MaxHealth { get; set; }
+        public int CurrentHealth { get; set; }
 
-        public int Offense { get; set; }
-        public int Defense { get; set; }
+        public int BasePower { get; set; }
+        public int BaseWits { get; set; }
+        public int BaseSkill { get; set; }
+        public int BaseCharisma { get; set; }
+        public int BaseBravery { get; set; }
+        public int Speed { get; set; }
+        public int Popularity { get; set; }
 
         public List<ItemEntity> Equipment { get; set; }
     }

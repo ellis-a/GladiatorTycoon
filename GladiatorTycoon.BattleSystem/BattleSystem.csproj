@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3F66D97F-033A-4679-A2DB-8170F01C82BE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{D148ADE9-A664-465B-9617-92F1BFEB5C36}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GladiatorTycoon.ConsoleApp</RootNamespace>
-    <AssemblyName>GladiatorTycoon.ConsoleApp</AssemblyName>
+    <RootNamespace>BattleSystem</RootNamespace>
+    <AssemblyName>BattleSystem</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,28 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Battle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GladiatorTycoon.BattleSystem\GladiatorTycoon.BattleSystem.csproj">
-      <Project>{D148ADE9-A664-465B-9617-92F1BFEB5C36}</Project>
-      <Name>GladiatorTycoon.BattleSystem</Name>
+    <ProjectReference Include="..\GladiatorTycoon.Enums\Enums.csproj">
+      <Project>{192766CC-96C6-4C65-BEBE-BC04304D612D}</Project>
+      <Name>Enums</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GladiatorTycoon.Entities\GladiatorTycoon.Entities.csproj">
-      <Project>{1dae9301-1ffd-4aa6-97e8-42cb86df8125}</Project>
-      <Name>GladiatorTycoon.Entities</Name>
+    <ProjectReference Include="..\GladiatorTycoon.Helper\Helper.csproj">
+      <Project>{D94B3015-E444-42AA-97BB-01D7FF0DF672}</Project>
+      <Name>Helper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GladiatorTycoon.Enums\GladiatorTycoon.Enums.csproj">
-      <Project>{192766cc-96c6-4c65-bebe-bc04304d612d}</Project>
-      <Name>GladiatorTycoon.Enums</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GladiatorTycoon.Services\GladiatorTycoon.Services.csproj">
-      <Project>{f1f7e8ee-a9ad-4fb0-ae5c-415b67b3b9f9}</Project>
-      <Name>GladiatorTycoon.Services</Name>
+    <ProjectReference Include="..\GladiatorTycoon.Services\Services.csproj">
+      <Project>{F1F7E8EE-A9AD-4FB0-AE5C-415B67B3B9F9}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,4 @@
-namespace GladiatorTycoon.DataContext.Migrations
+namespace DataContext.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -193,33 +193,6 @@ namespace GladiatorTycoon.DataContext.Migrations
                 .Index(t => t.RaceEntity_Id);
             
             CreateTable(
-                "dbo.RaceBodyParts",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(unicode: false),
-                        DevName = c.String(unicode: false),
-                        BodyPartType = c.Int(nullable: false),
-                        AvailableActions = c.Int(nullable: false),
-                        IsVital = c.Boolean(nullable: false),
-                        RaceEntity_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Races", t => t.RaceEntity_Id)
-                .Index(t => t.RaceEntity_Id);
-            
-            CreateTable(
-                "dbo.Injuries",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        PersonBodyPartEntity_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.PersonBodyParts", t => t.PersonBodyPartEntity_Id)
-                .Index(t => t.PersonBodyPartEntity_Id);
-            
-            CreateTable(
                 "dbo.Parties",
                 c => new
                     {
@@ -227,23 +200,6 @@ namespace GladiatorTycoon.DataContext.Migrations
                         SuccessScore = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.PersonBodyParts",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        EquippedArmour_Id = c.Int(),
-                        EquippedWeapon_Id = c.Int(),
-                        RaceBodyPart_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Armours", t => t.EquippedArmour_Id)
-                .ForeignKey("dbo.Weapons", t => t.EquippedWeapon_Id)
-                .ForeignKey("dbo.RaceBodyParts", t => t.RaceBodyPart_Id)
-                .Index(t => t.EquippedArmour_Id)
-                .Index(t => t.EquippedWeapon_Id)
-                .Index(t => t.RaceBodyPart_Id);
             
             CreateTable(
                 "dbo.Armours",
@@ -314,17 +270,12 @@ namespace GladiatorTycoon.DataContext.Migrations
             DropForeignKey("dbo.Merchants", "Id", "dbo.Persons");
             DropForeignKey("dbo.Masters", "Id", "dbo.Persons");
             DropForeignKey("dbo.Armours", "Id", "dbo.Items");
-            DropForeignKey("dbo.PersonBodyParts", "RaceBodyPart_Id", "dbo.RaceBodyParts");
-            DropForeignKey("dbo.Injuries", "PersonBodyPartEntity_Id", "dbo.PersonBodyParts");
-            DropForeignKey("dbo.PersonBodyParts", "EquippedWeapon_Id", "dbo.Weapons");
-            DropForeignKey("dbo.PersonBodyParts", "EquippedArmour_Id", "dbo.Armours");
             DropForeignKey("dbo.Persons", "PartyEntity_Id", "dbo.Parties");
             DropForeignKey("dbo.Persons", "Race_Id", "dbo.Races");
             DropForeignKey("dbo.Persons", "HomeCity_Id", "dbo.Cities");
             DropForeignKey("dbo.Items", "PersonEntity_Id", "dbo.Persons");
             DropForeignKey("dbo.Items", "MerchantEntity_Id", "dbo.Merchants");
             DropForeignKey("dbo.Passives", "RaceEntity_Id", "dbo.Races");
-            DropForeignKey("dbo.RaceBodyParts", "RaceEntity_Id", "dbo.Races");
             DropForeignKey("dbo.CombatClasses", "RaceEntity_Id", "dbo.Races");
             DropForeignKey("dbo.PersonNames", "RaceEntity_Id", "dbo.Races");
             DropForeignKey("dbo.Abilities", "RaceEntity_Id", "dbo.Races");
@@ -342,11 +293,6 @@ namespace GladiatorTycoon.DataContext.Migrations
             DropIndex("dbo.Merchants", new[] { "Id" });
             DropIndex("dbo.Masters", new[] { "Id" });
             DropIndex("dbo.Armours", new[] { "Id" });
-            DropIndex("dbo.PersonBodyParts", new[] { "RaceBodyPart_Id" });
-            DropIndex("dbo.PersonBodyParts", new[] { "EquippedWeapon_Id" });
-            DropIndex("dbo.PersonBodyParts", new[] { "EquippedArmour_Id" });
-            DropIndex("dbo.Injuries", new[] { "PersonBodyPartEntity_Id" });
-            DropIndex("dbo.RaceBodyParts", new[] { "RaceEntity_Id" });
             DropIndex("dbo.PersonNames", new[] { "RaceEntity_Id" });
             DropIndex("dbo.Houses", new[] { "MasterEntity_Id" });
             DropIndex("dbo.Houses", new[] { "Location_Id" });
@@ -369,10 +315,7 @@ namespace GladiatorTycoon.DataContext.Migrations
             DropTable("dbo.Merchants");
             DropTable("dbo.Masters");
             DropTable("dbo.Armours");
-            DropTable("dbo.PersonBodyParts");
             DropTable("dbo.Parties");
-            DropTable("dbo.Injuries");
-            DropTable("dbo.RaceBodyParts");
             DropTable("dbo.PersonNames");
             DropTable("dbo.Races");
             DropTable("dbo.Houses");

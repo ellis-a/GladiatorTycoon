@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using GladiatorTycoon.Enums;
+using Enums;
 using System.Linq;
-using GladiatorTycoon.Services.Models;
-using GladiatorTycoon.Repositories.Repositories;
-using GladiatorTycoon.DataContext;
-using GladiatorTycoon.Services.Services;
-using GladiatorTycoon.Repositories.Interfaces;
+using Services.Models;
+using Repositories.Repositories;
+using DataContext;
+using Services.Services;
+using Repositories.Interfaces;
+using BattleSystem;
 
-namespace GladiatorTycoon.Forms
+namespace Forms
 {
     public partial class PersonForm : Form
     {
@@ -130,10 +131,12 @@ namespace GladiatorTycoon.Forms
             if (person.Gender == Gender.Male) { radioButtonMale.Checked = true; }
             else { radioButtonFemale.Checked = true; }
 
-            numPower.Value = person.Power;
-            numWit.Value = person.Wits;
-            numSkill.Value = person.Skill;
-            numCharisma.Value = person.Charisma;
+            numPower.Value = person.BasePower;
+            numWit.Value = person.BaseWits;
+            numSkill.Value = person.BaseSkill;
+            numCharisma.Value = person.BaseCharisma;
+            numBravery.Value = person.BaseBravery;
+            numSpeed.Value = person.Speed;
         }
 
         private void SavePersonData()
@@ -144,10 +147,10 @@ namespace GladiatorTycoon.Forms
             person.LastName = textLastName.Text;
             person.Race = _races[comboRace.SelectedIndex];
             person.Gender = radioButtonMale.Checked ? Gender.Male : Gender.Female;
-            person.Power = (int)numPower.Value;
-            person.Wits = (int)numWit.Value;
-            person.Skill = (int)numSkill.Value;
-            person.Charisma = (int)numCharisma.Value;
+            person.BasePower = (int)numPower.Value;
+            person.BaseWits = (int)numWit.Value;
+            person.BaseSkill = (int)numSkill.Value;
+            person.BaseCharisma = (int)numCharisma.Value;
             person.SocialStatus = (SocialStatus)comboStatus.SelectedIndex;
             person.HomeCity = _cities[comboCities.SelectedIndex];
 
@@ -187,6 +190,17 @@ namespace GladiatorTycoon.Forms
             var newPerson = _personService.GenerateRandomGladiator();
             _personService.Create(newPerson);
             ReloadUiData();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var gladiators = _personService.GetAll().Where(p => p.IsAlive).ToArray();
+
+            var battle = new Battle(gladiators[0], gladiators[1]);
+            battle.ExecuteBattle();
+
+            _personService.Update(battle.Winner);
+            _personService.Update(battle.Loser);
         }
     }
 }

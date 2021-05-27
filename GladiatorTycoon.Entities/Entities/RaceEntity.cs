@@ -1,9 +1,9 @@
-﻿using GladiatorTycoon.Enums;
+﻿using Enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GladiatorTycoon.Entities
+namespace Entities
 {
     [Table("Races")]
     public class RaceEntity
@@ -13,7 +13,6 @@ namespace GladiatorTycoon.Entities
 
         public string Name { get; set; }
         public List<PassiveEntity> Passives { get; set; }
-        public List<RaceBodyPartEntity> BodyParts { get; set; }
         public List<CombatClassEntity> AvalableClasses { get; set; }
         public Gender AvailableGenders { get; set; }
         public List<PersonNameEntity> AvailablePersonNames { get; set; }

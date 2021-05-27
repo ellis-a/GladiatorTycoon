@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4B1854CD-308B-4BE0-9536-D3E76929746E}</ProjectGuid>
+    <ProjectGuid>{F1F7E8EE-A9AD-4FB0-AE5C-415B67B3B9F9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GladiatorTycoon.Abilities</RootNamespace>
-    <AssemblyName>GladiatorTycoon.Abilities</AssemblyName>
+    <RootNamespace>Services</RootNamespace>
+    <AssemblyName>Services</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,12 +24,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -40,11 +46,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Ability.cs" />
+    <Compile Include="Models\PersonName.cs" />
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\CombatClass.cs" />
+    <Compile Include="Models\Master.cs" />
+    <Compile Include="Models\Gladiator.cs" />
+    <Compile Include="Models\House.cs" />
+    <Compile Include="Models\Instruction.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Passive.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Race.cs" />
+    <Compile Include="Models\Slave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\PersonNameService.cs" />
+    <Compile Include="Services\PassiveService.cs" />
+    <Compile Include="Services\PersonService.cs" />
+    <Compile Include="Services\CityService.cs" />
+    <Compile Include="Services\AbilityService.cs" />
+    <Compile Include="Services\RaceService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ClassAbilities\" />
-    <Folder Include="RaceAbilities\" />
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GladiatorTycoon.Entities\Entities.csproj">
+      <Project>{1DAE9301-1FFD-4AA6-97E8-42CB86DF8125}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.Enums\Enums.csproj">
+      <Project>{192766CC-96C6-4C65-BEBE-BC04304D612D}</Project>
+      <Name>Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.Helper\Helper.csproj">
+      <Project>{D94B3015-E444-42AA-97BB-01D7FF0DF672}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.Repository\Repositories.csproj">
+      <Project>{922E6873-1221-426D-AE82-85462948DFF1}</Project>
+      <Name>Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

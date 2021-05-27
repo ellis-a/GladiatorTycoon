@@ -1,9 +1,9 @@
-﻿using GladiatorTycoon.Enums;
+﻿using Enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GladiatorTycoon.Entities
+namespace Entities
 {
     [Table("Abilities")]
     public class AbilityEntity

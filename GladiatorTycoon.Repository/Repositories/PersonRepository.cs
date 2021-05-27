@@ -1,11 +1,11 @@
-﻿using GladiatorTycoon.Repositories.Interfaces;
+﻿using Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using GladiatorTycoon.Entities;
-using GladiatorTycoon.DataContext;
+using Entities;
+using DataContext;
 using System.Data.Entity;
 
-namespace GladiatorTycoon.Repositories.Repositories
+namespace Repositories.Repositories
 {
     public class PersonRepository : IPersonRepository
     {
@@ -25,9 +25,9 @@ namespace GladiatorTycoon.Repositories.Repositories
 
         public PersonEntity Create(PersonEntity personEntity)
         {
-            var cityId = personEntity.HomeCity.Id;
+            var cityId = personEntity?.HomeCity?.Id ?? 0;
             personEntity.HomeCity = _context.City.FirstOrDefault(c => c.Id == cityId);
-            var raceId = personEntity.Race.Id;
+            var raceId = personEntity?.Race?.Id ?? 0;
             personEntity.Race = _context.Race.FirstOrDefault(r => r.Id == raceId);
             _context.Person.Add(personEntity);
             _context.SaveChanges();

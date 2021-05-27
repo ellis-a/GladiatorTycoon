@@ -1,11 +1,11 @@
-﻿using GladiatorTycoon.DataContext;
-using GladiatorTycoon.Entities;
-using GladiatorTycoon.Repositories.Interfaces;
+﻿using DataContext;
+using Entities;
+using Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace GladiatorTycoon.Repositories.Repositories
+namespace Repositories.Repositories
 {
     public class AbilityRepository : IAbilityRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace GladiatorTycoon.Services.Models
+﻿namespace Services.Models
 {
     public class Slave : Person
     {
@@ -12,19 +12,19 @@
 
         public Slave(Person person, int loyalty, Master dominus)
         {
-            Skill = person.Skill;
-            Charisma = person.Charisma;
+            BaseSkill = person.BaseSkill;
+            BaseCharisma = person.BaseCharisma;
             FirstName = person.FirstName;
             Gold = person.Gold;
             HomeCity = person.HomeCity;
             Id = person.Id;
-            Wits = person.Wits;
+            BaseWits = person.BaseWits;
             IsAlive = person.IsAlive;
             Gender = person.Gender;
             LastName = person.LastName;
             Race = person.Race;
             SocialStatus = person.SocialStatus;
-            Power = person.Power;
+            BasePower = person.BasePower;
 
             Loyalty = loyalty;
             Owner = dominus;

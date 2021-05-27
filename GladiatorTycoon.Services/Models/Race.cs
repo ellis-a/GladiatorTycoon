@@ -1,8 +1,8 @@
-﻿using GladiatorTycoon.Enums;
+﻿using Enums;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GladiatorTycoon.Services.Models
+namespace Services.Models
 {
     public class Race
     {
@@ -18,8 +18,6 @@ namespace GladiatorTycoon.Services.Models
         public string PositiveHabitats { get; set; }
         public string NegativeHabitats { get; set; }
 
-        public List<RaceBodyPart> BodyParts { get; set; }
-
         public string ConvertEnumListToString(List<Habitat> habitats)
         {
             var result = new StringBuilder();
@@ -28,6 +26,11 @@ namespace GladiatorTycoon.Services.Models
                 result.Append($"{habitat.ToString()},");
             }
             return result.ToString().Trim(',');
+        }
+
+        public override string ToString()
+        {
+            return Name; 
         }
     }
 }

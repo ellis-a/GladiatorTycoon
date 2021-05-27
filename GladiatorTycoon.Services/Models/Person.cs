@@ -1,30 +1,13 @@
-﻿using GladiatorTycoon.Enums;
-using GladiatorTycoon.Helper;
-using GladiatorTycoon.Services.Services;
+﻿using Enums;
+using Helper;
+using Services.Services;
 using System;
 using System.Linq;
 
-namespace GladiatorTycoon.Services.Models
+namespace Services.Models
 {
     public class Person
     {
-        public Person(string firstName, string lastName, SocialStatus socialStatus, Race race, Gender gender)
-        {
-            IsAlive = true;
-            FirstName = firstName;
-            LastName = lastName;
-            SocialStatus = socialStatus;
-            Race = race;
-            Gender = gender;
-            Gold = 0;
-            Power = 10;
-            Wits = 10;
-            Skill = 10;
-            Charisma = 10;
-        }
-
-        public Person() { }
-
         public int Id { get; set; }
 
         public bool IsAlive { get; set; }
@@ -36,14 +19,45 @@ namespace GladiatorTycoon.Services.Models
         public Gender Gender { get; set; }
         public City HomeCity { get; set; }
 
-        public int Power { get; set; }
-        public int Wits { get; set; }
-        public int Skill { get; set; }
-        public int Charisma { get; set; }
+        public int MaxHealth { get; set; }
+        public int CurrentHealth { get; set; }
+
+        public int BasePower { get; set; }
+        public int BaseWits { get; set; }
+        public int BaseSkill { get; set; }
+        public int BaseCharisma { get; set; }
+        public int BaseBravery { get; set; }
+        public int Speed { get; set; }
+        public int Popularity { get; set; }
+
+        public Person(string firstName, string lastName, SocialStatus socialStatus, Race race, Gender gender)
+        {
+            IsAlive = true;
+            FirstName = firstName;
+            LastName = lastName;
+            SocialStatus = socialStatus;
+            Race = race;
+            Gender = gender;
+            Gold = 0;
+            BasePower = 10;
+            BaseWits = 10;
+            BaseSkill = 10;
+            BaseCharisma = 10;
+        }
+
+        public Person()
+        {
+
+        }
 
         public string FullName()
         {
             return $"{FirstName} {LastName}";
+        }
+
+        public override string ToString()
+        {
+            return FullName();
         }
     }
 }

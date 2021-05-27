@@ -1,4 +1,4 @@
-﻿namespace GladiatorTycoon
+﻿namespace DatabaseEditor
 {
     public interface IApp
     {

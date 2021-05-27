@@ -1,7 +1,7 @@
-﻿using GladiatorTycoon.Entities;
+﻿using Entities;
 using System.Collections.Generic;
 
-namespace GladiatorTycoon.Repositories.Interfaces
+namespace Repositories.Interfaces
 {
     public interface ICityRepository
     {

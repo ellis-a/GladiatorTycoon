@@ -1,6 +1,6 @@
-﻿using GladiatorTycoon.Enums;
+﻿using Enums;
 
-namespace GladiatorTycoon.Services.Models
+namespace Services.Models
 {
     public class City
     {
@@ -8,5 +8,10 @@ namespace GladiatorTycoon.Services.Models
 
         public string Name { get; set; }
         public Habitat Habitat { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Autofac;
+using DatabaseEditor;
 using System;
-using System.Windows.Forms;
 
-namespace GladiatorTycoon.DatabaseEditor
+namespace DatabaseEditor
 {
     static class Program
     {

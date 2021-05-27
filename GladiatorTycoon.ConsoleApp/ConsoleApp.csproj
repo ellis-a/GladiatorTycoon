@@ -4,14 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1DAE9301-1FFD-4AA6-97E8-42CB86DF8125}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{3F66D97F-033A-4679-A2DB-8170F01C82BE}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GladiatorTycoon.Entities</RootNamespace>
-    <AssemblyName>GladiatorTycoon.Entities</AssemblyName>
+    <RootNamespace>ConsoleApp</RootNamespace>
+    <AssemblyName>ConsoleApp</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,33 +34,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,27 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\AbilityEntity.cs" />
-    <Compile Include="Entities\AfflictionEntity.cs" />
-    <Compile Include="Entities\ArenaEntity.cs" />
-    <Compile Include="Entities\ArmourEntity.cs" />
-    <Compile Include="Entities\CityEntity.cs" />
-    <Compile Include="Entities\CombatClassEntity.cs" />
-    <Compile Include="Entities\DeityEntity.cs" />
-    <Compile Include="Entities\MasterEntity.cs" />
-    <Compile Include="Entities\HouseEntity.cs" />
-    <Compile Include="Entities\ItemEntity.cs" />
-    <Compile Include="Entities\MerchantEntity.cs" />
-    <Compile Include="Entities\PartyEntity.cs" />
-    <Compile Include="Entities\PassiveEntity.cs" />
-    <Compile Include="Entities\InjuryEntity.cs" />
-    <Compile Include="Entities\PersonEntity.cs" />
-    <Compile Include="Entities\PersonBodyPartEntity.cs" />
-    <Compile Include="Entities\RaceBodyPartEntity.cs" />
-    <Compile Include="Entities\PersonNameEntity.cs" />
-    <Compile Include="Entities\RaceEntity.cs" />
-    <Compile Include="Entities\SlaveEntity.cs" />
-    <Compile Include="Entities\WeaponEntity.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,9 +60,29 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GladiatorTycoon.Enums\GladiatorTycoon.Enums.csproj">
-      <Project>{192766CC-96C6-4C65-BEBE-BC04304D612D}</Project>
-      <Name>GladiatorTycoon.Enums</Name>
+    <ProjectReference Include="..\GladiatorTycoon.BattleSystem\BattleSystem.csproj">
+      <Project>{D148ADE9-A664-465B-9617-92F1BFEB5C36}</Project>
+      <Name>BattleSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.DataContext\DataContext.csproj">
+      <Project>{9E97B2D8-0B4D-4207-AA9F-B085B5BDBF4A}</Project>
+      <Name>DataContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.Entities\Entities.csproj">
+      <Project>{1dae9301-1ffd-4aa6-97e8-42cb86df8125}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.Enums\Enums.csproj">
+      <Project>{192766cc-96c6-4c65-bebe-bc04304d612d}</Project>
+      <Name>Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.Repository\Repositories.csproj">
+      <Project>{922E6873-1221-426D-AE82-85462948DFF1}</Project>
+      <Name>Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GladiatorTycoon.Services\Services.csproj">
+      <Project>{F1F7E8EE-A9AD-4FB0-AE5C-415B67B3B9F9}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

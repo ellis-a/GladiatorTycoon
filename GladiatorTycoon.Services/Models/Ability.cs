@@ -1,7 +1,7 @@
-﻿using GladiatorTycoon.Enums;
+﻿using Enums;
 using System.Collections.Generic;
 
-namespace GladiatorTycoon.Services.Models
+namespace Services.Models
 {
     public class Ability
     {

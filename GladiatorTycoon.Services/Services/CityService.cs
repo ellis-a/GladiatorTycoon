@@ -1,10 +1,10 @@
-﻿using GladiatorTycoon.Entities;
-using GladiatorTycoon.Repositories.Interfaces;
-using GladiatorTycoon.Services.Models;
+﻿using Entities;
+using Repositories.Interfaces;
+using Services.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GladiatorTycoon.Services.Services
+namespace Services.Services
 {
     public class CityService
     {
@@ -21,6 +21,11 @@ namespace GladiatorTycoon.Services.Services
 
         public City EntityToCity(CityEntity cityEntity)
         {
+            if (cityEntity == null)
+            {
+                return null;
+            }
+
             return new City()
             {
                 Id = cityEntity.Id,
@@ -31,6 +36,11 @@ namespace GladiatorTycoon.Services.Services
 
         public CityEntity CityToEntity(City city)
         {
+            if (city == null)
+            {
+                return null;
+            }
+
             return new CityEntity()
             {
                 Id = city.Id,

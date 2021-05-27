@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GladiatorTycoon.Services.Models
+namespace Services.Models
 {
     public class Master : Person
     {
@@ -14,19 +14,19 @@ namespace GladiatorTycoon.Services.Models
 
         public Master(Person person)
         {
-            Skill = person.Skill;
-            Charisma = person.Charisma;
+            BaseSkill = person.BaseSkill;
+            BaseCharisma = person.BaseCharisma;
             FirstName = person.FirstName;
             Gold = person.Gold;
             HomeCity = person.HomeCity;
             Id = person.Id;
-            Wits = person.Wits;
+            BaseWits = person.BaseWits;
             IsAlive = person.IsAlive;
             Gender = person.Gender;
             LastName = person.LastName;
             Race = person.Race;
             SocialStatus = person.SocialStatus;
-            Power = person.Power;
+            BasePower = person.BasePower;
         }
     }
 }

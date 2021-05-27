@@ -1,54 +1,8 @@
-namespace GladiatorTycoon.DataContext.Migrations
-{
-    using System;
-    using System.Data.Entity.Migrations;
-    
-    public partial class add_testing_data : DbMigration
-    {
-        public override void Up()
-        {
-            Sql(@"
-INSERT INTO `gladiator_tycoon`.`races` (`Name`, `AvailableGenders`, `PositiveHabitats`, `NegativeHabitats`) VALUES ('Mennesker', 0, 'Wasteland,Frozen', 'Jungle,Desert');
+﻿INSERT INTO `gladiator_tycoon`.`races` (`Name`, `AvailableGenders`, `PositiveHabitats`, `NegativeHabitats`) VALUES ('Mennesker', 0, 'Wasteland,Frozen', 'Jungle,Desert');
 INSERT INTO `gladiator_tycoon`.`races` (`Name`, `AvailableGenders`, `PositiveHabitats`, `NegativeHabitats`) VALUES ('Hito', 0, 'Temperate,Mountain', 'Wasteland,Underground');
 INSERT INTO `gladiator_tycoon`.`races` (`Name`, `AvailableGenders`, `PositiveHabitats`, `NegativeHabitats`) VALUES ('Ashkhas', 0, 'Desert,Savannah', 'Frozen,Mountain');
 INSERT INTO `gladiator_tycoon`.`races` (`Name`, `AvailableGenders`, `PositiveHabitats`, `NegativeHabitats`) VALUES ('Anthropos', 0, 'Temperate,Savannah,Forest', 'Wasteland,Underground,Frozen');
-
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Head', 'Mennesker Head', 0, 0, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Mennesker'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Torso', 'Mennesker Torso', 1, 0, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Mennesker'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Arm', 'Mennesker Arm', 2, 7, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Mennesker'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Leg', 'Mennesker Leg', 3, 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Mennesker'));
-
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Head', 'Hito Head', 0, 0, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Hito'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Torso', 'Hito Torso', 1, 0, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Hito'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Arm', 'Hito Arm', 2, 7, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Hito'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Leg', 'Hito Leg', 3, 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Hito'));
-
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Head', 'Ashkhas Head', 0, 0, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Ashkhas'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Torso', 'Ashkhas Torso', 1, 0, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Ashkhas'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Arm', 'Ashkhas Arm', 2, 7, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Ashkhas'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Leg', 'Ashkhas Leg', 3, 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Ashkhas'));
-
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Head', 'Anthropos Head', 0, 0, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Anthropos'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Torso', 'Anthropos Torso', 1, 0, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Anthropos'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Arm', 'Anthropos Arm', 2, 7, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Anthropos'));
-INSERT INTO `gladiator_tycoon`.`racebodyparts` (`Name`, `DevName`, `BodyPartType`, `AvailableActions`, `IsVital`, `RaceEntity_Id`)
-VALUES ('Leg', 'Anthropos Leg', 3, 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Anthropos'));
-
+INSERT INTO `gladiator_tycoon`.`races` (`Name`, `AvailableGenders`, `PositiveHabitats`, `NegativeHabitats`) VALUES ('Duine', 0, 'Forest,Underground', 'Savannah,Desert');
 
 INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
 VALUES ('Om', 1, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Mennesker'));
@@ -185,6 +139,40 @@ VALUES ('Shakir', 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name
 INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
 VALUES ('Zuberi', 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Ashkhas'));
 
+
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Ronan', 1, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Sloane', 1, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Aeron', 1, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Desmond', 1, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Keithan', 1, 1, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Gwendolyn', 1, 2, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Aife', 1, 2, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Brei', 1, 2, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Kylise', 1, 2, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Rianorix', 1, 2, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Iceni', 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Belgae', 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Connacht', 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Munster', 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+INSERT INTO `gladiator_tycoon`.`personnames` (`Text`, `IsFirstName`, `Gender`, `RaceEntity_Id`)
+VALUES ('Neill', 0, 0, (SELECT `Id` FROM `gladiator_tycoon`.`races` WHERE `Name`='Duine'));
+
 INSERT INTO `gladiator_tycoon`.`cities` (`Name`, `Habitat`)
 VALUES ('Hellscape', 0);
 INSERT INTO `gladiator_tycoon`.`cities` (`Name`, `Habitat`)
@@ -194,7 +182,7 @@ VALUES ('Thighkohm', 2);
 INSERT INTO `gladiator_tycoon`.`cities` (`Name`, `Habitat`)
 VALUES ('Terraced Enclave', 3);
 INSERT INTO `gladiator_tycoon`.`cities` (`Name`, `Habitat`)
-VALUES ('La For�t des Hirondelles', 4);
+VALUES ('La Forêt des Hirondelles', 4);
 INSERT INTO `gladiator_tycoon`.`cities` (`Name`, `Habitat`)
 VALUES ('Serenghast', 5);
 INSERT INTO `gladiator_tycoon`.`cities` (`Name`, `Habitat`)
@@ -203,11 +191,3 @@ INSERT INTO `gladiator_tycoon`.`cities` (`Name`, `Habitat`)
 VALUES ('Burning Desert', 7);
 INSERT INTO `gladiator_tycoon`.`cities` (`Name`, `Habitat`)
 VALUES ('Dread Labyrinth', 8);
-");
-        }
-        
-        public override void Down()
-        {
-        }
-    }
-}

@@ -1,27 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.DatabaseEditor", "GladiatorTycoon\GladiatorTycoon.DatabaseEditor.csproj", "{C478AC95-4C0A-4CFB-BAF1-40FFA6673DAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseEditor", "GladiatorTycoon\DatabaseEditor.csproj", "{C478AC95-4C0A-4CFB-BAF1-40FFA6673DAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.DataContext", "GladiatorTycoon.DataContext\GladiatorTycoon.DataContext.csproj", "{9E97B2D8-0B4D-4207-AA9F-B085B5BDBF4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContext", "GladiatorTycoon.DataContext\DataContext.csproj", "{9E97B2D8-0B4D-4207-AA9F-B085B5BDBF4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.Entities", "GladiatorTycoon.Entities\GladiatorTycoon.Entities.csproj", "{1DAE9301-1FFD-4AA6-97E8-42CB86DF8125}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "GladiatorTycoon.Entities\Entities.csproj", "{1DAE9301-1FFD-4AA6-97E8-42CB86DF8125}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.Repositories", "GladiatorTycoon.Repository\GladiatorTycoon.Repositories.csproj", "{922E6873-1221-426D-AE82-85462948DFF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "GladiatorTycoon.Repository\Repositories.csproj", "{922E6873-1221-426D-AE82-85462948DFF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.Services", "GladiatorTycoon.Services\GladiatorTycoon.Services.csproj", "{F1F7E8EE-A9AD-4FB0-AE5C-415B67B3B9F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "GladiatorTycoon.Services\Services.csproj", "{F1F7E8EE-A9AD-4FB0-AE5C-415B67B3B9F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.Enums", "GladiatorTycoon.Enums\GladiatorTycoon.Enums.csproj", "{192766CC-96C6-4C65-BEBE-BC04304D612D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enums", "GladiatorTycoon.Enums\Enums.csproj", "{192766CC-96C6-4C65-BEBE-BC04304D612D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.BattleSystem", "GladiatorTycoon.BattleSystem\GladiatorTycoon.BattleSystem.csproj", "{D148ADE9-A664-465B-9617-92F1BFEB5C36}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleSystem", "GladiatorTycoon.BattleSystem\BattleSystem.csproj", "{D148ADE9-A664-465B-9617-92F1BFEB5C36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.Abilities", "GladiatorTycoon.Abilities\GladiatorTycoon.Abilities.csproj", "{4B1854CD-308B-4BE0-9536-D3E76929746E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abilities", "GladiatorTycoon.Abilities\Abilities.csproj", "{4B1854CD-308B-4BE0-9536-D3E76929746E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.ConsoleApp", "GladiatorTycoon.ConsoleApp\GladiatorTycoon.ConsoleApp.csproj", "{3F66D97F-033A-4679-A2DB-8170F01C82BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "GladiatorTycoon.ConsoleApp\ConsoleApp.csproj", "{3F66D97F-033A-4679-A2DB-8170F01C82BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GladiatorTycoon.Helper", "GladiatorTycoon.Helper\GladiatorTycoon.Helper.csproj", "{D94B3015-E444-42AA-97BB-01D7FF0DF672}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "GladiatorTycoon.Helper\Helper.csproj", "{D94B3015-E444-42AA-97BB-01D7FF0DF672}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,5 +72,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0889A32C-AFA8-4203-B177-14DC01D7593F}
 	EndGlobalSection
 EndGlobal

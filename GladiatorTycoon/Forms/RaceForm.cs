@@ -1,20 +1,19 @@
-﻿using GladiatorTycoon.Enums;
-using GladiatorTycoon.Repositories.Interfaces;
-using GladiatorTycoon.Services.Models;
-using GladiatorTycoon.Services.Services;
+﻿using Enums;
+using Repositories.Interfaces;
+using Services.Models;
+using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace GladiatorTycoon.Forms
+namespace Forms
 {
     public partial class RaceForm : Form
     {
         private RaceService _raceService;
         private PersonNameService _personNameService;
         private List<Race> _races;
-        private List<RaceBodyPart> _currentRaceParts;
 
         public RaceForm(IRaceRepository raceRepo, IPersonNameRepository personNameRepo)
         {
@@ -29,22 +28,11 @@ namespace GladiatorTycoon.Forms
 
         private void LoadUiData()
         {
-            _currentRaceParts = new List<RaceBodyPart>();
             _races = _raceService.GetAll();
 
             ResetRaces();
             LoadPosHabitats();
             LoadNegHabitats();
-        }
-
-        private void ResetBodyParts()
-        {
-            listParts.Items.Clear();
-
-            foreach (var part in _currentRaceParts)
-            {
-                listParts.Items.Add($"{part.Name} ({part.DevName})");
-            }
         }
 
         private void LoadNegHabitats()
@@ -82,12 +70,6 @@ namespace GladiatorTycoon.Forms
             var posHabitatList = race.PositiveHabitats?.Split(',').ToList();
             var negHabitatList = race.NegativeHabitats?.Split(',').ToList();
             textRaceName.Text = race.Name;
-
-            _currentRaceParts = race.BodyParts;
-            if (_currentRaceParts == null)
-            {
-                _currentRaceParts = new List<RaceBodyPart>();
-            }
 
             if (posHabitatList != null)
             {
@@ -169,11 +151,6 @@ namespace GladiatorTycoon.Forms
             var newRace = new Race() { Name = Guid.NewGuid().ToString() };
             _raceService.Create(newRace);
             LoadUiData();
-        }
-
-        private void AddPartButton_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

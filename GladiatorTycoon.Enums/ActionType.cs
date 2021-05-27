@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GladiatorTycoon.Enums
+namespace Enums
 {
     [Flags]
     public enum ActionType

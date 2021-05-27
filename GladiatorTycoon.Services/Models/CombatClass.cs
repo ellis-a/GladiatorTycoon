@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GladiatorTycoon.Services.Models
+namespace Services.Models
 {
     public class CombatClass
     {

@@ -1,17 +1,16 @@
-﻿using GladiatorTycoon.Entities;
-using GladiatorTycoon.Repositories.Interfaces;
-using GladiatorTycoon.Services.Models;
+﻿using Entities;
+using Repositories.Interfaces;
+using Services.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GladiatorTycoon.Services.Services
+namespace Services.Services
 {
     public class RaceService
     {
         private IRaceRepository _raceRepository;
         private PassiveService _passiveService;
         private AbilityService _abilityService;
-        private RaceBodyPartService _raceBodyPartService;
         private PersonNameService _personNameService;
 
         public RaceService(IRaceRepository raceRepository, IPersonNameRepository personNameRepo)
@@ -19,7 +18,6 @@ namespace GladiatorTycoon.Services.Services
             _raceRepository = raceRepository;
             _passiveService = new PassiveService();
             //_abilityService = new AbilityService();
-            _raceBodyPartService = new RaceBodyPartService();
             _personNameService = new PersonNameService(personNameRepo);
         }
 
@@ -29,6 +27,11 @@ namespace GladiatorTycoon.Services.Services
 
         public Race EntityToRace(RaceEntity raceEntity)
         {
+            if (raceEntity == null)
+            {
+                return null;
+            }
+
             return new Race()
             {
                 Id = raceEntity.Id,
@@ -37,14 +40,18 @@ namespace GladiatorTycoon.Services.Services
                 PositiveHabitats = raceEntity.PositiveHabitats,
                 AvailableSexes = raceEntity.AvailableGenders,
                 Passives = raceEntity.Passives?.Select(p => _passiveService.EntityToPassive(p)).ToList(),
-                Abilities = raceEntity.Abilities?.Select(a => _abilityService.EntityToAbility(a)).ToList(),
-                BodyParts = raceEntity.BodyParts?.Select(b => _raceBodyPartService.EntityToBodyPart(b)).ToList(),
+                //Abilities = raceEntity.Abilities?.Select(a => _abilityService.EntityToAbility(a)).ToList(),
                 AvailablePersonNames = raceEntity.AvailablePersonNames?.Select(n => _personNameService.EntityToPersonName(n)).ToList(),
             };
         }
 
         public RaceEntity RaceToEntity(Race race)
         {
+            if (race == null)
+            {
+                return null;
+            }
+
             return new RaceEntity()
             {
                 Id = race.Id,
@@ -53,8 +60,7 @@ namespace GladiatorTycoon.Services.Services
                 PositiveHabitats = race.PositiveHabitats,
                 AvailableGenders = race.AvailableSexes,
                 Passives = race.Passives?.Select(p => _passiveService.PassiveToEntity(p)).ToList(),
-                Abilities = race.Abilities?.Select(a => _abilityService.AbilityToEntity(a)).ToList(),
-                BodyParts = race.BodyParts?.Select(b => _raceBodyPartService.BodyPartToEntity(b)).ToList(),
+                //Abilities = race.Abilities?.Select(a => _abilityService.AbilityToEntity(a)).ToList(),
                 AvailablePersonNames = race.AvailablePersonNames?.Select(n => _personNameService.PersonNameToEntity(n)).ToList(),
             };
         }
@@ -88,7 +94,6 @@ namespace GladiatorTycoon.Services.Services
             raceEntity.PositiveHabitats = race.PositiveHabitats;
             raceEntity.Passives = race.Passives.Select(p => _passiveService.PassiveToEntity(p)).ToList();
             raceEntity.Abilities = race.Abilities.Select(a => _abilityService.AbilityToEntity(a)).ToList();
-            raceEntity.BodyParts = race.BodyParts.Select(b => _raceBodyPartService.BodyPartToEntity(b)).ToList();
 
             _raceRepository.Update(raceEntity);
 

@@ -1,4 +1,4 @@
-namespace GladiatorTycoon.DataContext.Migrations
+namespace DataContext.Migrations
 {
     using System;
     using System.Data.Entity;

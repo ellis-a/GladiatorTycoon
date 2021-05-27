@@ -1,8 +1,8 @@
-﻿using GladiatorTycoon.Enums;
+﻿using Enums;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GladiatorTycoon.Services.Models
+namespace Services.Models
 {
     public class PersonName
     {

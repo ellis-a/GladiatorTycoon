@@ -1,4 +1,4 @@
-﻿namespace GladiatorTycoon.Forms
+﻿namespace Forms
 {
     partial class PersonForm
     {
@@ -56,10 +56,17 @@
             this.btnEditRaces = new System.Windows.Forms.Button();
             this.btnEditCities = new System.Windows.Forms.Button();
             this.GenerateButton = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numBravery = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.numSpeed = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numCharisma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSkill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPower)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBravery)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // label11
@@ -297,6 +304,7 @@
             this.listPeople.Name = "listPeople";
             this.listPeople.Size = new System.Drawing.Size(303, 95);
             this.listPeople.TabIndex = 29;
+            this.listPeople.SelectedIndexChanged += new System.EventHandler(this.listPeople_SelectedIndexChanged);
             // 
             // btnEditRaces
             // 
@@ -328,11 +336,68 @@
             this.GenerateButton.UseVisualStyleBackColor = true;
             this.GenerateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(249, 220);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(43, 13);
+            this.label12.TabIndex = 59;
+            this.label12.Text = "Bravery";
+            // 
+            // numBravery
+            // 
+            this.numBravery.Location = new System.Drawing.Point(253, 236);
+            this.numBravery.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numBravery.Name = "numBravery";
+            this.numBravery.Size = new System.Drawing.Size(48, 20);
+            this.numBravery.TabIndex = 58;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(303, 220);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(38, 13);
+            this.label13.TabIndex = 61;
+            this.label13.Text = "Speed";
+            // 
+            // numSpeed
+            // 
+            this.numSpeed.Location = new System.Drawing.Point(307, 236);
+            this.numSpeed.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numSpeed.Name = "numSpeed";
+            this.numSpeed.Size = new System.Drawing.Size(48, 20);
+            this.numSpeed.TabIndex = 60;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(356, 332);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 62;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // PersonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 485);
+            this.ClientSize = new System.Drawing.Size(443, 367);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.numSpeed);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.numBravery);
             this.Controls.Add(this.GenerateButton);
             this.Controls.Add(this.btnEditCities);
             this.Controls.Add(this.btnEditRaces);
@@ -368,6 +433,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numSkill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numWit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPower)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numBravery)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numSpeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,6 +469,11 @@
         private System.Windows.Forms.Button btnEditRaces;
         private System.Windows.Forms.Button btnEditCities;
         private System.Windows.Forms.Button GenerateButton;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown numBravery;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.NumericUpDown numSpeed;
+        private System.Windows.Forms.Button button1;
     }
 }
 

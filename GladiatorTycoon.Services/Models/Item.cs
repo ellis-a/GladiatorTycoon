@@ -1,4 +1,4 @@
-﻿namespace GladiatorTycoon.Services.Models
+﻿namespace Services.Models
 {
     public class Item
     {
