@@ -29,6 +29,7 @@ namespace Services.Models
         public int BaseBravery { get; set; }
         public int Speed { get; set; }
         public int Popularity { get; set; }
+        public int SpeedSum { get; set; }
 
         public Person(string firstName, string lastName, SocialStatus socialStatus, Race race, Gender gender)
         {

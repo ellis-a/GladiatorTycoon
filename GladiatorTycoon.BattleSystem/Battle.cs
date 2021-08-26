@@ -33,15 +33,22 @@ namespace BattleSystem
             var combatants = Gladiators.OrderByDescending(c => c.Speed).ToList();
             var phase = 1;
             var finished = false;
+
+            combatants.Where(c => c.Speed == 1).ToList()
+                .ForEach(c => c.SpeedSum = 6);
+
             while (!finished)
             {
                 foreach (var attacker in combatants)
                 {
                     var defender = combatants.FirstOrDefault(c => c.FullName() != attacker.FullName());
-                    if (!IsValidPhase(phase, attacker.Speed))
+                    attacker.SpeedSum += attacker.Speed;
+                    if (attacker.SpeedSum < 12)
                     {
                         continue;
                     }
+
+                    attacker.SpeedSum -= 12;
 
                     if (attacker.CurrentHealth < (attacker.MaxHealth / 2) - attacker.BaseBravery)
                     {
@@ -63,7 +70,7 @@ namespace BattleSystem
                     }
                     defender.CurrentHealth -= damage;
 
-                    if (defender.CurrentHealth + defender.BaseWits > attacker.BaseWits * 2)
+                    if (defender.CurrentHealth + defender.BaseWits < attacker.BaseWits * 2)
                     {
                         Loser = defender;
                         Winner = attacker;
@@ -79,70 +86,17 @@ namespace BattleSystem
                     phase = 1;
                 }
             }
-            
-            if (_lethality == 2 || (_lethality == 1 && IsLoserExecutable()))
+
+            if (_lethality == 2 || (_lethality == 1 && IsLoserExecutable()) || Loser.CurrentHealth <= 0)
             {
                 Loser.IsAlive = false;
             }
 
         }
 
-        // this is shit
         private bool IsLoserExecutable()
         {
-            if (Loser.CurrentHealth <= 0)
-            {
-                Loser.IsAlive = false;
-                return false;
-            }
-
-            if (_totalPhases < Loser.BaseCharisma + (Winner.MaxHealth - Winner.CurrentHealth))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool IsValidPhase(int phase, int speed)
-        {
-            if (speed < 1)
-            {
-                speed = 1;
-            }
-            else if (speed > 12)
-            {
-                speed = 12;
-            }
-
-            switch (speed)
-            {
-                case 1:
-                    return phase == 7;
-                case 2:
-                    return phase == 6 || phase == 12;
-                case 3:
-                    return phase == 4 || phase == 8 || phase == 12;
-                case 4:
-                    return phase == 3 || phase == 6 || phase == 9 || phase == 12;
-                case 5:
-                    return phase == 3 || phase == 5 || phase == 8 || phase == 10 || phase == 12;
-                case 6:
-                    return phase == 2 || phase == 4 || phase == 6 || phase == 8 || phase == 10 || phase == 12;
-                case 7:
-                    return phase != 1 && phase != 3 && phase != 5 && phase != 8 && phase != 10;
-                case 8:
-                    return phase != 1 && phase != 4 && phase != 7 && phase != 10;
-                case 9:
-                    return phase != 1 && phase != 5 && phase != 9;
-                case 10:
-                    return phase != 1 && phase != 7;
-                case 11:
-                    return phase != 1;
-                case 12:
-                default:
-                    return true;
-            }
+            return _totalPhases > Loser.BaseCharisma + ((Winner.MaxHealth - Winner.CurrentHealth) / 4);
         }
     }
 }
